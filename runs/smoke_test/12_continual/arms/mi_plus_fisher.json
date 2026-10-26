@@ -1,0 +1,108 @@
+{
+ "acc_13": 0.42,
+ "no_decision": 0,
+ "old_mean_acc": 0.3765135327635328,
+ "forgetting_mean_pts": 17.84569597069597,
+ "forgetting_pts": {
+  "yes": 28.57,
+  "no": 0.0,
+  "up": 23.08,
+  "down": 0.0,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 87.5
+ },
+ "worst_class": "_silence_",
+ "worst_forgetting_pts": 87.5,
+ "new_word_acc": 1.0,
+ "new_word_to_unknown": 0.0,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.4842105263157895,
+ "per_class": {
+  "yes": 0.0,
+  "no": 1.0,
+  "up": 0.6154,
+  "down": 0.7778,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.125,
+  "_silence_": 0.0,
+  "zero": 1.0
+ },
+ "drift_forgetting_mean_pts": -4.691951566951568,
+ "drift_forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": -7.69,
+  "down": 0.0,
+  "left": -25.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": -11.11,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": -12.5
+ },
+ "new_word_auc": 0.848421052631579,
+ "new_word_auc_vs_class": {
+  "yes": 0.9428571428571428,
+  "no": 1.0,
+  "up": 0.9230769230769231,
+  "down": 1.0,
+  "left": 0.7,
+  "right": 0.8888888888888888,
+  "on": 0.5142857142857142,
+  "off": 0.7333333333333333,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.675,
+  "_silence_": 0.7
+ },
+ "arm": "mi_plus_fisher",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 1.8179953694343567,
+   "val_drift_pts": -2.341269841269842,
+   "val_new_word_auc": 0.7412280701754386,
+   "val_forgetting_pts": 17.1031746031746,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 2,
+   "loss": 1.8789609670639038,
+   "val_drift_pts": -2.0138888888888893,
+   "val_new_word_auc": 0.9210526315789473,
+   "val_forgetting_pts": 16.59722222222222,
+   "val_new_word_acc": 1.0
+  }
+ ],
+ "info": {
+  "frozen_hidden": 127,
+  "frozen_per_layer": [
+   64,
+   37,
+   26
+  ],
+  "replay": false,
+  "old_readout_frozen": true
+ },
+ "seconds": 2,
+ "basis": "8b9f3872@1792923087.756",
+ "checks": {
+  "12 mi_plus_fisher: frozen weights did not move": {
+   "passed": true,
+   "detail": "largest change of a frozen weight 0.0e+00"
+  }
+ }
+}

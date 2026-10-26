@@ -1,0 +1,367 @@
+2026-10-26 08:34:22  ========================================================================
+2026-10-26 08:34:22  run started | Google Speech Commands v2 | cfg 63fd824a | device cuda
+2026-10-26 08:34:22  stages to compute: 01_index (it has not finished yet) and every stage after it
+2026-10-26 08:34:22  01_index: dataset root D:\codes\Anmol papers and code\speech_commands_v2
+2026-10-26 08:34:23    [PASS] 01 splits are disjoint: 0 files in two splits
+2026-10-26 08:34:23    [PASS] 01 every keyword present in every split
+2026-10-26 08:34:23    [PASS] 01 _unknown_ holds no keyword clips: 0 keyword clips in _unknown_
+2026-10-26 08:34:23    [PASS] 01 'zero' never in validation/test _unknown_
+2026-10-26 08:34:23    'zero' clips inside training _unknown_: 203 (new_word_in_base_unknown=True)
+2026-10-26 08:34:23    other words used for _unknown_: 24 (backward, bed, bird, cat, dog, eight, five, follow, ...)
+2026-10-26 08:34:23    [PASS] 01 per-word validation/test counts match GSC v2: exact match
+2026-10-26 08:34:25      training_words: 5000/30769 clips (2826 clips/s)
+2026-10-26 08:34:26      training_words: 10000/30769 clips (2845 clips/s)
+2026-10-26 08:34:28      training_words: 15000/30769 clips (2850 clips/s)
+2026-10-26 08:34:30      training_words: 20000/30769 clips (2840 clips/s)
+2026-10-26 08:34:32      training_words: 25000/30769 clips (2817 clips/s)
+2026-10-26 08:34:33      training_words: 30000/30769 clips (2826 clips/s)
+2026-10-26 08:34:34    cached training_words: 30769 clips, 2905 shorter than 1 s, 0 unreadable, 939 MB, 11 s
+2026-10-26 08:34:36    cached training_unknown: 3077 clips, 307 shorter than 1 s, 0 unreadable, 94 MB, 1 s
+2026-10-26 08:34:37    cached training_new: 3250 clips, 231 shorter than 1 s, 0 unreadable, 99 MB, 1 s
+2026-10-26 08:34:38    cached validation_words: 3703 clips, 367 shorter than 1 s, 0 unreadable, 113 MB, 1 s
+2026-10-26 08:34:38    cached validation_unknown: 370 clips, 39 shorter than 1 s, 0 unreadable, 11 MB, 0 s
+2026-10-26 08:34:38    cached validation_new: 384 clips, 32 shorter than 1 s, 0 unreadable, 12 MB, 0 s
+2026-10-26 08:34:40    cached testing_words: 4074 clips, 299 shorter than 1 s, 0 unreadable, 124 MB, 1 s
+2026-10-26 08:34:40    cached testing_unknown: 407 clips, 35 shorter than 1 s, 0 unreadable, 12 MB, 0 s
+2026-10-26 08:34:40    cached testing_new: 418 clips, 33 shorter than 1 s, 0 unreadable, 13 MB, 0 s
+2026-10-26 08:34:40  02_cache: ready | {'training': {'words': 30769, 'unknown': 3077, 'new': 3250}, 'validation': {'words': 3703, 'unknown': 370, 'new': 384}, 'testing': {'words': 4074, 'unknown': 407, 'new': 418}} | noise files: ['doing_the_dishes.wav', 'dude_miaowing.wav', 'exercise_bike.wav', 'pink_noise.wav', 'running_tap.wav', 'white_noise.wav']
+2026-10-26 08:34:41    [PASS] 02 cache arrays are [n, 16000] int16
+2026-10-26 08:34:41    [PASS] 02 every clip could be decoded: all decoded
+2026-10-26 08:34:42    [PASS] 02 almost no all-zero clips: worst part 0.00%
+2026-10-26 08:34:42    [PASS] 02 background-noise recordings found (needed for _silence_): 6 files, 399 s in total
+2026-10-26 08:34:42  03 sets: train 36923 | validation 4443 | test 4888 clips (12 classes)
+2026-10-26 08:34:42    [PASS] 03 batch shape and range
+2026-10-26 08:34:42    [PASS] 03 labels within 0..11
+2026-10-26 08:34:42    [PASS] 03 classes roughly balanced (max/min < 1.6): max/min = 1.09
+2026-10-26 08:34:42    [PASS] 03 augmentation changes the audio: mean |change| 0.0191
+2026-10-26 08:34:42    [PASS] 03 _silence_ clips are not empty: 370 validation silence clips, mean |x| 0.0552
+2026-10-26 08:34:42    [PASS] 03 evaluation batches are deterministic
+2026-10-26 08:34:42    [PASS] 03 12- and 13-class test sets share the same silence clips
+2026-10-26 08:34:43  04_frontend: mel floor 0.00536 (median mel power 0.00536)
+2026-10-26 08:34:43    [PASS] 04 mel filterbank shape and no empty filter: (201, 64), 0 empty filters
+2026-10-26 08:34:43    [PASS] 04 MFCC shape [B, 101, 40] and finite: (16, 101, 40)
+2026-10-26 08:34:43    [PASS] 04 normalised features: mean ~0, std ~1: mean -0.026, std 1.013
+2026-10-26 08:34:43    [PASS] 04 MFCC matches torchaudio (optional): max abs difference 2.43e-05
+2026-10-26 08:34:44    [PASS] 05 constant input -> no spikes
+2026-10-26 08:34:44    [PASS] 05 a step of height h gives floor(h/theta) ON spikes and no OFF: 2 ON, 0 OFF for h=1.0, theta=0.35
+2026-10-26 08:34:44    [PASS] 05 a downward step gives OFF spikes
+2026-10-26 08:34:44    [PASS] 05 silence costs ~0 input spikes per frame (< 2): 0.000 on near-silence vs 14.90 on validation clips; if this fails, raise frontend.mel_floor_min
+2026-10-26 08:34:44    [PASS] 06 LIF: constant 0.5 spikes at steps 3, 6, 9, 12 (U = 0.50, 0.95, 1.355, reset): [3, 6, 9, 12]
+2026-10-26 08:34:44    [PASS] 06 surrogate gradient = 1/(1+(pi x)^2): [0.092, 0.91, 1.0, 0.91, 0.092]
+2026-10-26 08:34:44    [PASS] 06 parameter count: 571,392 weights (571,392 for 80-512-512-512-12)
+2026-10-26 08:34:44    [PASS] 06 every hidden layer fires at initialisation: spike probability per neuron and step: [0.0723, 0.0455, 0.0298]
+2026-10-26 08:34:44    [PASS] 06 logits are finite
+2026-10-26 08:34:44    [PASS] 06 gradient reaches every weight matrix: dL/ds at the middle step, per layer: ['1.08e-03', '6.79e-04', '3.25e-04']
+2026-10-26 08:34:44    [PASS] 06 masking layer 0 silences the whole network
+2026-10-26 08:34:45    [PASS] 06 network matches snnTorch Leaky, forward and gradients (optional): logit max difference 0.0e+00, weight-gradient relative difference 7.2e-08
+2026-10-26 08:34:50    [PASS] 06 tiny overfit: loss falls on 2 fixed batches: 3.142 -> 1.156
+2026-10-26 08:35:34    ep   1/40 | loss 2.293 | train 0.212 | val 0.406 (best 0.406) | rates [0.094, 0.06, 0.0456] | 43 s, 866 clips/s
+2026-10-26 08:36:17    ep   2/40 | loss 1.496 | train 0.510 | val 0.614 (best 0.614) | rates [0.0843, 0.0486, 0.0408] | 42 s, 872 clips/s
+2026-10-26 08:37:03    ep   3/40 | loss 1.298 | train 0.577 | val 0.656 (best 0.656) | rates [0.0794, 0.0452, 0.0422] | 44 s, 842 clips/s
+2026-10-26 08:37:47    ep   4/40 | loss 1.198 | train 0.611 | val 0.671 (best 0.671) | rates [0.0771, 0.044, 0.0444] | 42 s, 870 clips/s
+2026-10-26 08:38:31    ep   5/40 | loss 1.145 | train 0.627 | val 0.678 (best 0.678) | rates [0.075, 0.0429, 0.0459] | 43 s, 853 clips/s
+2026-10-26 08:39:15    ep   6/40 | loss 1.090 | train 0.648 | val 0.695 (best 0.695) | rates [0.0743, 0.043, 0.0482] | 43 s, 863 clips/s
+2026-10-26 08:39:59    ep   7/40 | loss 1.053 | train 0.659 | val 0.702 (best 0.702) | rates [0.0734, 0.0428, 0.0503] | 42 s, 873 clips/s
+2026-10-26 08:40:47    ep   8/40 | loss 1.014 | train 0.674 | val 0.709 (best 0.709) | rates [0.0727, 0.0424, 0.052] | 46 s, 798 clips/s
+2026-10-26 08:41:32    ep   9/40 | loss 0.984 | train 0.680 | val 0.719 (best 0.719) | rates [0.0718, 0.0424, 0.0532] | 44 s, 840 clips/s
+2026-10-26 08:42:15    ep  10/40 | loss 0.948 | train 0.693 | val 0.726 (best 0.726) | rates [0.0706, 0.0424, 0.0542] | 42 s, 883 clips/s
+2026-10-26 08:42:59    ep  11/40 | loss 0.920 | train 0.703 | val 0.732 (best 0.732) | rates [0.0702, 0.0426, 0.0555] | 42 s, 878 clips/s
+2026-10-26 08:43:43    ep  12/40 | loss 0.881 | train 0.716 | val 0.754 (best 0.754) | rates [0.0699, 0.0431, 0.0577] | 43 s, 863 clips/s
+2026-10-26 08:44:27    ep  13/40 | loss 0.861 | train 0.724 | val 0.755 (best 0.755) | rates [0.0698, 0.0439, 0.0601] | 43 s, 854 clips/s
+2026-10-26 08:45:10    ep  14/40 | loss 0.824 | train 0.738 | val 0.754 (best 0.755) | rates [0.0695, 0.0444, 0.0618] | 42 s, 887 clips/s
+2026-10-26 08:45:53    ep  15/40 | loss 0.812 | train 0.739 | val 0.765 (best 0.765) | rates [0.0694, 0.0451, 0.0636] | 42 s, 881 clips/s
+2026-10-26 08:46:40    ep  16/40 | loss 0.783 | train 0.747 | val 0.776 (best 0.776) | rates [0.0695, 0.046, 0.0656] | 45 s, 816 clips/s
+2026-10-26 08:47:24    ep  17/40 | loss 0.761 | train 0.757 | val 0.781 (best 0.781) | rates [0.0697, 0.046, 0.0658] | 43 s, 861 clips/s
+2026-10-26 08:48:08    ep  18/40 | loss 0.738 | train 0.762 | val 0.791 (best 0.791) | rates [0.0697, 0.047, 0.0677] | 42 s, 884 clips/s
+2026-10-26 08:48:50    ep  19/40 | loss 0.710 | train 0.772 | val 0.798 (best 0.798) | rates [0.0701, 0.0482, 0.0698] | 42 s, 888 clips/s
+2026-10-26 08:49:34    ep  20/40 | loss 0.700 | train 0.777 | val 0.798 (best 0.798) | rates [0.07, 0.0479, 0.0694] | 42 s, 873 clips/s
+2026-10-26 08:50:27    ep  21/40 | loss 0.679 | train 0.784 | val 0.799 (best 0.799) | rates [0.0704, 0.0487, 0.0708] | 51 s, 720 clips/s
+2026-10-26 08:51:14    ep  22/40 | loss 0.667 | train 0.787 | val 0.801 (best 0.801) | rates [0.0703, 0.0488, 0.0715] | 45 s, 820 clips/s
+2026-10-26 08:51:58    ep  23/40 | loss 0.649 | train 0.793 | val 0.806 (best 0.806) | rates [0.0709, 0.05, 0.0733] | 43 s, 851 clips/s
+2026-10-26 08:53:00    ep  24/40 | loss 0.645 | train 0.793 | val 0.801 (best 0.806) | rates [0.0713, 0.0506, 0.0744] | 59 s, 620 clips/s
+2026-10-26 08:54:03    ep  25/40 | loss 0.634 | train 0.797 | val 0.805 (best 0.806) | rates [0.0711, 0.0508, 0.0751] | 61 s, 604 clips/s
+2026-10-26 08:55:00    ep  26/40 | loss 0.629 | train 0.799 | val 0.805 (best 0.806) | rates [0.0719, 0.0519, 0.0768] | 55 s, 669 clips/s
+2026-10-26 08:56:02    ep  27/40 | loss 0.613 | train 0.804 | val 0.814 (best 0.814) | rates [0.072, 0.052, 0.0766] | 61 s, 606 clips/s
+2026-10-26 08:57:05    ep  28/40 | loss 0.610 | train 0.805 | val 0.812 (best 0.814) | rates [0.0719, 0.052, 0.0764] | 61 s, 604 clips/s
+2026-10-26 08:58:09    ep  29/40 | loss 0.607 | train 0.808 | val 0.819 (best 0.819) | rates [0.0725, 0.0526, 0.0773] | 61 s, 600 clips/s
+2026-10-26 08:59:12    ep  30/40 | loss 0.599 | train 0.808 | val 0.816 (best 0.819) | rates [0.0724, 0.053, 0.0781] | 61 s, 606 clips/s
+2026-10-26 09:00:17    ep  31/40 | loss 0.589 | train 0.812 | val 0.825 (best 0.825) | rates [0.0729, 0.0535, 0.0788] | 63 s, 584 clips/s
+2026-10-26 09:01:20    ep  32/40 | loss 0.585 | train 0.813 | val 0.820 (best 0.825) | rates [0.073, 0.0537, 0.0792] | 61 s, 608 clips/s
+2026-10-26 09:02:25    ep  33/40 | loss 0.584 | train 0.815 | val 0.816 (best 0.825) | rates [0.0731, 0.0539, 0.0793] | 64 s, 580 clips/s
+2026-10-26 09:03:29    ep  34/40 | loss 0.571 | train 0.819 | val 0.820 (best 0.825) | rates [0.0736, 0.0543, 0.0801] | 62 s, 597 clips/s
+2026-10-26 09:04:33    ep  35/40 | loss 0.574 | train 0.817 | val 0.819 (best 0.825) | rates [0.0735, 0.0543, 0.0799] | 62 s, 599 clips/s
+2026-10-26 09:05:38    ep  36/40 | loss 0.581 | train 0.814 | val 0.819 (best 0.825) | rates [0.0736, 0.0544, 0.08] | 63 s, 581 clips/s
+2026-10-26 09:06:42    ep  37/40 | loss 0.577 | train 0.815 | val 0.821 (best 0.825) | rates [0.0735, 0.0545, 0.0801] | 62 s, 600 clips/s
+2026-10-26 09:07:46    ep  38/40 | loss 0.575 | train 0.815 | val 0.823 (best 0.825) | rates [0.0737, 0.0546, 0.0803] | 63 s, 589 clips/s
+2026-10-26 09:08:41    ep  39/40 | loss 0.575 | train 0.816 | val 0.823 (best 0.825) | rates [0.0736, 0.0546, 0.0803] | 53 s, 694 clips/s
+2026-10-26 09:09:48    ep  40/40 | loss 0.573 | train 0.818 | val 0.826 (best 0.826) | rates [0.0737, 0.0546, 0.0804] | 65 s, 568 clips/s
+2026-10-26 09:09:48    [PASS] 07 training did not stall at ln(12): 40 epochs, final loss 0.573
+2026-10-26 09:09:54  07_train: best epoch 40 | validation 0.8256 (selected on it) | test 0.8101 (held out)
+2026-10-26 09:09:54    [PASS] 07 validation accuracy well above chance (> 3/12): validation 0.8256, test 0.8101, best epoch 40
+2026-10-26 09:09:54    [PASS] 07 training loss went down: 2.293 -> 0.573
+2026-10-26 09:09:56    [PASS] 07 max-membrane readout reproduces the stored validation accuracy: 0.8256 vs 0.8256
+2026-10-26 09:09:59      fisher: 10 batches, 2 s
+2026-10-26 09:10:01      fisher: 20 batches, 4 s
+2026-10-26 09:10:03      fisher: 30 batches, 6 s
+2026-10-26 09:10:05      fisher: 40 batches, 8 s
+2026-10-26 09:10:07      fisher: 50 batches, 10 s
+2026-10-26 09:10:09      fisher: 60 batches, 12 s
+2026-10-26 09:10:11      fisher: 70 batches, 14 s
+2026-10-26 09:10:18  08_fisher: done in 21 s
+2026-10-26 09:10:18    [PASS] 08 Fisher and Omega are finite and non-negative
+2026-10-26 09:10:18    [PASS] 08 enough gradient vectors per class (> 4 per dimension): worst class: 35350 vectors for 1536 neurons (23.0:1)
+2026-10-26 09:10:18    [PASS] 08 unique fraction is a proper fraction in [0, 1]
+2026-10-26 09:10:22  09_mi: done in 4 s
+2026-10-26 09:10:22    [PASS] 09 MI estimator: a perfect feature gives H(Y) = ln 4: 1.3863 vs 1.3863
+2026-10-26 09:10:22    [PASS] 09 MI estimator: an independent feature gives ~0 (only the small upward bias): 0.0028 nats; expected bias ~ (8-1)(4-1)/(2*4000) = 0.0026
+2026-10-26 09:10:22    [PASS] 09 real class information present (best neuron beats the shuffle null)
+2026-10-26 09:10:22    [PASS] 09 every class's 40th MI neuron is well above the estimator bias (> 5x): worst class 10.6x
+2026-10-26 09:10:25    [PASS] 10 groups are valid neuron ids
+2026-10-26 09:10:25    [PASS] 10 MI union is non-empty and leaves plastic neurons: 314 of 1536
+2026-10-26 09:11:04    11: mi groups ablated (39 s)
+2026-10-26 09:11:34    11: fisher groups ablated (68 s)
+2026-10-26 09:12:07    11: omega groups ablated (102 s)
+2026-10-26 09:13:19    11: layer ablation done (174 s)
+2026-10-26 09:15:00    11: k-sweep done (275 s)
+2026-10-26 09:15:36  11_ablation: done in 311 s
+2026-10-26 09:15:36    [PASS] 11 ablation baseline equals the stage-7 test accuracy: 0.8101 vs 0.8101
+2026-10-26 09:15:36    [PASS] 11 MI groups are more class-specific than Fisher groups (specificity): MI +0.241, Fisher +0.038, Omega +0.014 (a finding, not a bug, if it fails)
+2026-10-26 09:16:13    11b: combo_global_a000 ablated (36 s)
+2026-10-26 09:16:47    11b: combo_global_a025 ablated (71 s)
+2026-10-26 09:17:25    11b: combo_global_a050 ablated (109 s)
+2026-10-26 09:18:01    11b: combo_global_a075 ablated (145 s)
+2026-10-26 09:18:37    11b: combo_global_a100 ablated (181 s)
+2026-10-26 09:19:14    11b: combo_layer_a000 ablated (218 s)
+2026-10-26 09:19:53    11b: combo_layer_a025 ablated (257 s)
+2026-10-26 09:20:29    11b: combo_layer_a050 ablated (293 s)
+2026-10-26 09:21:05    11b: combo_layer_a075 ablated (329 s)
+2026-10-26 09:21:41    11b: combo_layer_a100 ablated (364 s)
+2026-10-26 09:21:41  11b_combo: done in 364 s
+2026-10-26 09:21:41    [PASS] 11b every combined group holds K valid neuron ids
+2026-10-26 09:21:41    [PASS] 11b global ranks: alpha = 1 gives the MI groups, alpha = 0 the Fisher groups: overlap 100% with MI, 100% with Fisher (ties in the scores can move a neuron or two)
+2026-10-26 09:21:43  12 sets: old-class training 36720 | 'zero' training 3250 | validation 4827 | test 5306 (13 classes)
+2026-10-26 09:21:49    before learning it, the base network files test 'zero' clips as: _unknown_ 86%, yes 7%, no 3%
+2026-10-26 09:21:49    [PASS] 12 old-class test scores equal the stage-11 baseline (same clips): largest per-class difference 0.0000 (tiny differences can come from different batch composition)
+2026-10-26 09:21:57    new readout row initialised: {'alpha': 0.5670794489198195, 'scale': 0.2885501704191495, 'median_new_logit_unscaled': 46.23793411254883, 'median_best_old_logit': 13.341963768005371}
+2026-10-26 09:21:57  12 slda_last: running
+2026-10-26 09:22:29  12 slda_last: drift -0.86 pts, 'zero' AUC 0.993 | 13-way: forgetting -0.39 pts, 'zero' acc 0.847, old clips called 'zero' 0.006 | 32 s
+2026-10-26 09:22:29  12 slda_all: running
+2026-10-26 09:22:32  12 slda_all: drift -2.82 pts, 'zero' AUC 0.994 | 13-way: forgetting -2.47 pts, 'zero' acc 0.873, old clips called 'zero' 0.004 | 3 s
+2026-10-26 09:22:32  12 local_rule: running
+2026-10-26 09:22:41      local_rule ep 1: loss None | val drift +0.00 pts, 'zero' AUC 0.315 | 13-way: forgetting +53.50, 'zero' acc 0.438
+2026-10-26 09:22:50      local_rule ep 2: loss None | val drift +0.00 pts, 'zero' AUC 0.313 | 13-way: forgetting +51.33, 'zero' acc 0.401
+2026-10-26 09:22:59      local_rule ep 3: loss None | val drift +0.00 pts, 'zero' AUC 0.313 | 13-way: forgetting +49.87, 'zero' acc 0.370
+2026-10-26 09:23:08      local_rule ep 4: loss None | val drift +0.00 pts, 'zero' AUC 0.312 | 13-way: forgetting +48.99, 'zero' acc 0.362
+2026-10-26 09:23:17      local_rule ep 5: loss None | val drift +0.00 pts, 'zero' AUC 0.313 | 13-way: forgetting +48.45, 'zero' acc 0.359
+2026-10-26 09:23:17    [PASS] 12 local_rule: the local update equals the true gradient of the new row: cosine 1.000000, max abs difference 1.94e-07
+2026-10-26 09:23:20  12 local_rule: drift +0.00 pts, 'zero' AUC 0.297 | 13-way: forgetting +47.55 pts, 'zero' acc 0.316, old clips called 'zero' 0.640 | 48 s
+2026-10-26 09:23:20  12 readout_only: running
+2026-10-26 09:23:34      readout_only ep 1: loss 3.544 | val drift +0.00 pts, 'zero' AUC 0.414 | 13-way: forgetting +38.07, 'zero' acc 0.362
+2026-10-26 09:23:49      readout_only ep 2: loss 1.733 | val drift +0.00 pts, 'zero' AUC 0.823 | 13-way: forgetting +18.80, 'zero' acc 0.773
+2026-10-26 09:24:03      readout_only ep 3: loss 1.015 | val drift +0.00 pts, 'zero' AUC 0.909 | 13-way: forgetting +13.16, 'zero' acc 0.870
+2026-10-26 09:24:18      readout_only ep 4: loss 0.802 | val drift +0.00 pts, 'zero' AUC 0.940 | 13-way: forgetting +10.58, 'zero' acc 0.924
+2026-10-26 09:24:31      readout_only ep 5: loss 0.678 | val drift +0.00 pts, 'zero' AUC 0.955 | 13-way: forgetting +8.84, 'zero' acc 0.943
+2026-10-26 09:24:31    [PASS] 12 readout_only: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:24:34  12 readout_only: drift +0.00 pts, 'zero' AUC 0.952 | 13-way: forgetting +9.74 pts, 'zero' acc 0.952, old clips called 'zero' 0.151 | 74 s
+2026-10-26 09:24:34  12 no_mask: running
+2026-10-26 09:24:48      no_mask ep 1: loss 0.985 | val drift +47.04 pts, 'zero' AUC 0.967 | 13-way: forgetting +49.77, 'zero' acc 0.945
+2026-10-26 09:25:02      no_mask ep 2: loss 0.574 | val drift +46.17 pts, 'zero' AUC 0.979 | 13-way: forgetting +48.23, 'zero' acc 0.951
+2026-10-26 09:25:18      no_mask ep 3: loss 0.472 | val drift +44.63 pts, 'zero' AUC 0.983 | 13-way: forgetting +46.99, 'zero' acc 0.964
+2026-10-26 09:25:30      no_mask ep 4: loss 0.454 | val drift +48.52 pts, 'zero' AUC 0.985 | 13-way: forgetting +49.37, 'zero' acc 0.951
+2026-10-26 09:25:43      no_mask ep 5: loss 0.392 | val drift +42.45 pts, 'zero' AUC 0.989 | 13-way: forgetting +43.45, 'zero' acc 0.958
+2026-10-26 09:25:43    [PASS] 12 no_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:25:46  12 no_mask: drift +41.78 pts, 'zero' AUC 0.988 | 13-way: forgetting +42.85 pts, 'zero' acc 0.967, old clips called 'zero' 0.055 | 72 s
+2026-10-26 09:25:46  12 mi_mask: running
+2026-10-26 09:26:00      mi_mask ep 1: loss 1.056 | val drift +43.40 pts, 'zero' AUC 0.969 | 13-way: forgetting +47.09, 'zero' acc 0.961
+2026-10-26 09:26:13      mi_mask ep 2: loss 0.56 | val drift +46.83 pts, 'zero' AUC 0.977 | 13-way: forgetting +48.12, 'zero' acc 0.922
+2026-10-26 09:26:27      mi_mask ep 3: loss 0.484 | val drift +42.10 pts, 'zero' AUC 0.981 | 13-way: forgetting +43.87, 'zero' acc 0.956
+2026-10-26 09:26:39      mi_mask ep 4: loss 0.452 | val drift +38.61 pts, 'zero' AUC 0.985 | 13-way: forgetting +39.57, 'zero' acc 0.951
+2026-10-26 09:26:52      mi_mask ep 5: loss 0.412 | val drift +35.92 pts, 'zero' AUC 0.986 | 13-way: forgetting +36.67, 'zero' acc 0.951
+2026-10-26 09:26:52    [PASS] 12 mi_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:26:55  12 mi_mask: drift +35.60 pts, 'zero' AUC 0.988 | 13-way: forgetting +36.61 pts, 'zero' acc 0.964, old clips called 'zero' 0.051 | 69 s
+2026-10-26 09:26:55  12 random_mask: running
+2026-10-26 09:27:09      random_mask ep 1: loss 1.065 | val drift +41.83 pts, 'zero' AUC 0.964 | 13-way: forgetting +45.46, 'zero' acc 0.953
+2026-10-26 09:27:21      random_mask ep 2: loss 0.57 | val drift +37.38 pts, 'zero' AUC 0.980 | 13-way: forgetting +39.15, 'zero' acc 0.938
+2026-10-26 09:27:34      random_mask ep 3: loss 0.48 | val drift +38.40 pts, 'zero' AUC 0.983 | 13-way: forgetting +39.95, 'zero' acc 0.969
+2026-10-26 09:27:48      random_mask ep 4: loss 0.464 | val drift +38.05 pts, 'zero' AUC 0.985 | 13-way: forgetting +39.55, 'zero' acc 0.964
+2026-10-26 09:28:01      random_mask ep 5: loss 0.408 | val drift +35.98 pts, 'zero' AUC 0.987 | 13-way: forgetting +36.86, 'zero' acc 0.958
+2026-10-26 09:28:01    [PASS] 12 random_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:28:04  12 random_mask: drift +35.50 pts, 'zero' AUC 0.987 | 13-way: forgetting +36.83 pts, 'zero' acc 0.962, old clips called 'zero' 0.056 | 68 s
+2026-10-26 09:28:04  12 random_layer_matched: running
+2026-10-26 09:28:19      random_layer_matched ep 1: loss 1.077 | val drift +45.13 pts, 'zero' AUC 0.961 | 13-way: forgetting +48.78, 'zero' acc 0.924
+2026-10-26 09:28:33      random_layer_matched ep 2: loss 0.579 | val drift +47.74 pts, 'zero' AUC 0.976 | 13-way: forgetting +49.10, 'zero' acc 0.935
+2026-10-26 09:28:48      random_layer_matched ep 3: loss 0.477 | val drift +51.45 pts, 'zero' AUC 0.981 | 13-way: forgetting +53.31, 'zero' acc 0.966
+2026-10-26 09:29:01      random_layer_matched ep 4: loss 0.475 | val drift +49.53 pts, 'zero' AUC 0.983 | 13-way: forgetting +50.15, 'zero' acc 0.951
+2026-10-26 09:29:16      random_layer_matched ep 5: loss 0.405 | val drift +47.52 pts, 'zero' AUC 0.985 | 13-way: forgetting +48.28, 'zero' acc 0.945
+2026-10-26 09:29:16    [PASS] 12 random_layer_matched: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:29:18  12 random_layer_matched: drift +48.23 pts, 'zero' AUC 0.987 | 13-way: forgetting +48.87 pts, 'zero' acc 0.950, old clips called 'zero' 0.048 | 75 s
+2026-10-26 09:29:18  12 fisher_mask: running
+2026-10-26 09:29:30      fisher_mask ep 1: loss 0.991 | val drift +50.18 pts, 'zero' AUC 0.966 | 13-way: forgetting +53.60, 'zero' acc 0.938
+2026-10-26 09:29:41      fisher_mask ep 2: loss 0.56 | val drift +44.23 pts, 'zero' AUC 0.979 | 13-way: forgetting +45.39, 'zero' acc 0.938
+2026-10-26 09:29:54      fisher_mask ep 3: loss 0.464 | val drift +45.43 pts, 'zero' AUC 0.984 | 13-way: forgetting +47.18, 'zero' acc 0.969
+2026-10-26 09:30:07      fisher_mask ep 4: loss 0.443 | val drift +46.42 pts, 'zero' AUC 0.985 | 13-way: forgetting +47.54, 'zero' acc 0.948
+2026-10-26 09:30:20      fisher_mask ep 5: loss 0.39 | val drift +39.28 pts, 'zero' AUC 0.986 | 13-way: forgetting +40.30, 'zero' acc 0.958
+2026-10-26 09:30:20    [PASS] 12 fisher_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:30:23  12 fisher_mask: drift +39.33 pts, 'zero' AUC 0.988 | 13-way: forgetting +40.64 pts, 'zero' acc 0.967, old clips called 'zero' 0.057 | 65 s
+2026-10-26 09:30:23  12 mi_plus_layer0: running
+2026-10-26 09:30:37      mi_plus_layer0 ep 1: loss 1.097 | val drift +39.72 pts, 'zero' AUC 0.964 | 13-way: forgetting +43.07, 'zero' acc 0.930
+2026-10-26 09:30:50      mi_plus_layer0 ep 2: loss 0.564 | val drift +39.60 pts, 'zero' AUC 0.978 | 13-way: forgetting +41.43, 'zero' acc 0.956
+2026-10-26 09:31:03      mi_plus_layer0 ep 3: loss 0.475 | val drift +33.81 pts, 'zero' AUC 0.983 | 13-way: forgetting +35.85, 'zero' acc 0.956
+2026-10-26 09:31:17      mi_plus_layer0 ep 4: loss 0.461 | val drift +34.23 pts, 'zero' AUC 0.986 | 13-way: forgetting +36.59, 'zero' acc 0.977
+2026-10-26 09:31:31      mi_plus_layer0 ep 5: loss 0.414 | val drift +26.67 pts, 'zero' AUC 0.986 | 13-way: forgetting +27.51, 'zero' acc 0.932
+2026-10-26 09:31:31    [PASS] 12 mi_plus_layer0: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:31:34  12 mi_plus_layer0: drift +27.52 pts, 'zero' AUC 0.986 | 13-way: forgetting +28.79 pts, 'zero' acc 0.962, old clips called 'zero' 0.050 | 71 s
+2026-10-26 09:31:34  12 mi_plus_fisher: running
+2026-10-26 09:31:49      mi_plus_fisher ep 1: loss 1.092 | val drift +39.03 pts, 'zero' AUC 0.964 | 13-way: forgetting +42.65, 'zero' acc 0.945
+2026-10-26 09:32:03      mi_plus_fisher ep 2: loss 0.573 | val drift +42.07 pts, 'zero' AUC 0.978 | 13-way: forgetting +44.26, 'zero' acc 0.956
+2026-10-26 09:32:17      mi_plus_fisher ep 3: loss 0.478 | val drift +35.77 pts, 'zero' AUC 0.983 | 13-way: forgetting +37.66, 'zero' acc 0.966
+2026-10-26 09:32:31      mi_plus_fisher ep 4: loss 0.468 | val drift +35.81 pts, 'zero' AUC 0.984 | 13-way: forgetting +37.89, 'zero' acc 0.977
+2026-10-26 09:32:45      mi_plus_fisher ep 5: loss 0.42 | val drift +27.20 pts, 'zero' AUC 0.986 | 13-way: forgetting +28.31, 'zero' acc 0.961
+2026-10-26 09:32:45    [PASS] 12 mi_plus_fisher: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:32:48  12 mi_plus_fisher: drift +27.53 pts, 'zero' AUC 0.986 | 13-way: forgetting +29.31 pts, 'zero' acc 0.967, old clips called 'zero' 0.060 | 74 s
+2026-10-26 09:32:48  12 mi_mask_replay: running
+2026-10-26 09:33:02      mi_mask_replay ep 1: loss 0.895 | val drift +5.65 pts, 'zero' AUC 0.954 | 13-way: forgetting +15.92, 'zero' acc 0.927
+2026-10-26 09:33:16      mi_mask_replay ep 2: loss 0.568 | val drift +4.71 pts, 'zero' AUC 0.977 | 13-way: forgetting +11.23, 'zero' acc 0.966
+2026-10-26 09:33:30      mi_mask_replay ep 3: loss 0.554 | val drift +2.88 pts, 'zero' AUC 0.982 | 13-way: forgetting +8.33, 'zero' acc 0.974
+2026-10-26 09:33:44      mi_mask_replay ep 4: loss 0.554 | val drift +2.67 pts, 'zero' AUC 0.984 | 13-way: forgetting +9.49, 'zero' acc 0.987
+2026-10-26 09:33:58      mi_mask_replay ep 5: loss 0.528 | val drift +2.39 pts, 'zero' AUC 0.985 | 13-way: forgetting +7.23, 'zero' acc 0.971
+2026-10-26 09:33:58    [PASS] 12 mi_mask_replay: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:34:01  12 mi_mask_replay: drift +2.09 pts, 'zero' AUC 0.986 | 13-way: forgetting +6.98 pts, 'zero' acc 0.974, old clips called 'zero' 0.086 | 73 s
+2026-10-26 09:34:01  12 no_mask_replay: running
+2026-10-26 09:34:14      no_mask_replay ep 1: loss 0.857 | val drift +5.06 pts, 'zero' AUC 0.963 | 13-way: forgetting +13.49, 'zero' acc 0.943
+2026-10-26 09:34:27      no_mask_replay ep 2: loss 0.559 | val drift +4.90 pts, 'zero' AUC 0.978 | 13-way: forgetting +9.90, 'zero' acc 0.951
+2026-10-26 09:34:39      no_mask_replay ep 3: loss 0.538 | val drift +3.03 pts, 'zero' AUC 0.983 | 13-way: forgetting +9.24, 'zero' acc 0.969
+2026-10-26 09:34:52      no_mask_replay ep 4: loss 0.543 | val drift +3.51 pts, 'zero' AUC 0.986 | 13-way: forgetting +9.91, 'zero' acc 0.990
+2026-10-26 09:35:06      no_mask_replay ep 5: loss 0.524 | val drift +2.14 pts, 'zero' AUC 0.987 | 13-way: forgetting +7.05, 'zero' acc 0.971
+2026-10-26 09:35:06    [PASS] 12 no_mask_replay: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:35:09  12 no_mask_replay: drift +2.13 pts, 'zero' AUC 0.987 | 13-way: forgetting +7.30 pts, 'zero' acc 0.962, old clips called 'zero' 0.086 | 69 s
+2026-10-26 09:35:09  12 one_way_new_neurons: running
+2026-10-26 09:35:24      one_way_new_neurons ep 1: loss 3.508 | val drift +0.00 pts, 'zero' AUC 0.505 | 13-way: forgetting +33.88, 'zero' acc 0.464
+2026-10-26 09:35:37      one_way_new_neurons ep 2: loss 1.261 | val drift +0.00 pts, 'zero' AUC 0.918 | 13-way: forgetting +14.64, 'zero' acc 0.909
+2026-10-26 09:35:52      one_way_new_neurons ep 3: loss 0.713 | val drift +0.00 pts, 'zero' AUC 0.957 | 13-way: forgetting +10.39, 'zero' acc 0.958
+2026-10-26 09:36:06      one_way_new_neurons ep 4: loss 0.577 | val drift +0.00 pts, 'zero' AUC 0.969 | 13-way: forgetting +8.11, 'zero' acc 0.966
+2026-10-26 09:36:20      one_way_new_neurons ep 5: loss 0.505 | val drift +0.00 pts, 'zero' AUC 0.975 | 13-way: forgetting +7.96, 'zero' acc 0.977
+2026-10-26 09:36:20    [PASS] 12 one_way_new_neurons: base network bit-for-bit unchanged
+2026-10-26 09:36:20    [PASS] 12 one_way_new_neurons: old logits identical to the base network's
+2026-10-26 09:36:24  12 one_way_new_neurons: drift +0.00 pts, 'zero' AUC 0.973 | 13-way: forgetting +8.85 pts, 'zero' acc 0.978, old clips called 'zero' 0.132 | 74 s
+2026-10-26 09:36:24  12 layer0_only: running
+2026-10-26 09:36:38      layer0_only ep 1: loss 1.027 | val drift +47.20 pts, 'zero' AUC 0.967 | 13-way: forgetting +50.53, 'zero' acc 0.966
+2026-10-26 09:36:52      layer0_only ep 2: loss 0.555 | val drift +47.46 pts, 'zero' AUC 0.978 | 13-way: forgetting +48.97, 'zero' acc 0.945
+2026-10-26 09:37:05      layer0_only ep 3: loss 0.459 | val drift +43.87 pts, 'zero' AUC 0.984 | 13-way: forgetting +45.64, 'zero' acc 0.969
+2026-10-26 09:37:20      layer0_only ep 4: loss 0.442 | val drift +42.13 pts, 'zero' AUC 0.986 | 13-way: forgetting +43.65, 'zero' acc 0.971
+2026-10-26 09:37:34      layer0_only ep 5: loss 0.393 | val drift +38.90 pts, 'zero' AUC 0.988 | 13-way: forgetting +39.71, 'zero' acc 0.951
+2026-10-26 09:37:34    [PASS] 12 layer0_only: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:37:37  12 layer0_only: drift +39.61 pts, 'zero' AUC 0.988 | 13-way: forgetting +40.46 pts, 'zero' acc 0.969, old clips called 'zero' 0.047 | 73 s
+2026-10-26 09:37:37  12 combo_global_a000: running
+2026-10-26 09:37:52      combo_global_a000 ep 1: loss 1.038 | val drift +45.49 pts, 'zero' AUC 0.968 | 13-way: forgetting +48.16, 'zero' acc 0.958
+2026-10-26 09:38:06      combo_global_a000 ep 2: loss 0.546 | val drift +42.30 pts, 'zero' AUC 0.981 | 13-way: forgetting +43.67, 'zero' acc 0.951
+2026-10-26 09:38:23      combo_global_a000 ep 3: loss 0.465 | val drift +43.92 pts, 'zero' AUC 0.984 | 13-way: forgetting +45.76, 'zero' acc 0.966
+2026-10-26 09:38:39      combo_global_a000 ep 4: loss 0.434 | val drift +48.11 pts, 'zero' AUC 0.984 | 13-way: forgetting +49.42, 'zero' acc 0.945
+2026-10-26 09:38:54      combo_global_a000 ep 5: loss 0.395 | val drift +43.13 pts, 'zero' AUC 0.987 | 13-way: forgetting +44.25, 'zero' acc 0.953
+2026-10-26 09:38:54    [PASS] 12 combo_global_a000: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:38:56  12 combo_global_a000: drift +43.03 pts, 'zero' AUC 0.988 | 13-way: forgetting +44.24 pts, 'zero' acc 0.974, old clips called 'zero' 0.063 | 79 s
+2026-10-26 09:38:56  12 combo_global_a025: running
+2026-10-26 09:39:13      combo_global_a025 ep 1: loss 1.01 | val drift +48.44 pts, 'zero' AUC 0.969 | 13-way: forgetting +51.69, 'zero' acc 0.956
+2026-10-26 09:39:27      combo_global_a025 ep 2: loss 0.559 | val drift +45.54 pts, 'zero' AUC 0.978 | 13-way: forgetting +46.70, 'zero' acc 0.922
+2026-10-26 09:39:43      combo_global_a025 ep 3: loss 0.453 | val drift +42.82 pts, 'zero' AUC 0.984 | 13-way: forgetting +44.69, 'zero' acc 0.964
+2026-10-26 09:39:59      combo_global_a025 ep 4: loss 0.44 | val drift +49.46 pts, 'zero' AUC 0.985 | 13-way: forgetting +50.76, 'zero' acc 0.961
+2026-10-26 09:40:14      combo_global_a025 ep 5: loss 0.401 | val drift +42.68 pts, 'zero' AUC 0.987 | 13-way: forgetting +43.88, 'zero' acc 0.961
+2026-10-26 09:40:14    [PASS] 12 combo_global_a025: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:40:17  12 combo_global_a025: drift +42.37 pts, 'zero' AUC 0.988 | 13-way: forgetting +43.97 pts, 'zero' acc 0.983, old clips called 'zero' 0.066 | 81 s
+2026-10-26 09:40:17  12 combo_global_a050: running
+2026-10-26 09:40:33      combo_global_a050 ep 1: loss 1.054 | val drift +51.32 pts, 'zero' AUC 0.962 | 13-way: forgetting +53.85, 'zero' acc 0.935
+2026-10-26 09:40:45      combo_global_a050 ep 2: loss 0.56 | val drift +49.11 pts, 'zero' AUC 0.981 | 13-way: forgetting +50.70, 'zero' acc 0.961
+2026-10-26 09:40:56      combo_global_a050 ep 3: loss 0.463 | val drift +46.39 pts, 'zero' AUC 0.984 | 13-way: forgetting +47.96, 'zero' acc 0.966
+2026-10-26 09:41:08      combo_global_a050 ep 4: loss 0.432 | val drift +51.00 pts, 'zero' AUC 0.985 | 13-way: forgetting +52.08, 'zero' acc 0.953
+2026-10-26 09:41:24      combo_global_a050 ep 5: loss 0.389 | val drift +45.36 pts, 'zero' AUC 0.987 | 13-way: forgetting +46.33, 'zero' acc 0.966
+2026-10-26 09:41:24    [PASS] 12 combo_global_a050: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:41:27  12 combo_global_a050: drift +44.79 pts, 'zero' AUC 0.988 | 13-way: forgetting +46.06 pts, 'zero' acc 0.986, old clips called 'zero' 0.063 | 70 s
+2026-10-26 09:41:27  12 combo_global_a075: running
+2026-10-26 09:41:43      combo_global_a075 ep 1: loss 1.033 | val drift +41.80 pts, 'zero' AUC 0.966 | 13-way: forgetting +45.58, 'zero' acc 0.948
+2026-10-26 09:41:59      combo_global_a075 ep 2: loss 0.549 | val drift +41.28 pts, 'zero' AUC 0.977 | 13-way: forgetting +42.47, 'zero' acc 0.927
+2026-10-26 09:42:14      combo_global_a075 ep 3: loss 0.465 | val drift +39.54 pts, 'zero' AUC 0.982 | 13-way: forgetting +41.34, 'zero' acc 0.964
+2026-10-26 09:42:30      combo_global_a075 ep 4: loss 0.442 | val drift +37.75 pts, 'zero' AUC 0.986 | 13-way: forgetting +39.41, 'zero' acc 0.971
+2026-10-26 09:42:41      combo_global_a075 ep 5: loss 0.399 | val drift +37.85 pts, 'zero' AUC 0.986 | 13-way: forgetting +38.56, 'zero' acc 0.948
+2026-10-26 09:42:41    [PASS] 12 combo_global_a075: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:42:42  12 combo_global_a075: drift +37.93 pts, 'zero' AUC 0.986 | 13-way: forgetting +38.86 pts, 'zero' acc 0.962, old clips called 'zero' 0.052 | 75 s
+2026-10-26 09:42:42  12 combo_global_a100: running
+2026-10-26 09:42:53      combo_global_a100 ep 1: loss 1.056 | val drift +43.40 pts, 'zero' AUC 0.969 | 13-way: forgetting +47.09, 'zero' acc 0.961
+2026-10-26 09:43:03      combo_global_a100 ep 2: loss 0.56 | val drift +46.83 pts, 'zero' AUC 0.977 | 13-way: forgetting +48.12, 'zero' acc 0.922
+2026-10-26 09:43:14      combo_global_a100 ep 3: loss 0.484 | val drift +42.10 pts, 'zero' AUC 0.981 | 13-way: forgetting +43.87, 'zero' acc 0.956
+2026-10-26 09:43:24      combo_global_a100 ep 4: loss 0.452 | val drift +38.61 pts, 'zero' AUC 0.985 | 13-way: forgetting +39.57, 'zero' acc 0.951
+2026-10-26 09:43:35      combo_global_a100 ep 5: loss 0.412 | val drift +35.92 pts, 'zero' AUC 0.986 | 13-way: forgetting +36.67, 'zero' acc 0.951
+2026-10-26 09:43:35    [PASS] 12 combo_global_a100: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:43:37  12 combo_global_a100: drift +35.60 pts, 'zero' AUC 0.988 | 13-way: forgetting +36.61 pts, 'zero' acc 0.964, old clips called 'zero' 0.051 | 54 s
+2026-10-26 09:43:37  12 combo_layer_a000: running
+2026-10-26 09:43:48      combo_layer_a000 ep 1: loss 1.047 | val drift +40.65 pts, 'zero' AUC 0.966 | 13-way: forgetting +45.13, 'zero' acc 0.956
+2026-10-26 09:44:00      combo_layer_a000 ep 2: loss 0.57 | val drift +43.73 pts, 'zero' AUC 0.979 | 13-way: forgetting +44.96, 'zero' acc 0.919
+2026-10-26 09:44:15      combo_layer_a000 ep 3: loss 0.475 | val drift +42.13 pts, 'zero' AUC 0.982 | 13-way: forgetting +44.21, 'zero' acc 0.958
+2026-10-26 09:44:30      combo_layer_a000 ep 4: loss 0.453 | val drift +47.14 pts, 'zero' AUC 0.985 | 13-way: forgetting +48.59, 'zero' acc 0.956
+2026-10-26 09:44:45      combo_layer_a000 ep 5: loss 0.404 | val drift +36.33 pts, 'zero' AUC 0.985 | 13-way: forgetting +37.19, 'zero' acc 0.935
+2026-10-26 09:44:45    [PASS] 12 combo_layer_a000: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:44:48  12 combo_layer_a000: drift +36.52 pts, 'zero' AUC 0.987 | 13-way: forgetting +37.57 pts, 'zero' acc 0.964, old clips called 'zero' 0.054 | 71 s
+2026-10-26 09:44:48  12 combo_layer_a025: running
+2026-10-26 09:45:02      combo_layer_a025 ep 1: loss 1.048 | val drift +39.09 pts, 'zero' AUC 0.965 | 13-way: forgetting +42.61, 'zero' acc 0.953
+2026-10-26 09:45:13      combo_layer_a025 ep 2: loss 0.577 | val drift +39.55 pts, 'zero' AUC 0.979 | 13-way: forgetting +40.95, 'zero' acc 0.938
+2026-10-26 09:45:29      combo_layer_a025 ep 3: loss 0.48 | val drift +33.67 pts, 'zero' AUC 0.984 | 13-way: forgetting +35.73, 'zero' acc 0.971
+2026-10-26 09:45:45      combo_layer_a025 ep 4: loss 0.465 | val drift +38.45 pts, 'zero' AUC 0.984 | 13-way: forgetting +39.76, 'zero' acc 0.958
+2026-10-26 09:46:00      combo_layer_a025 ep 5: loss 0.397 | val drift +34.02 pts, 'zero' AUC 0.987 | 13-way: forgetting +35.15, 'zero' acc 0.953
+2026-10-26 09:46:00    [PASS] 12 combo_layer_a025: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:46:04  12 combo_layer_a025: drift +34.38 pts, 'zero' AUC 0.986 | 13-way: forgetting +35.75 pts, 'zero' acc 0.957, old clips called 'zero' 0.053 | 75 s
+2026-10-26 09:46:04  12 combo_layer_a050: running
+2026-10-26 09:46:17      combo_layer_a050 ep 1: loss 1.06 | val drift +38.70 pts, 'zero' AUC 0.967 | 13-way: forgetting +42.54, 'zero' acc 0.961
+2026-10-26 09:46:30      combo_layer_a050 ep 2: loss 0.566 | val drift +40.50 pts, 'zero' AUC 0.979 | 13-way: forgetting +42.22, 'zero' acc 0.932
+2026-10-26 09:46:41      combo_layer_a050 ep 3: loss 0.483 | val drift +35.30 pts, 'zero' AUC 0.983 | 13-way: forgetting +37.43, 'zero' acc 0.964
+2026-10-26 09:46:52      combo_layer_a050 ep 4: loss 0.467 | val drift +37.40 pts, 'zero' AUC 0.985 | 13-way: forgetting +38.67, 'zero' acc 0.961
+2026-10-26 09:47:07      combo_layer_a050 ep 5: loss 0.405 | val drift +28.14 pts, 'zero' AUC 0.986 | 13-way: forgetting +29.41, 'zero' acc 0.958
+2026-10-26 09:47:07    [PASS] 12 combo_layer_a050: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:47:10  12 combo_layer_a050: drift +28.47 pts, 'zero' AUC 0.987 | 13-way: forgetting +29.81 pts, 'zero' acc 0.976, old clips called 'zero' 0.057 | 67 s
+2026-10-26 09:47:10  12 combo_layer_a075: running
+2026-10-26 09:47:27      combo_layer_a075 ep 1: loss 1.059 | val drift +35.69 pts, 'zero' AUC 0.966 | 13-way: forgetting +39.58, 'zero' acc 0.945
+2026-10-26 09:47:42      combo_layer_a075 ep 2: loss 0.56 | val drift +43.72 pts, 'zero' AUC 0.979 | 13-way: forgetting +45.43, 'zero' acc 0.951
+2026-10-26 09:47:57      combo_layer_a075 ep 3: loss 0.471 | val drift +33.74 pts, 'zero' AUC 0.984 | 13-way: forgetting +35.84, 'zero' acc 0.969
+2026-10-26 09:48:13      combo_layer_a075 ep 4: loss 0.453 | val drift +37.10 pts, 'zero' AUC 0.985 | 13-way: forgetting +38.52, 'zero' acc 0.964
+2026-10-26 09:48:28      combo_layer_a075 ep 5: loss 0.406 | val drift +28.66 pts, 'zero' AUC 0.987 | 13-way: forgetting +29.76, 'zero' acc 0.961
+2026-10-26 09:48:28    [PASS] 12 combo_layer_a075: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:48:30  12 combo_layer_a075: drift +28.64 pts, 'zero' AUC 0.987 | 13-way: forgetting +30.24 pts, 'zero' acc 0.976, old clips called 'zero' 0.060 | 80 s
+2026-10-26 09:48:30  12 combo_layer_a100: running
+2026-10-26 09:48:46      combo_layer_a100 ep 1: loss 1.085 | val drift +46.71 pts, 'zero' AUC 0.960 | 13-way: forgetting +49.52, 'zero' acc 0.927
+2026-10-26 09:49:03      combo_layer_a100 ep 2: loss 0.583 | val drift +45.28 pts, 'zero' AUC 0.977 | 13-way: forgetting +46.90, 'zero' acc 0.943
+2026-10-26 09:49:18      combo_layer_a100 ep 3: loss 0.473 | val drift +42.05 pts, 'zero' AUC 0.984 | 13-way: forgetting +43.98, 'zero' acc 0.964
+2026-10-26 09:49:35      combo_layer_a100 ep 4: loss 0.448 | val drift +48.70 pts, 'zero' AUC 0.983 | 13-way: forgetting +49.95, 'zero' acc 0.961
+2026-10-26 09:49:51      combo_layer_a100 ep 5: loss 0.404 | val drift +42.97 pts, 'zero' AUC 0.986 | 13-way: forgetting +43.64, 'zero' acc 0.945
+2026-10-26 09:49:51    [PASS] 12 combo_layer_a100: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:49:54  12 combo_layer_a100: drift +43.01 pts, 'zero' AUC 0.987 | 13-way: forgetting +44.15 pts, 'zero' acc 0.971, old clips called 'zero' 0.051 | 84 s
+2026-10-26 09:49:54  12 ff_contrast: running
+2026-10-26 09:50:23      ff_contrast ep 1: loss 4.977 | val drift +72.43 pts, 'zero' AUC 0.171 | 13-way: forgetting +73.46, 'zero' acc 0.070
+2026-10-26 09:50:42      ff_contrast ep 2: loss 4.272 | val drift +69.45 pts, 'zero' AUC 0.270 | 13-way: forgetting +69.99, 'zero' acc 0.039
+2026-10-26 09:50:58      ff_contrast ep 3: loss 4.058 | val drift +68.66 pts, 'zero' AUC 0.449 | 13-way: forgetting +71.28, 'zero' acc 0.388
+2026-10-26 09:51:14      ff_contrast ep 4: loss 3.789 | val drift +70.06 pts, 'zero' AUC 0.451 | 13-way: forgetting +73.44, 'zero' acc 0.500
+2026-10-26 09:51:30      ff_contrast ep 5: loss 3.69 | val drift +70.63 pts, 'zero' AUC 0.502 | 13-way: forgetting +75.57, 'zero' acc 0.628
+2026-10-26 09:51:30    [PASS] 12 ff_contrast: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:51:30    [PASS] 12 ff_contrast: no gradient crosses layers or time steps: layer 1 -> layer 0 gradient none; layer-0 gradient vs the one-step closed form: cosine 1.000000
+2026-10-26 09:51:32  12 ff_contrast: drift +69.25 pts, 'zero' AUC 0.491 | 13-way: forgetting +74.40 pts, 'zero' acc 0.572, old clips called 'zero' 0.628 | 98 s
+2026-10-26 09:51:32  12 ff_contrast_layer0_frozen: running
+2026-10-26 09:51:50      ff_contrast_layer0_frozen ep 1: loss 5.056 | val drift +70.79 pts, 'zero' AUC 0.184 | 13-way: forgetting +71.51, 'zero' acc 0.010
+2026-10-26 09:52:06      ff_contrast_layer0_frozen ep 2: loss 4.383 | val drift +70.88 pts, 'zero' AUC 0.246 | 13-way: forgetting +71.20, 'zero' acc 0.005
+2026-10-26 09:52:22      ff_contrast_layer0_frozen ep 3: loss 4.211 | val drift +71.96 pts, 'zero' AUC 0.359 | 13-way: forgetting +73.43, 'zero' acc 0.245
+2026-10-26 09:52:37      ff_contrast_layer0_frozen ep 4: loss 4.043 | val drift +73.04 pts, 'zero' AUC 0.436 | 13-way: forgetting +75.75, 'zero' acc 0.594
+2026-10-26 09:52:53      ff_contrast_layer0_frozen ep 5: loss 3.973 | val drift +73.17 pts, 'zero' AUC 0.478 | 13-way: forgetting +76.79, 'zero' acc 0.690
+2026-10-26 09:52:53    [PASS] 12 ff_contrast_layer0_frozen: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:52:53    [PASS] 12 ff_contrast_layer0_frozen: no gradient crosses layers or time steps: layer 1 -> layer 0 gradient none; layer-0 gradient vs the one-step closed form: cosine 1.000000
+2026-10-26 09:52:54  12 ff_contrast_layer0_frozen: drift +71.47 pts, 'zero' AUC 0.479 | 13-way: forgetting +75.06 pts, 'zero' acc 0.651, old clips called 'zero' 0.698 | 82 s
+2026-10-26 09:52:54  12 ff_hybrid: running
+2026-10-26 09:53:14      ff_hybrid ep 1: loss 5.879 | val drift +37.16 pts, 'zero' AUC 0.436 | 13-way: forgetting +68.23, 'zero' acc 0.849
+2026-10-26 09:53:31      ff_hybrid ep 2: loss 5.621 | val drift +48.92 pts, 'zero' AUC 0.462 | 13-way: forgetting +60.50, 'zero' acc 0.438
+2026-10-26 09:53:47      ff_hybrid ep 3: loss 5.504 | val drift +58.14 pts, 'zero' AUC 0.507 | 13-way: forgetting +65.27, 'zero' acc 0.531
+2026-10-26 09:54:03      ff_hybrid ep 4: loss 5.421 | val drift +58.39 pts, 'zero' AUC 0.468 | 13-way: forgetting +68.64, 'zero' acc 0.596
+2026-10-26 09:54:18      ff_hybrid ep 5: loss 5.376 | val drift +58.94 pts, 'zero' AUC 0.480 | 13-way: forgetting +67.47, 'zero' acc 0.547
+2026-10-26 09:54:18    [PASS] 12 ff_hybrid: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-26 09:54:18    [PASS] 12 ff_hybrid: no gradient crosses layers or time steps: layer 1 -> layer 0 gradient none; layer-0 gradient vs the one-step closed form: cosine 1.000000
+2026-10-26 09:54:19  12 ff_hybrid: drift +59.38 pts, 'zero' AUC 0.496 | 13-way: forgetting +66.87 pts, 'zero' acc 0.603, old clips called 'zero' 0.554 | 85 s
+2026-10-26 09:54:19    [PASS] 12 the two random masks are different neuron sets of the same size: 314 neurons each, 65 shared
+2026-10-26 09:54:20  ========================================================================
+2026-10-26 09:54:20  summary written to D:\codes\Anmol papers and code\heban_fischer_mi\runs\gscv2_delta_3x512\summary.json
+2026-10-26 09:54:20  base network: validation 0.8256 | test 0.8101
+2026-10-26 09:54:20  ablation specificity: mi +0.241, fisher +0.038, omega +0.014
+2026-10-26 09:54:20  checks: 82 run, 0 failed

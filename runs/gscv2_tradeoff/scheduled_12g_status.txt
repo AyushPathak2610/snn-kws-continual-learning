@@ -1,0 +1,1 @@
+﻿2026-10-26 14:49:11  scheduled task started; waiting for any running tradeoff notebook to finish

@@ -1,0 +1,210 @@
+{
+ "acc_13": 0.89,
+ "no_decision": 0,
+ "old_mean_acc": 0.8859126984126985,
+ "forgetting_mean_pts": 9.556878306878307,
+ "forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 11.11,
+  "on": 28.57,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 75.0,
+  "_silence_": 0.0
+ },
+ "worst_class": "_unknown_",
+ "worst_forgetting_pts": 75.0,
+ "new_word_acc": 1.0,
+ "new_word_to_unknown": 0.0,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.09473684210526316,
+ "per_class": {
+  "yes": 1.0,
+  "no": 0.7778,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 0.8889,
+  "on": 0.7143,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.25,
+  "_silence_": 1.0,
+  "zero": 1.0
+ },
+ "drift_forgetting_mean_pts": 0.0,
+ "drift_forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 0.0
+ },
+ "new_word_auc": 0.9957894736842106,
+ "new_word_auc_vs_class": {
+  "yes": 1.0,
+  "no": 1.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 1.0,
+  "on": 1.0,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.95,
+  "_silence_": 1.0
+ },
+ "arm": "one_way_new_neurons",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 1.0951439291238785,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9429824561403509,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 2,
+   "loss": 1.0910860002040863,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9627192982456141,
+   "val_forgetting_pts": 8.134920634920634,
+   "val_new_word_acc": 0.8333333333333334
+  },
+  {
+   "epoch": 3,
+   "loss": 1.189321756362915,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9736842105263158,
+   "val_forgetting_pts": 9.523809523809526,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 4,
+   "loss": 0.722153764218092,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9802631578947368,
+   "val_forgetting_pts": 9.523809523809526,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 5,
+   "loss": 0.8955524414777756,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9890350877192983,
+   "val_forgetting_pts": 9.523809523809526,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 6,
+   "loss": 0.8024777173995972,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.993421052631579,
+   "val_forgetting_pts": 10.35714285714286,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 7,
+   "loss": 0.7793893590569496,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9956140350877193,
+   "val_forgetting_pts": 8.134920634920634,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 8,
+   "loss": 0.7545554935932159,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 9,
+   "loss": 0.8217632323503494,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 10,
+   "loss": 0.545641653239727,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 11,
+   "loss": 0.7866749316453934,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 12,
+   "loss": 0.7761635482311249,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 13,
+   "loss": 0.5935324355959892,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 14,
+   "loss": 0.48385658860206604,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 15,
+   "loss": 0.8843230158090591,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 6.9444444444444455,
+   "val_new_word_acc": 1.0
+  }
+ ],
+ "info": {
+  "k_new": 8,
+  "new_neuron_rate": 0.06153310643564357
+ },
+ "seconds": 14,
+ "basis": "09d125b1@1792949023.115",
+ "checks": {
+  "12 one_way_new_neurons: base network bit-for-bit unchanged": {
+   "passed": true,
+   "detail": ""
+  },
+  "12 one_way_new_neurons: old logits identical to the base network's": {
+   "passed": true,
+   "detail": ""
+  }
+ }
+}

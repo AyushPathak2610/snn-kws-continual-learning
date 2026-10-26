@@ -1,0 +1,106 @@
+{
+ "acc_13": 0.4,
+ "no_decision": 0,
+ "old_mean_acc": 0.37515262515262515,
+ "forgetting_mean_pts": 17.98178673178673,
+ "forgetting_pts": {
+  "yes": 14.29,
+  "no": 0.0,
+  "up": 15.38,
+  "down": 11.11,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 12.5,
+  "_silence_": 87.5
+ },
+ "worst_class": "_silence_",
+ "worst_forgetting_pts": 87.5,
+ "new_word_acc": 0.6,
+ "new_word_to_unknown": 0.2,
+ "new_word_top_confusion": "go",
+ "old_clips_called_new": 0.5263157894736842,
+ "per_class": {
+  "yes": 0.1429,
+  "no": 1.0,
+  "up": 0.6923,
+  "down": 0.6667,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.0,
+  "_silence_": 0.0,
+  "zero": 0.6
+ },
+ "drift_forgetting_mean_pts": 0.0,
+ "drift_forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 0.0
+ },
+ "new_word_auc": 0.6336842105263157,
+ "new_word_auc_vs_class": {
+  "yes": 0.7142857142857143,
+  "no": 0.9333333333333333,
+  "up": 0.7846153846153846,
+  "down": 0.8666666666666667,
+  "left": 0.45,
+  "right": 0.5555555555555556,
+  "on": 0.08571428571428572,
+  "off": 0.5111111111111111,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.525,
+  "_silence_": 0.075
+ },
+ "arm": "one_way_new_neurons",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 1.9636155664920807,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.5504385964912281,
+   "val_forgetting_pts": 14.444444444444443,
+   "val_new_word_acc": 0.6666666666666666
+  },
+  {
+   "epoch": 2,
+   "loss": 1.957756757736206,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.5679824561403509,
+   "val_forgetting_pts": 18.700396825396822,
+   "val_new_word_acc": 0.8333333333333334
+  }
+ ],
+ "info": {
+  "k_new": 8,
+  "new_neuron_rate": 0.031752784653465344
+ },
+ "seconds": 2,
+ "basis": "8b9f3872@1792923087.756",
+ "checks": {
+  "12 one_way_new_neurons: base network bit-for-bit unchanged": {
+   "passed": true,
+   "detail": ""
+  },
+  "12 one_way_new_neurons: old logits identical to the base network's": {
+   "passed": true,
+   "detail": ""
+  }
+ }
+}

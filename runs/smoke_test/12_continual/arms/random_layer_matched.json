@@ -1,0 +1,108 @@
+{
+ "acc_13": 0.35,
+ "no_decision": 0,
+ "old_mean_acc": 0.3145477207977208,
+ "forgetting_mean_pts": 24.042277167277167,
+ "forgetting_pts": {
+  "yes": 28.57,
+  "no": 0.0,
+  "up": 30.77,
+  "down": 66.67,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 87.5
+ },
+ "worst_class": "_silence_",
+ "worst_forgetting_pts": 87.5,
+ "new_word_acc": 1.0,
+ "new_word_to_unknown": 0.0,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.09473684210526316,
+ "per_class": {
+  "yes": 0.0,
+  "no": 1.0,
+  "up": 0.5385,
+  "down": 0.1111,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.125,
+  "_silence_": 0.0,
+  "zero": 1.0
+ },
+ "drift_forgetting_mean_pts": 23.401251526251528,
+ "drift_forgetting_pts": {
+  "yes": 28.57,
+  "no": 0.0,
+  "up": 23.08,
+  "down": 66.67,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 87.5
+ },
+ "new_word_auc": 0.9852631578947368,
+ "new_word_auc_vs_class": {
+  "yes": 1.0,
+  "no": 1.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 1.0,
+  "on": 1.0,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.825,
+  "_silence_": 1.0
+ },
+ "arm": "random_layer_matched",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 1.7138095200061798,
+   "val_drift_pts": 16.4781746031746,
+   "val_new_word_auc": 0.9714912280701754,
+   "val_forgetting_pts": 23.422619047619047,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 2,
+   "loss": 1.21402508020401,
+   "val_drift_pts": 32.62896825396825,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 32.62896825396825,
+   "val_new_word_acc": 1.0
+  }
+ ],
+ "info": {
+  "frozen_hidden": 78,
+  "frozen_per_layer": [
+   24,
+   28,
+   26
+  ],
+  "replay": false,
+  "old_readout_frozen": true
+ },
+ "seconds": 2,
+ "basis": "8b9f3872@1792923087.756",
+ "checks": {
+  "12 random_layer_matched: frozen weights did not move": {
+   "passed": true,
+   "detail": "largest change of a frozen weight 0.0e+00"
+  }
+ }
+}

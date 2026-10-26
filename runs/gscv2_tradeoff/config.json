@@ -1,0 +1,214 @@
+{
+ "cfg": {
+  "seed": 0,
+  "data": {
+   "keywords": [
+    "yes",
+    "no",
+    "up",
+    "down",
+    "left",
+    "right",
+    "on",
+    "off",
+    "stop",
+    "go"
+   ],
+   "new_word": "zero",
+   "new_word_in_base_unknown": true,
+   "unknown_frac": 0.1,
+   "silence_frac": 0.1,
+   "sample_rate": 16000,
+   "clip_len": 16000
+  },
+  "augment": {
+   "enabled": true,
+   "shift_ms": 100.0,
+   "noise_prob": 0.8,
+   "noise_max_vol": 0.1
+  },
+  "frontend": {
+   "n_fft": 400,
+   "hop": 160,
+   "n_mels": 64,
+   "n_mfcc": 40,
+   "f_min": 20.0,
+   "f_max": 8000.0,
+   "mel_floor_min": 0.001,
+   "floor_batches": 10,
+   "stats_batches": 40
+  },
+  "encoder": {
+   "theta": 0.35
+  },
+  "net": {
+   "hidden": [
+    512,
+    512,
+    512
+   ],
+   "beta": 0.9,
+   "threshold": 1.0
+  },
+  "train": {
+   "epochs": 100,
+   "early_stop_patience": 3,
+   "batch_size": 128,
+   "lr": 0.00025,
+   "val_every": 1,
+   "max_train_batches": null,
+   "eval_batch_size": 256
+  },
+  "analysis": {
+   "topk": 40,
+   "ridge": 0.01,
+   "mi_bins": 8,
+   "mi_shuffles": 20,
+   "random_reps": 5,
+   "ksweep": [
+    20,
+    40,
+    80,
+    160,
+    320
+   ],
+   "save_full_fisher": true
+  },
+  "combo": {
+   "alphas": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+   ],
+   "rank_modes": [
+    "global",
+    "within_layer"
+   ]
+  },
+  "cl": {
+   "batch_size": 128,
+   "lr": 0.00025,
+   "local_lr": 0.1,
+   "slda_shrinkage": 0.01,
+   "k_new_neurons": 64,
+   "init_batches": 20,
+   "epochs": 5,
+   "ff": {
+    "kappa": 4.0,
+    "hybrid_block": 10
+   }
+  },
+  "tradeoff": {
+   "epoch_sweep": {
+    "max_epochs": 20,
+    "eval_epochs": [
+     1,
+     2,
+     3,
+     5,
+     8,
+     12,
+     16,
+     20
+    ],
+    "arms": [
+     "no_mask",
+     "mi_mask",
+     "fisher_mask",
+     "combo_layer_a050",
+     "no_mask_replay",
+     "readout_only"
+    ]
+   },
+   "budgets": [
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.5,
+    0.7
+   ],
+   "budget_methods": [
+    "mi",
+    "fisher_global",
+    "fisher_layer",
+    "blend_best",
+    "random"
+   ],
+   "lr_mults": [
+    0.25,
+    1.0,
+    4.0
+   ],
+   "replay_fracs": [
+    0.0,
+    0.01,
+    0.05,
+    0.25,
+    0.5
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ]
+  },
+  "stability": {
+   "max_old_drop_pts": 2.0,
+   "lwf_lambdas": [
+    0.3,
+    1.0,
+    3.0,
+    10.0,
+    30.0
+   ],
+   "lwf_T": 2.0,
+   "soft_importance": [
+    "uniform",
+    "fisher",
+    "blend"
+   ],
+   "soft_lambdas": [
+    10.0,
+    100.0,
+    1000.0,
+    10000.0,
+    100000.0
+   ],
+   "extreme_methods": [
+    "blend_best",
+    "random"
+   ],
+   "extreme_budgets": [
+    0.8,
+    0.9,
+    0.95
+   ]
+  },
+  "stability_seeds": {
+   "top_k": 4,
+   "seeds": [
+    1,
+    2
+   ],
+   "references": [
+    "ref_readout_only",
+    "ref_replay_25"
+   ]
+  }
+ },
+ "cfg_hash": "7e0c7f8c",
+ "smoke_test": false,
+ "data_root": "D:\\codes\\Anmol papers and code\\speech_commands_v2",
+ "device": "cuda",
+ "torch": "2.7.1+cu118",
+ "python": "3.10.19"
+}

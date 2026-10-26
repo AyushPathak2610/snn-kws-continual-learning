@@ -1,0 +1,49 @@
+{
+ "silence_spikes_per_frame": 0.0,
+ "speech_spikes_per_frame": 7.457766056060791,
+ "active_frame_fraction_example": 0.8811880946159363,
+ "mel_floor_experiment": [
+  {
+   "floor": 4.099247511476279e-06,
+   "silence_spf": 13.76980209350586,
+   "speech_spf": 24.678991317749023
+  },
+  {
+   "floor": 4.099247511476278e-05,
+   "silence_spf": 0.0,
+   "speech_spf": 24.387065887451172
+  },
+  {
+   "floor": 0.004099247511476278,
+   "silence_spf": 0.0,
+   "speech_spf": 7.457766056060791
+  },
+  {
+   "floor": 0.04099247511476278,
+   "silence_spf": 0.0,
+   "speech_spf": 3.623762369155884
+  }
+ ],
+ "theta_experiment": [
+  {
+   "theta": 0.2,
+   "speech_spf": 14.155631065368652,
+   "silence_spf": 0.0
+  },
+  {
+   "theta": 0.35,
+   "speech_spf": 7.457766056060791,
+   "silence_spf": 0.0
+  },
+  {
+   "theta": 0.5,
+   "speech_spf": 4.387066841125488,
+   "silence_spf": 0.0
+  },
+  {
+   "theta": 0.8,
+   "speech_spf": 2.0210394859313965,
+   "silence_spf": 0.0
+  }
+ ]
+}

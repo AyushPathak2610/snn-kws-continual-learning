@@ -1,0 +1,2 @@
+﻿2026-10-26 13:37:14  scheduled task started; waiting for the current tradeoff run to finish
+2026-10-26 14:04:21  no tradeoff run is active; starting the notebook on the real dataset (stage 12f)

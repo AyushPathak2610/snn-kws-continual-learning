@@ -1,0 +1,207 @@
+{
+ "acc_13": 0.84,
+ "no_decision": 0,
+ "old_mean_acc": 0.8584656084656084,
+ "forgetting_mean_pts": 12.301587301587302,
+ "forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 33.33,
+  "on": 14.29,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 50.0,
+  "_silence_": 50.0
+ },
+ "worst_class": "_unknown_",
+ "worst_forgetting_pts": 50.0,
+ "new_word_acc": 0.6,
+ "new_word_to_unknown": 0.4,
+ "new_word_top_confusion": "_unknown_",
+ "old_clips_called_new": 0.12631578947368421,
+ "per_class": {
+  "yes": 1.0,
+  "no": 0.7778,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 0.6667,
+  "on": 0.8571,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.5,
+  "_silence_": 0.5,
+  "zero": 0.6
+ },
+ "drift_forgetting_mean_pts": 0.0,
+ "drift_forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 0.0
+ },
+ "new_word_auc": 0.8736842105263158,
+ "new_word_auc_vs_class": {
+  "yes": 1.0,
+  "no": 1.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 0.6666666666666666,
+  "on": 0.7714285714285715,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.55,
+  "_silence_": 0.525
+ },
+ "arm": "local_rule",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9166666666666666,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 2,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.918859649122807,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 3,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9232456140350878,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 4,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9254385964912281,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 5,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9276315789473685,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 6,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9276315789473685,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 7,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9298245614035088,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 8,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9298245614035088,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 9,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9298245614035088,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 10,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9298245614035088,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 11,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9298245614035088,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 12,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9342105263157895,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 13,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9342105263157895,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 14,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9407894736842105,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 15,
+   "loss": null,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9407894736842105,
+   "val_forgetting_pts": 5.357142857142858,
+   "val_new_word_acc": 0.5
+  }
+ ],
+ "info": {
+  "lr": 0.1,
+  "norm_ref": 120.88072204589844,
+  "cosine_vs_autograd": 1.0
+ },
+ "seconds": 8,
+ "basis": "09d125b1@1792949023.115",
+ "checks": {
+  "12 local_rule: the local update equals the true gradient of the new row": {
+   "passed": true,
+   "detail": "cosine 1.000000, max abs difference 7.45e-08"
+  }
+ }
+}

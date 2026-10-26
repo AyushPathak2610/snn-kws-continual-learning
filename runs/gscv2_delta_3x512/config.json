@@ -1,0 +1,129 @@
+{
+ "cfg": {
+  "seed": 0,
+  "data": {
+   "keywords": [
+    "yes",
+    "no",
+    "up",
+    "down",
+    "left",
+    "right",
+    "on",
+    "off",
+    "stop",
+    "go"
+   ],
+   "new_word": "zero",
+   "new_word_in_base_unknown": true,
+   "unknown_frac": 0.1,
+   "silence_frac": 0.1,
+   "sample_rate": 16000,
+   "clip_len": 16000
+  },
+  "augment": {
+   "enabled": true,
+   "shift_ms": 100.0,
+   "noise_prob": 0.8,
+   "noise_max_vol": 0.1
+  },
+  "frontend": {
+   "n_fft": 400,
+   "hop": 160,
+   "n_mels": 64,
+   "n_mfcc": 40,
+   "f_min": 20.0,
+   "f_max": 8000.0,
+   "mel_floor_min": 0.001,
+   "floor_batches": 10,
+   "stats_batches": 40
+  },
+  "encoder": {
+   "theta": 0.35
+  },
+  "net": {
+   "hidden": [
+    512,
+    512,
+    512
+   ],
+   "beta": 0.9,
+   "threshold": 1.0
+  },
+  "train": {
+   "epochs": 40,
+   "batch_size": 128,
+   "lr": 0.00025,
+   "val_every": 1,
+   "max_train_batches": null,
+   "eval_batch_size": 256
+  },
+  "analysis": {
+   "topk": 40,
+   "ridge": 0.01,
+   "mi_bins": 8,
+   "mi_shuffles": 20,
+   "random_reps": 5,
+   "ksweep": [
+    20,
+    40,
+    80,
+    160,
+    320
+   ],
+   "save_full_fisher": true
+  },
+  "combo": {
+   "alphas": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+   ],
+   "rank_modes": [
+    "global",
+    "within_layer"
+   ]
+  },
+  "cl": {
+   "epochs": 5,
+   "batch_size": 128,
+   "lr": 0.00025,
+   "local_lr": 0.1,
+   "slda_shrinkage": 0.01,
+   "k_new_neurons": 64,
+   "init_batches": 20,
+   "arms": [
+    "slda",
+    "local_rule",
+    "readout_only",
+    "no_mask",
+    "mi_mask",
+    "random_mask",
+    "random_layer_matched",
+    "fisher_mask",
+    "mi_plus_layer0",
+    "mi_plus_fisher",
+    "mi_mask_replay",
+    "no_mask_replay",
+    "one_way_new_neurons",
+    "layer0_only",
+    "combo",
+    "ff_contrast",
+    "ff_contrast_layer0_frozen",
+    "ff_hybrid"
+   ],
+   "ff": {
+    "kappa": 4.0,
+    "hybrid_block": 10
+   }
+  }
+ },
+ "cfg_hash": "63fd824a",
+ "smoke_test": false,
+ "data_root": "D:\\codes\\Anmol papers and code\\speech_commands_v2",
+ "device": "cuda",
+ "torch": "2.7.1+cu118",
+ "python": "3.10.19"
+}

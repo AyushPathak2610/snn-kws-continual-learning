@@ -1,0 +1,37 @@
+{
+ "P1": {
+  "claim": "With replay, the MI mask adds less than 1 point of protection (drift)",
+  "verdict": "supported",
+  "detail": "drift: no mask + replay +2.13, MI mask + replay +2.09 pts"
+ },
+ "P2": {
+  "claim": "Without replay, freezing layer 0 too cuts drift by >= 1 point, and the new-word AUC drops by < 0.02",
+  "verdict": "supported",
+  "detail": "drift MI +35.60 vs MI+layer0 +27.52 pts; new-word AUC 0.988 vs 0.986"
+ },
+ "P3": {
+  "claim": "The MI mask drifts less than a layer-matched random mask (a plain random mask may come close)",
+  "verdict": "supported",
+  "detail": "drift MI +35.60, layer-matched random +48.23, plain random +35.50 pts"
+ },
+ "P4": {
+  "claim": "Classes whose MI group matters less (smaller ablation drop) drift more",
+  "verdict": "not supported",
+  "detail": "Spearman(drift, MI ablation drop) = +0.077"
+ },
+ "P5": {
+  "claim": "'zero' is hardest to tell apart from _unknown_ (its lowest per-class AUC)",
+  "verdict": "supported",
+  "detail": "lowest AUCs: _unknown_ 0.912, yes 0.983, _silence_ 0.991"
+ },
+ "P6": {
+  "claim": "MI + Fisher together drift less than either alone",
+  "verdict": "supported",
+  "detail": "drift MI +35.60, Fisher +39.33, MI+Fisher +27.53 pts"
+ },
+ "P7": {
+  "claim": "On-chip R-STDP learns the new word only as a readout row",
+  "verdict": "not run",
+  "detail": "R-STDP is not part of this notebook; local_rule is the backprop-free readout arm"
+ }
+}

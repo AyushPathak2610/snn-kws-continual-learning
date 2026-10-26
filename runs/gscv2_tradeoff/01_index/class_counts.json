@@ -1,0 +1,47 @@
+{
+ "training": {
+  "yes": 3228,
+  "no": 3130,
+  "up": 2948,
+  "down": 3134,
+  "left": 3037,
+  "right": 3019,
+  "on": 3086,
+  "off": 2970,
+  "stop": 3111,
+  "go": 3106,
+  "_unknown_": 3077,
+  "_silence_": 3077,
+  "zero": 3250
+ },
+ "validation": {
+  "yes": 397,
+  "no": 406,
+  "up": 350,
+  "down": 377,
+  "left": 352,
+  "right": 363,
+  "on": 363,
+  "off": 373,
+  "stop": 350,
+  "go": 372,
+  "_unknown_": 370,
+  "_silence_": 370,
+  "zero": 384
+ },
+ "testing": {
+  "yes": 419,
+  "no": 405,
+  "up": 425,
+  "down": 406,
+  "left": 412,
+  "right": 396,
+  "on": 396,
+  "off": 402,
+  "stop": 411,
+  "go": 402,
+  "_unknown_": 407,
+  "_silence_": 407,
+  "zero": 418
+ }
+}

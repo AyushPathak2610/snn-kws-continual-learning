@@ -1,0 +1,28 @@
+{
+ "finished": "2026-10-25 21:47:13",
+ "t": 1792945033.875338,
+ "stage_hash": "afef8005",
+ "cfg_hash": "3c334da5",
+ "clips": {
+  "training": {
+   "words": 457,
+   "unknown": 46,
+   "new": 49
+  },
+  "validation": {
+   "words": 64,
+   "unknown": 6,
+   "new": 6
+  },
+  "testing": {
+   "words": 79,
+   "unknown": 8,
+   "new": 5
+  }
+ },
+ "noise_files": [
+  "hum.wav",
+  "pink_noise.wav",
+  "white_noise.wav"
+ ]
+}

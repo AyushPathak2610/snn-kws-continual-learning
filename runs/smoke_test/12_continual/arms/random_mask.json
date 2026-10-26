@@ -1,0 +1,108 @@
+{
+ "acc_13": 0.3,
+ "no_decision": 0,
+ "old_mean_acc": 0.2813390313390313,
+ "forgetting_mean_pts": 27.363146113146115,
+ "forgetting_pts": {
+  "yes": 28.57,
+  "no": 0.0,
+  "up": 69.23,
+  "down": 55.56,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 12.5,
+  "_silence_": 87.5
+ },
+ "worst_class": "_silence_",
+ "worst_forgetting_pts": 87.5,
+ "new_word_acc": 1.0,
+ "new_word_to_unknown": 0.0,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.18947368421052632,
+ "per_class": {
+  "yes": 0.0,
+  "no": 1.0,
+  "up": 0.1538,
+  "down": 0.2222,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.0,
+  "_silence_": 0.0,
+  "zero": 1.0
+ },
+ "drift_forgetting_mean_pts": 26.72212047212047,
+ "drift_forgetting_pts": {
+  "yes": 28.57,
+  "no": 0.0,
+  "up": 61.54,
+  "down": 55.56,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 12.5,
+  "_silence_": 87.5
+ },
+ "new_word_auc": 0.9978947368421053,
+ "new_word_auc_vs_class": {
+  "yes": 1.0,
+  "no": 1.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 1.0,
+  "on": 1.0,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.975,
+  "_silence_": 1.0
+ },
+ "arm": "random_mask",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 1.732846885919571,
+   "val_drift_pts": 23.849206349206344,
+   "val_new_word_auc": 0.9517543859649122,
+   "val_forgetting_pts": 26.27976190476191,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 2,
+   "loss": 1.272759199142456,
+   "val_drift_pts": 35.208333333333336,
+   "val_new_word_auc": 1.0,
+   "val_forgetting_pts": 35.208333333333336,
+   "val_new_word_acc": 1.0
+  }
+ ],
+ "info": {
+  "frozen_hidden": 78,
+  "frozen_per_layer": [
+   23,
+   27,
+   28
+  ],
+  "replay": false,
+  "old_readout_frozen": true
+ },
+ "seconds": 2,
+ "basis": "8b9f3872@1792923087.756",
+ "checks": {
+  "12 random_mask: frozen weights did not move": {
+   "passed": true,
+   "detail": "largest change of a frozen weight 0.0e+00"
+  }
+ }
+}

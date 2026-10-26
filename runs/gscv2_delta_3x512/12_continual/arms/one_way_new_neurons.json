@@ -1,0 +1,130 @@
+{
+ "acc_13": 0.741424802110818,
+ "no_decision": 43,
+ "old_mean_acc": 0.7215163683806898,
+ "forgetting_mean_pts": 8.848978002253823,
+ "forgetting_pts": {
+  "yes": 27.21,
+  "no": 15.31,
+  "up": 0.24,
+  "down": 7.14,
+  "left": 6.8,
+  "right": 1.77,
+  "on": 0.76,
+  "off": 0.5,
+  "stop": 4.62,
+  "go": 6.72,
+  "_unknown_": 30.47,
+  "_silence_": 4.67
+ },
+ "worst_class": "_unknown_",
+ "worst_forgetting_pts": 30.46683046683047,
+ "new_word_acc": 0.9784688995215312,
+ "new_word_to_unknown": 0.007177033492822967,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.1319558101472995,
+ "per_class": {
+  "yes": 0.6205,
+  "no": 0.6296,
+  "up": 0.8188,
+  "down": 0.702,
+  "left": 0.7379,
+  "right": 0.851,
+  "on": 0.8788,
+  "off": 0.7189,
+  "stop": 0.8637,
+  "go": 0.7264,
+  "_unknown_": 0.2752,
+  "_silence_": 0.8354,
+  "zero": 0.9785
+ },
+ "drift_forgetting_mean_pts": 0.0,
+ "drift_forgetting_pts": {
+  "yes": 0.0,
+  "no": 0.0,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 0.0
+ },
+ "new_word_auc": 0.9734160016914776,
+ "new_word_auc_vs_class": {
+  "yes": 0.9326489362916948,
+  "no": 0.9653316793667671,
+  "up": 0.9971685899240079,
+  "down": 0.9845676102481911,
+  "left": 0.9650380916987968,
+  "right": 0.9936989512348364,
+  "on": 0.9967195882267652,
+  "off": 0.9989228498655051,
+  "stop": 0.986297861441926,
+  "go": 0.974588778595063,
+  "_unknown_": 0.8963062671196642,
+  "_silence_": 0.9913240774484794
+ },
+ "arm": "one_way_new_neurons",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 3.5077026217591527,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.5049621595768625,
+   "val_forgetting_pts": 33.87617078697173,
+   "val_new_word_acc": 0.4635416666666667
+  },
+  {
+   "epoch": 2,
+   "loss": 1.2608459708737392,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9181278837497187,
+   "val_forgetting_pts": 14.641701117529236,
+   "val_new_word_acc": 0.9088541666666666
+  },
+  {
+   "epoch": 3,
+   "loss": 0.7131732152957543,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9567000876847476,
+   "val_forgetting_pts": 10.391025017426005,
+   "val_new_word_acc": 0.9583333333333334
+  },
+  {
+   "epoch": 4,
+   "loss": 0.5774128384449903,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9689469390051767,
+   "val_forgetting_pts": 8.108262943101288,
+   "val_new_word_acc": 0.9661458333333334
+  },
+  {
+   "epoch": 5,
+   "loss": 0.5051354497086769,
+   "val_drift_pts": 0.0,
+   "val_new_word_auc": 0.9751135916047715,
+   "val_forgetting_pts": 7.955573643873097,
+   "val_new_word_acc": 0.9765625
+  }
+ ],
+ "info": {
+  "k_new": 64,
+  "new_neuron_rate": 0.12514986850247525
+ },
+ "seconds": 74,
+ "basis": "63fd824a@1792986701.093",
+ "checks": {
+  "12 one_way_new_neurons: base network bit-for-bit unchanged": {
+   "passed": true,
+   "detail": ""
+  },
+  "12 one_way_new_neurons: old logits identical to the base network's": {
+   "passed": true,
+   "detail": ""
+  }
+ }
+}

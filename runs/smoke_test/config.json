@@ -1,0 +1,106 @@
+{
+ "cfg": {
+  "seed": 0,
+  "data": {
+   "keywords": [
+    "yes",
+    "no",
+    "up",
+    "down",
+    "left",
+    "right",
+    "on",
+    "off",
+    "stop",
+    "go"
+   ],
+   "new_word": "zero",
+   "new_word_in_base_unknown": true,
+   "unknown_frac": 0.1,
+   "silence_frac": 0.1,
+   "sample_rate": 16000,
+   "clip_len": 16000
+  },
+  "augment": {
+   "enabled": true,
+   "shift_ms": 100.0,
+   "noise_prob": 0.8,
+   "noise_max_vol": 0.1
+  },
+  "frontend": {
+   "n_fft": 400,
+   "hop": 160,
+   "n_mels": 64,
+   "n_mfcc": 40,
+   "f_min": 20.0,
+   "f_max": 8000.0,
+   "mel_floor_min": 0.001,
+   "floor_batches": 3,
+   "stats_batches": 4
+  },
+  "encoder": {
+   "theta": 0.35
+  },
+  "net": {
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "beta": 0.9,
+   "threshold": 1.0
+  },
+  "train": {
+   "epochs": 6,
+   "batch_size": 32,
+   "lr": 0.002,
+   "val_every": 1,
+   "max_train_batches": null,
+   "eval_batch_size": 64
+  },
+  "analysis": {
+   "topk": 8,
+   "ridge": 0.01,
+   "mi_bins": 8,
+   "mi_shuffles": 5,
+   "random_reps": 2,
+   "ksweep": [
+    4,
+    8,
+    16,
+    32
+   ],
+   "save_full_fisher": true
+  },
+  "cl": {
+   "epochs": 2,
+   "batch_size": 32,
+   "lr": 0.002,
+   "local_lr": 0.1,
+   "slda_shrinkage": 0.01,
+   "k_new_neurons": 8,
+   "init_batches": 3,
+   "arms": [
+    "slda",
+    "local_rule",
+    "readout_only",
+    "no_mask",
+    "mi_mask",
+    "random_mask",
+    "random_layer_matched",
+    "fisher_mask",
+    "mi_plus_layer0",
+    "mi_plus_fisher",
+    "mi_mask_replay",
+    "no_mask_replay",
+    "one_way_new_neurons"
+   ]
+  }
+ },
+ "cfg_hash": "8b9f3872",
+ "smoke_test": true,
+ "data_root": "runs\\smoke_test\\synthetic_gsc",
+ "device": "cuda",
+ "torch": "2.7.1+cu118",
+ "python": "3.10.19"
+}

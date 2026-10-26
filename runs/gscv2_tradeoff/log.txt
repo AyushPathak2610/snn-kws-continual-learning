@@ -1,0 +1,579 @@
+2026-10-26 10:19:43  ========================================================================
+2026-10-26 10:19:43  run started | Google Speech Commands v2 | cfg e49a6b3c | device cuda
+2026-10-26 10:19:43  stages to compute: 01_index (it has not finished yet) and every stage after it
+2026-10-26 10:19:43  01_index: dataset root D:\codes\Anmol papers and code\speech_commands_v2
+2026-10-26 10:19:43    [PASS] 01 splits are disjoint: 0 files in two splits
+2026-10-26 10:19:43    [PASS] 01 every keyword present in every split
+2026-10-26 10:19:43    [PASS] 01 _unknown_ holds no keyword clips: 0 keyword clips in _unknown_
+2026-10-26 10:19:43    [PASS] 01 'zero' never in validation/test _unknown_
+2026-10-26 10:19:43    'zero' clips inside training _unknown_: 203 (new_word_in_base_unknown=True)
+2026-10-26 10:19:43    other words used for _unknown_: 24 (backward, bed, bird, cat, dog, eight, five, follow, ...)
+2026-10-26 10:19:43    [PASS] 01 per-word validation/test counts match GSC v2: exact match
+2026-10-26 10:19:43  02_cache: ready | {'training': {'words': 30769, 'unknown': 3077, 'new': 3250}, 'validation': {'words': 3703, 'unknown': 370, 'new': 384}, 'testing': {'words': 4074, 'unknown': 407, 'new': 418}} | noise files: ['doing_the_dishes.wav', 'dude_miaowing.wav', 'exercise_bike.wav', 'pink_noise.wav', 'running_tap.wav', 'white_noise.wav']
+2026-10-26 10:19:44    [PASS] 02 cache arrays are [n, 16000] int16
+2026-10-26 10:19:44    [PASS] 02 every clip could be decoded: all decoded
+2026-10-26 10:19:44    [PASS] 02 almost no all-zero clips: worst part 0.00%
+2026-10-26 10:19:44    [PASS] 02 background-noise recordings found (needed for _silence_): 6 files, 399 s in total
+2026-10-26 10:19:45  03 sets: train 36923 | validation 4443 | test 4888 clips (12 classes)
+2026-10-26 10:19:45    [PASS] 03 batch shape and range
+2026-10-26 10:19:45    [PASS] 03 labels within 0..11
+2026-10-26 10:19:45    [PASS] 03 classes roughly balanced (max/min < 1.6): max/min = 1.09
+2026-10-26 10:19:45    [PASS] 03 augmentation changes the audio: mean |change| 0.0191
+2026-10-26 10:19:45    [PASS] 03 _silence_ clips are not empty: 370 validation silence clips, mean |x| 0.0552
+2026-10-26 10:19:45    [PASS] 03 evaluation batches are deterministic
+2026-10-26 10:19:45    [PASS] 03 12- and 13-class test sets share the same silence clips
+2026-10-26 10:19:46  04_frontend: mel floor 0.00536 (median mel power 0.00536)
+2026-10-26 10:19:46    [PASS] 04 mel filterbank shape and no empty filter: (201, 64), 0 empty filters
+2026-10-26 10:19:46    [PASS] 04 MFCC shape [B, 101, 40] and finite: (16, 101, 40)
+2026-10-26 10:19:46    [PASS] 04 normalised features: mean ~0, std ~1: mean -0.026, std 1.013
+2026-10-26 10:19:46    [PASS] 04 MFCC matches torchaudio (optional): max abs difference 2.43e-05
+2026-10-26 10:19:46    [PASS] 05 constant input -> no spikes
+2026-10-26 10:19:46    [PASS] 05 a step of height h gives floor(h/theta) ON spikes and no OFF: 2 ON, 0 OFF for h=1.0, theta=0.35
+2026-10-26 10:19:46    [PASS] 05 a downward step gives OFF spikes
+2026-10-26 10:19:46    [PASS] 05 silence costs ~0 input spikes per frame (< 2): 0.000 on near-silence vs 14.90 on validation clips; if this fails, raise frontend.mel_floor_min
+2026-10-26 10:19:46    [PASS] 06 LIF: constant 0.5 spikes at steps 3, 6, 9, 12 (U = 0.50, 0.95, 1.355, reset): [3, 6, 9, 12]
+2026-10-26 10:19:46    [PASS] 06 surrogate gradient = 1/(1+(pi x)^2): [0.092, 0.91, 1.0, 0.91, 0.092]
+2026-10-26 10:19:46    [PASS] 06 parameter count: 571,392 weights (571,392 for 80-512-512-512-12)
+2026-10-26 10:19:46    [PASS] 06 every hidden layer fires at initialisation: spike probability per neuron and step: [0.0723, 0.0455, 0.0298]
+2026-10-26 10:19:46    [PASS] 06 logits are finite
+2026-10-26 10:19:47    [PASS] 06 gradient reaches every weight matrix: dL/ds at the middle step, per layer: ['1.08e-03', '6.79e-04', '3.25e-04']
+2026-10-26 10:19:47    [PASS] 06 masking layer 0 silences the whole network
+2026-10-26 10:19:47    [PASS] 06 network matches snnTorch Leaky, forward and gradients (optional): logit max difference 0.0e+00, weight-gradient relative difference 7.2e-08
+2026-10-26 10:19:51    [PASS] 06 tiny overfit: loss falls on 2 fixed batches: 3.142 -> 1.156
+2026-10-26 10:20:33    ep   1/100 | loss 2.293 | train 0.212 | val loss 1.7501 acc 0.406 (best loss 1.7501; 0 without improvement) | rates [0.094, 0.06, 0.0456] | 40 s, 919 clips/s
+2026-10-26 10:21:13    ep   2/100 | loss 1.496 | train 0.511 | val loss 1.1855 acc 0.610 (best loss 1.1855; 0 without improvement) | rates [0.0845, 0.0484, 0.0416] | 39 s, 952 clips/s
+2026-10-26 10:21:54    ep   3/100 | loss 1.299 | train 0.577 | val loss 1.0796 acc 0.649 (best loss 1.0796; 0 without improvement) | rates [0.0795, 0.0444, 0.0428] | 39 s, 941 clips/s
+2026-10-26 10:22:41    ep   4/100 | loss 1.199 | train 0.613 | val loss 0.9967 acc 0.677 (best loss 0.9967; 0 without improvement) | rates [0.0776, 0.0445, 0.0464] | 46 s, 796 clips/s
+2026-10-26 10:23:25    ep   5/100 | loss 1.140 | train 0.630 | val loss 0.9843 acc 0.682 (best loss 0.9843; 0 without improvement) | rates [0.0759, 0.044, 0.0488] | 42 s, 869 clips/s
+2026-10-26 10:24:08    ep   6/100 | loss 1.083 | train 0.651 | val loss 0.9192 acc 0.703 (best loss 0.9192; 0 without improvement) | rates [0.0749, 0.0437, 0.0502] | 41 s, 890 clips/s
+2026-10-26 10:24:48    ep   7/100 | loss 1.041 | train 0.663 | val loss 0.8878 acc 0.717 (best loss 0.8878; 0 without improvement) | rates [0.0735, 0.0427, 0.0509] | 39 s, 948 clips/s
+2026-10-26 10:25:29    ep   8/100 | loss 1.004 | train 0.676 | val loss 0.8589 acc 0.724 (best loss 0.8589; 0 without improvement) | rates [0.0725, 0.0428, 0.0533] | 39 s, 944 clips/s
+2026-10-26 10:26:12    ep   9/100 | loss 0.972 | train 0.688 | val loss 0.8302 acc 0.732 (best loss 0.8302; 0 without improvement) | rates [0.0718, 0.0427, 0.0545] | 42 s, 887 clips/s
+2026-10-26 10:26:53    ep  10/100 | loss 0.943 | train 0.695 | val loss 0.8187 acc 0.734 (best loss 0.8187; 0 without improvement) | rates [0.0707, 0.0428, 0.0563] | 40 s, 917 clips/s
+2026-10-26 10:27:34    ep  11/100 | loss 0.915 | train 0.703 | val loss 0.7961 acc 0.739 (best loss 0.7961; 0 without improvement) | rates [0.0701, 0.0434, 0.0587] | 40 s, 922 clips/s
+2026-10-26 10:28:18    ep  12/100 | loss 0.882 | train 0.717 | val loss 0.7548 acc 0.752 (best loss 0.7548; 0 without improvement) | rates [0.0698, 0.0438, 0.0604] | 42 s, 869 clips/s
+2026-10-26 10:29:04    ep  13/100 | loss 0.860 | train 0.724 | val loss 0.7615 acc 0.754 (best loss 0.7548; 1 without improvement) | rates [0.069, 0.0437, 0.0619] | 44 s, 830 clips/s
+2026-10-26 10:29:46    ep  14/100 | loss 0.834 | train 0.731 | val loss 0.7401 acc 0.762 (best loss 0.7401; 0 without improvement) | rates [0.0682, 0.0444, 0.064] | 41 s, 901 clips/s
+2026-10-26 10:30:35    ep  15/100 | loss 0.819 | train 0.738 | val loss 0.7162 acc 0.770 (best loss 0.7162; 0 without improvement) | rates [0.0675, 0.0442, 0.0641] | 47 s, 785 clips/s
+2026-10-26 10:31:32    ep  16/100 | loss 0.791 | train 0.747 | val loss 0.7156 acc 0.770 (best loss 0.7156; 0 without improvement) | rates [0.0667, 0.045, 0.0658] | 55 s, 674 clips/s
+2026-10-26 10:32:29    ep  17/100 | loss 0.773 | train 0.751 | val loss 0.6933 acc 0.779 (best loss 0.6933; 0 without improvement) | rates [0.0663, 0.0453, 0.0675] | 56 s, 664 clips/s
+2026-10-26 10:33:28    ep  18/100 | loss 0.749 | train 0.759 | val loss 0.6635 acc 0.786 (best loss 0.6635; 0 without improvement) | rates [0.0659, 0.0463, 0.0699] | 57 s, 648 clips/s
+2026-10-26 10:34:23    ep  19/100 | loss 0.723 | train 0.768 | val loss 0.6465 acc 0.788 (best loss 0.6465; 0 without improvement) | rates [0.0655, 0.0465, 0.0706] | 53 s, 691 clips/s
+2026-10-26 10:35:15    ep  20/100 | loss 0.706 | train 0.773 | val loss 0.6441 acc 0.797 (best loss 0.6441; 0 without improvement) | rates [0.065, 0.0462, 0.0708] | 51 s, 728 clips/s
+2026-10-26 10:36:02    ep  21/100 | loss 0.678 | train 0.782 | val loss 0.6236 acc 0.806 (best loss 0.6236; 0 without improvement) | rates [0.0652, 0.0466, 0.0723] | 45 s, 827 clips/s
+2026-10-26 10:36:52    ep  22/100 | loss 0.658 | train 0.790 | val loss 0.5982 acc 0.812 (best loss 0.5982; 0 without improvement) | rates [0.0644, 0.0467, 0.0731] | 48 s, 760 clips/s
+2026-10-26 10:37:34    ep  23/100 | loss 0.639 | train 0.796 | val loss 0.6182 acc 0.808 (best loss 0.5982; 1 without improvement) | rates [0.0649, 0.0477, 0.0754] | 41 s, 909 clips/s
+2026-10-26 10:38:15    ep  24/100 | loss 0.626 | train 0.799 | val loss 0.5895 acc 0.814 (best loss 0.5895; 0 without improvement) | rates [0.0649, 0.0477, 0.076] | 40 s, 910 clips/s
+2026-10-26 10:38:57    ep  25/100 | loss 0.611 | train 0.802 | val loss 0.5870 acc 0.813 (best loss 0.5870; 0 without improvement) | rates [0.0643, 0.0474, 0.0761] | 41 s, 906 clips/s
+2026-10-26 10:39:39    ep  26/100 | loss 0.592 | train 0.810 | val loss 0.5611 acc 0.822 (best loss 0.5611; 0 without improvement) | rates [0.0642, 0.0481, 0.0782] | 41 s, 905 clips/s
+2026-10-26 10:40:27    ep  27/100 | loss 0.575 | train 0.816 | val loss 0.5379 acc 0.826 (best loss 0.5379; 0 without improvement) | rates [0.0639, 0.0483, 0.0787] | 46 s, 801 clips/s
+2026-10-26 10:41:12    ep  28/100 | loss 0.560 | train 0.822 | val loss 0.5162 acc 0.836 (best loss 0.5162; 0 without improvement) | rates [0.0633, 0.0483, 0.0787] | 43 s, 854 clips/s
+2026-10-26 10:41:55    ep  29/100 | loss 0.549 | train 0.823 | val loss 0.5359 acc 0.826 (best loss 0.5162; 1 without improvement) | rates [0.0639, 0.0496, 0.081] | 42 s, 868 clips/s
+2026-10-26 10:42:38    ep  30/100 | loss 0.539 | train 0.826 | val loss 0.5120 acc 0.836 (best loss 0.5120; 0 without improvement) | rates [0.0633, 0.0493, 0.0811] | 41 s, 891 clips/s
+2026-10-26 10:43:19    ep  31/100 | loss 0.527 | train 0.831 | val loss 0.5133 acc 0.836 (best loss 0.5120; 1 without improvement) | rates [0.0631, 0.0496, 0.0825] | 40 s, 924 clips/s
+2026-10-26 10:44:01    ep  32/100 | loss 0.513 | train 0.837 | val loss 0.5270 acc 0.835 (best loss 0.5120; 2 without improvement) | rates [0.0633, 0.0506, 0.0841] | 41 s, 908 clips/s
+2026-10-26 10:44:45    ep  33/100 | loss 0.502 | train 0.839 | val loss 0.5044 acc 0.838 (best loss 0.5044; 0 without improvement) | rates [0.0633, 0.0507, 0.0849] | 42 s, 880 clips/s
+2026-10-26 10:45:30    ep  34/100 | loss 0.488 | train 0.843 | val loss 0.4935 acc 0.845 (best loss 0.4935; 0 without improvement) | rates [0.0637, 0.0507, 0.0855] | 43 s, 854 clips/s
+2026-10-26 10:46:15    ep  35/100 | loss 0.477 | train 0.848 | val loss 0.4825 acc 0.844 (best loss 0.4825; 0 without improvement) | rates [0.0634, 0.0512, 0.0862] | 44 s, 844 clips/s
+2026-10-26 10:47:02    ep  36/100 | loss 0.479 | train 0.849 | val loss 0.4760 acc 0.849 (best loss 0.4760; 0 without improvement) | rates [0.0631, 0.0512, 0.0854] | 46 s, 810 clips/s
+2026-10-26 10:47:47    ep  37/100 | loss 0.468 | train 0.852 | val loss 0.4605 acc 0.856 (best loss 0.4605; 0 without improvement) | rates [0.0629, 0.051, 0.0863] | 44 s, 848 clips/s
+2026-10-26 10:48:29    ep  38/100 | loss 0.462 | train 0.852 | val loss 0.4586 acc 0.858 (best loss 0.4586; 0 without improvement) | rates [0.0628, 0.0511, 0.0871] | 41 s, 893 clips/s
+2026-10-26 10:49:12    ep  39/100 | loss 0.449 | train 0.856 | val loss 0.4738 acc 0.847 (best loss 0.4586; 1 without improvement) | rates [0.0629, 0.0509, 0.0869] | 41 s, 893 clips/s
+2026-10-26 10:49:55    ep  40/100 | loss 0.445 | train 0.859 | val loss 0.4618 acc 0.856 (best loss 0.4586; 2 without improvement) | rates [0.0631, 0.0511, 0.0878] | 42 s, 888 clips/s
+2026-10-26 10:50:38    ep  41/100 | loss 0.433 | train 0.861 | val loss 0.4517 acc 0.860 (best loss 0.4517; 0 without improvement) | rates [0.0629, 0.0515, 0.0877] | 42 s, 874 clips/s
+2026-10-26 10:51:21    ep  42/100 | loss 0.430 | train 0.863 | val loss 0.4502 acc 0.856 (best loss 0.4502; 0 without improvement) | rates [0.0625, 0.051, 0.0869] | 41 s, 896 clips/s
+2026-10-26 10:52:05    ep  43/100 | loss 0.420 | train 0.868 | val loss 0.4403 acc 0.865 (best loss 0.4403; 0 without improvement) | rates [0.0625, 0.0516, 0.0883] | 42 s, 869 clips/s
+2026-10-26 10:52:53    ep  44/100 | loss 0.416 | train 0.868 | val loss 0.4182 acc 0.867 (best loss 0.4182; 0 without improvement) | rates [0.0627, 0.0518, 0.0893] | 47 s, 785 clips/s
+2026-10-26 10:53:39    ep  45/100 | loss 0.410 | train 0.871 | val loss 0.4309 acc 0.866 (best loss 0.4182; 1 without improvement) | rates [0.0623, 0.0513, 0.088] | 44 s, 839 clips/s
+2026-10-26 10:54:22    ep  46/100 | loss 0.402 | train 0.874 | val loss 0.4327 acc 0.864 (best loss 0.4182; 2 without improvement) | rates [0.0625, 0.0518, 0.0897] | 42 s, 877 clips/s
+2026-10-26 10:55:06    ep  47/100 | loss 0.395 | train 0.873 | val loss 0.4171 acc 0.866 (best loss 0.4171; 0 without improvement) | rates [0.0623, 0.0519, 0.0893] | 42 s, 872 clips/s
+2026-10-26 10:55:49    ep  48/100 | loss 0.386 | train 0.877 | val loss 0.4171 acc 0.872 (best loss 0.4171; 0 without improvement) | rates [0.0629, 0.052, 0.0903] | 41 s, 890 clips/s
+2026-10-26 10:56:32    ep  49/100 | loss 0.389 | train 0.878 | val loss 0.4049 acc 0.876 (best loss 0.4049; 0 without improvement) | rates [0.0629, 0.0522, 0.0908] | 42 s, 881 clips/s
+2026-10-26 10:57:15    ep  50/100 | loss 0.382 | train 0.880 | val loss 0.4001 acc 0.872 (best loss 0.4001; 0 without improvement) | rates [0.0634, 0.0524, 0.0904] | 41 s, 890 clips/s
+2026-10-26 10:57:57    ep  51/100 | loss 0.375 | train 0.881 | val loss 0.4077 acc 0.867 (best loss 0.4001; 1 without improvement) | rates [0.0632, 0.0519, 0.0904] | 41 s, 892 clips/s
+2026-10-26 10:58:47    ep  52/100 | loss 0.375 | train 0.883 | val loss 0.4138 acc 0.871 (best loss 0.4001; 2 without improvement) | rates [0.0635, 0.0526, 0.0917] | 48 s, 770 clips/s
+2026-10-26 10:59:33    ep  53/100 | loss 0.366 | train 0.884 | val loss 0.3925 acc 0.881 (best loss 0.3925; 0 without improvement) | rates [0.0633, 0.0524, 0.0911] | 44 s, 830 clips/s
+2026-10-26 11:00:16    ep  54/100 | loss 0.365 | train 0.884 | val loss 0.3946 acc 0.872 (best loss 0.3925; 1 without improvement) | rates [0.0636, 0.0529, 0.0922] | 41 s, 890 clips/s
+2026-10-26 11:00:57    ep  55/100 | loss 0.356 | train 0.888 | val loss 0.3946 acc 0.875 (best loss 0.3925; 2 without improvement) | rates [0.0638, 0.0528, 0.092] | 40 s, 916 clips/s
+2026-10-26 11:01:39    ep  56/100 | loss 0.359 | train 0.885 | val loss 0.4024 acc 0.877 (best loss 0.3925; 3 without improvement) | rates [0.0643, 0.053, 0.0923] | 40 s, 921 clips/s
+2026-10-26 11:01:39    early stop after epoch 56: validation loss has not improved for 3 epochs (best 0.3925)
+2026-10-26 11:01:39    [PASS] 07 training did not stall at ln(12): 56 epochs, final loss 0.359
+2026-10-26 11:01:42  07_train: best epoch 53 | validation 0.8807 (selected on it) | test 0.8658 (held out)
+2026-10-26 11:01:42    [PASS] 07 validation accuracy well above chance (> 3/12): validation 0.8807, test 0.8658, best epoch 53
+2026-10-26 11:01:42    [PASS] 07 training loss went down: 2.293 -> 0.359
+2026-10-26 11:01:43    [PASS] 07 max-membrane readout reproduces the stored validation accuracy: 0.8807 vs 0.8807
+2026-10-26 11:01:44    [PASS] 07 training ended by early stopping, not the epoch cap (a finding, not a bug, if it fails): 56 of 100 epochs; best validation loss at epoch 53
+2026-10-26 11:01:45      fisher: 10 batches, 1 s
+2026-10-26 11:01:46      fisher: 20 batches, 3 s
+2026-10-26 11:01:48      fisher: 30 batches, 4 s
+2026-10-26 11:01:49      fisher: 40 batches, 5 s
+2026-10-26 11:01:50      fisher: 50 batches, 6 s
+2026-10-26 11:01:51      fisher: 60 batches, 8 s
+2026-10-26 11:01:53      fisher: 70 batches, 9 s
+2026-10-26 11:01:58  08_fisher: done in 14 s
+2026-10-26 11:01:58    [PASS] 08 Fisher and Omega are finite and non-negative
+2026-10-26 11:01:58    [PASS] 08 enough gradient vectors per class (> 4 per dimension): worst class: 35350 vectors for 1536 neurons (23.0:1)
+2026-10-26 11:01:58    [PASS] 08 unique fraction is a proper fraction in [0, 1]
+2026-10-26 11:02:00  09_mi: done in 3 s
+2026-10-26 11:02:00    [PASS] 09 MI estimator: a perfect feature gives H(Y) = ln 4: 1.3863 vs 1.3863
+2026-10-26 11:02:00    [PASS] 09 MI estimator: an independent feature gives ~0 (only the small upward bias): 0.0028 nats; expected bias ~ (8-1)(4-1)/(2*4000) = 0.0026
+2026-10-26 11:02:00    [PASS] 09 real class information present (best neuron beats the shuffle null)
+2026-10-26 11:02:00    [PASS] 09 every class's 40th MI neuron is well above the estimator bias (> 5x): worst class 11.1x
+2026-10-26 11:02:03    [PASS] 10 groups are valid neuron ids
+2026-10-26 11:02:03    [PASS] 10 MI union is non-empty and leaves plastic neurons: 322 of 1536
+2026-10-26 11:02:35    11: mi groups ablated (32 s)
+2026-10-26 11:02:55    11: fisher groups ablated (52 s)
+2026-10-26 11:03:15    11: omega groups ablated (72 s)
+2026-10-26 11:04:01    11: layer ablation done (118 s)
+2026-10-26 11:05:17    11: k-sweep done (194 s)
+2026-10-26 11:05:42  11_ablation: done in 218 s
+2026-10-26 11:05:42    [PASS] 11 ablation baseline equals the stage-7 test accuracy: 0.8658 vs 0.8658
+2026-10-26 11:05:42    [PASS] 11 MI groups are more class-specific than Fisher groups (specificity): MI +0.246, Fisher +0.043, Omega -0.001 (a finding, not a bug, if it fails)
+2026-10-26 11:06:01    11b: combo_global_a000 ablated (20 s)
+2026-10-26 11:06:21    11b: combo_global_a010 ablated (40 s)
+2026-10-26 11:06:41    11b: combo_global_a020 ablated (60 s)
+2026-10-26 11:07:01    11b: combo_global_a030 ablated (79 s)
+2026-10-26 11:07:21    11b: combo_global_a040 ablated (100 s)
+2026-10-26 11:07:41    11b: combo_global_a050 ablated (120 s)
+2026-10-26 11:08:02    11b: combo_global_a060 ablated (140 s)
+2026-10-26 11:08:23    11b: combo_global_a070 ablated (161 s)
+2026-10-26 11:08:43    11b: combo_global_a080 ablated (182 s)
+2026-10-26 11:09:03    11b: combo_global_a090 ablated (202 s)
+2026-10-26 11:09:24    11b: combo_global_a100 ablated (222 s)
+2026-10-26 11:09:45    11b: combo_layer_a000 ablated (243 s)
+2026-10-26 11:10:06    11b: combo_layer_a010 ablated (265 s)
+2026-10-26 11:10:30    11b: combo_layer_a020 ablated (289 s)
+2026-10-26 11:10:53    11b: combo_layer_a030 ablated (311 s)
+2026-10-26 11:11:15    11b: combo_layer_a040 ablated (333 s)
+2026-10-26 11:11:37    11b: combo_layer_a050 ablated (355 s)
+2026-10-26 11:11:59    11b: combo_layer_a060 ablated (378 s)
+2026-10-26 11:12:20    11b: combo_layer_a070 ablated (398 s)
+2026-10-26 11:12:40    11b: combo_layer_a080 ablated (418 s)
+2026-10-26 11:13:00    11b: combo_layer_a090 ablated (439 s)
+2026-10-26 11:13:21    11b: combo_layer_a100 ablated (459 s)
+2026-10-26 11:13:21  11b_combo: done in 459 s
+2026-10-26 11:13:21    [PASS] 11b every combined group holds K valid neuron ids
+2026-10-26 11:13:21    [PASS] 11b global ranks: alpha = 1 gives the MI groups, alpha = 0 the Fisher groups: overlap 100% with MI, 100% with Fisher (ties in the scores can move a neuron or two)
+2026-10-26 11:13:22  12 sets: old-class training 36720 | 'zero' training 3250 | validation 4827 | test 5306 (13 classes)
+2026-10-26 11:13:25    before learning it, the base network files test 'zero' clips as: _unknown_ 89%, no 4%, yes 3%
+2026-10-26 11:13:25    [PASS] 12 old-class test scores equal the stage-11 baseline (same clips): largest per-class difference 0.0000 (tiny differences can come from different batch composition)
+2026-10-26 11:13:30    new readout row initialised: {'alpha': 0.5804401621753024, 'scale': 0.32900522520914355, 'median_new_logit_unscaled': 51.501827239990234, 'median_best_old_logit': 16.94437026977539}
+2026-10-26 11:13:41      no_mask ep 1: val hmean 0.701, drift +30.7 | test hmean 0.681
+2026-10-26 11:13:51      no_mask ep 2: val hmean 0.762, drift +24.2 | test hmean 0.743
+2026-10-26 11:14:02      no_mask ep 3: val hmean 0.766, drift +23.9 | test hmean 0.751
+2026-10-26 11:14:22      no_mask ep 5: val hmean 0.781, drift +22.1 | test hmean 0.750
+2026-10-26 11:14:49      no_mask ep 8: val hmean 0.790, drift +21.5 | test hmean 0.756
+2026-10-26 11:15:26      no_mask ep 12: val hmean 0.773, drift +23.9 | test hmean 0.737
+2026-10-26 11:16:03      no_mask ep 16: val hmean 0.708, drift +31.4 | test hmean 0.676
+2026-10-26 11:16:45      no_mask ep 20: val hmean 0.749, drift +26.8 | test hmean 0.711
+2026-10-26 11:16:45  12a_epochs no_mask: test drift +29.37 | 13-way forgetting +30.37 | 'zero' acc 0.969 AUC 0.996 | hmean 0.711 (val 0.749) | 195 s
+2026-10-26 11:16:56      mi_mask ep 1: val hmean 0.736, drift +25.2 | test hmean 0.719
+2026-10-26 11:17:08      mi_mask ep 2: val hmean 0.780, drift +21.2 | test hmean 0.765
+2026-10-26 11:17:21      mi_mask ep 3: val hmean 0.785, drift +21.2 | test hmean 0.770
+2026-10-26 11:17:41      mi_mask ep 5: val hmean 0.802, drift +19.2 | test hmean 0.780
+2026-10-26 11:18:08      mi_mask ep 8: val hmean 0.815, drift +17.0 | test hmean 0.797
+2026-10-26 11:18:45      mi_mask ep 12: val hmean 0.789, drift +21.4 | test hmean 0.758
+2026-10-26 11:19:21      mi_mask ep 16: val hmean 0.776, drift +22.8 | test hmean 0.740
+2026-10-26 11:19:57      mi_mask ep 20: val hmean 0.781, drift +22.4 | test hmean 0.746
+2026-10-26 11:19:57  12a_epochs mi_mask: test drift +24.82 | 13-way forgetting +26.20 | 'zero' acc 0.976 AUC 0.995 | hmean 0.746 (val 0.781) | 192 s
+2026-10-26 11:20:08      fisher_mask ep 1: val hmean 0.732, drift +26.2 | test hmean 0.720
+2026-10-26 11:20:19      fisher_mask ep 2: val hmean 0.771, drift +22.6 | test hmean 0.757
+2026-10-26 11:20:30      fisher_mask ep 3: val hmean 0.784, drift +21.3 | test hmean 0.764
+2026-10-26 11:20:49      fisher_mask ep 5: val hmean 0.784, drift +21.7 | test hmean 0.766
+2026-10-26 11:21:16      fisher_mask ep 8: val hmean 0.808, drift +18.9 | test hmean 0.785
+2026-10-26 11:21:53      fisher_mask ep 12: val hmean 0.795, drift +20.8 | test hmean 0.771
+2026-10-26 11:22:36      fisher_mask ep 16: val hmean 0.740, drift +27.8 | test hmean 0.708
+2026-10-26 11:23:16      fisher_mask ep 20: val hmean 0.767, drift +24.4 | test hmean 0.733
+2026-10-26 11:23:16  12a_epochs fisher_mask: test drift +26.41 | 13-way forgetting +27.84 | 'zero' acc 0.976 AUC 0.995 | hmean 0.733 (val 0.767) | 198 s
+2026-10-26 11:23:28      combo_layer_a050 ep 1: val hmean 0.744, drift +23.7 | test hmean 0.737
+2026-10-26 11:23:38      combo_layer_a050 ep 2: val hmean 0.781, drift +20.9 | test hmean 0.770
+2026-10-26 11:23:48      combo_layer_a050 ep 3: val hmean 0.777, drift +22.0 | test hmean 0.762
+2026-10-26 11:24:07      combo_layer_a050 ep 5: val hmean 0.797, drift +20.1 | test hmean 0.770
+2026-10-26 11:24:34      combo_layer_a050 ep 8: val hmean 0.830, drift +15.1 | test hmean 0.809
+2026-10-26 11:25:10      combo_layer_a050 ep 12: val hmean 0.782, drift +22.0 | test hmean 0.756
+2026-10-26 11:25:47      combo_layer_a050 ep 16: val hmean 0.762, drift +24.8 | test hmean 0.728
+2026-10-26 11:26:26      combo_layer_a050 ep 20: val hmean 0.792, drift +21.0 | test hmean 0.762
+2026-10-26 11:26:26  12a_epochs combo_layer_a050: test drift +22.61 | 13-way forgetting +24.12 | 'zero' acc 0.976 AUC 0.996 | hmean 0.762 (val 0.792) | 190 s
+2026-10-26 11:26:36      no_mask_replay ep 1: val hmean 0.835, drift +4.6 | test hmean 0.812
+2026-10-26 11:26:46      no_mask_replay ep 2: val hmean 0.878, drift +2.9 | test hmean 0.867
+2026-10-26 11:26:56      no_mask_replay ep 3: val hmean 0.889, drift +2.2 | test hmean 0.878
+2026-10-26 11:27:15      no_mask_replay ep 5: val hmean 0.892, drift +2.2 | test hmean 0.887
+2026-10-26 11:27:43      no_mask_replay ep 8: val hmean 0.894, drift +2.1 | test hmean 0.881
+2026-10-26 11:28:22      no_mask_replay ep 12: val hmean 0.903, drift +1.2 | test hmean 0.890
+2026-10-26 11:29:01      no_mask_replay ep 16: val hmean 0.909, drift +1.0 | test hmean 0.891
+2026-10-26 11:29:38      no_mask_replay ep 20: val hmean 0.906, drift +0.7 | test hmean 0.891
+2026-10-26 11:29:39  12a_epochs no_mask_replay: test drift +1.11 | 13-way forgetting +5.25 | 'zero' acc 0.986 AUC 0.995 | hmean 0.891 (val 0.906) | 193 s
+2026-10-26 11:29:49      readout_only ep 1: val hmean 0.425, drift +0.0 | test hmean 0.404
+2026-10-26 11:29:59      readout_only ep 2: val hmean 0.683, drift +0.0 | test hmean 0.708
+2026-10-26 11:30:11      readout_only ep 3: val hmean 0.783, drift +0.0 | test hmean 0.791
+2026-10-26 11:30:31      readout_only ep 5: val hmean 0.846, drift +0.0 | test hmean 0.832
+2026-10-26 11:30:59      readout_only ep 8: val hmean 0.872, drift +0.0 | test hmean 0.862
+2026-10-26 11:31:35      readout_only ep 12: val hmean 0.894, drift +0.0 | test hmean 0.879
+2026-10-26 11:32:13      readout_only ep 16: val hmean 0.898, drift +0.0 | test hmean 0.879
+2026-10-26 11:32:50      readout_only ep 20: val hmean 0.899, drift +0.0 | test hmean 0.884
+2026-10-26 11:32:50  12a_epochs readout_only: test drift +0.00 | 13-way forgetting +5.41 | 'zero' acc 0.971 AUC 0.986 | hmean 0.884 (val 0.899) | 192 s
+2026-10-26 11:32:50  12a_epochs: E* = 8 (mean validation hmean 0.835)
+2026-10-26 11:32:50    [PASS] 12a: frozen weights never moved, in all 6 runs: largest change 0.0e+00
+2026-10-26 11:32:50    [PASS] 12a E* is one of the scored epochs, chosen on validation: E* = 8
+2026-10-26 11:34:03  12b_arms no_mask: test drift +23.38 | 13-way forgetting +24.92 | 'zero' acc 0.978 AUC 0.993 | hmean 0.756 (val 0.790) | 72 s
+2026-10-26 11:35:24  12b_arms mi_mask: test drift +18.33 | 13-way forgetting +19.51 | 'zero' acc 0.983 AUC 0.993 | hmean 0.797 (val 0.815) | 81 s
+2026-10-26 11:36:34  12b_arms random_mask: test drift +23.35 | 13-way forgetting +24.80 | 'zero' acc 0.983 AUC 0.992 | hmean 0.759 (val 0.776) | 70 s
+2026-10-26 11:37:44  12b_arms random_layer_matched: test drift +17.19 | 13-way forgetting +18.76 | 'zero' acc 0.981 AUC 0.993 | hmean 0.802 (val 0.818) | 70 s
+2026-10-26 11:38:56  12b_arms fisher_mask: test drift +20.06 | 13-way forgetting +21.28 | 'zero' acc 0.986 AUC 0.994 | hmean 0.785 (val 0.808) | 72 s
+2026-10-26 11:40:10  12b_arms layer0_only: test drift +17.69 | 13-way forgetting +19.00 | 'zero' acc 0.983 AUC 0.994 | hmean 0.801 (val 0.820) | 74 s
+2026-10-26 11:41:30  12b_arms mi_plus_layer0: test drift +17.35 | 13-way forgetting +19.29 | 'zero' acc 0.981 AUC 0.992 | hmean 0.798 (val 0.825) | 80 s
+2026-10-26 11:42:42  12b_arms mi_plus_fisher: test drift +16.50 | 13-way forgetting +18.26 | 'zero' acc 0.990 AUC 0.993 | hmean 0.808 (val 0.829) | 72 s
+2026-10-26 11:43:52  12b_arms readout_only: test drift +0.00 | 13-way forgetting +9.23 | 'zero' acc 0.974 AUC 0.964 | hmean 0.862 (val 0.872) | 70 s
+2026-10-26 11:45:04  12b_arms no_mask_replay: test drift +2.72 | 13-way forgetting +7.10 | 'zero' acc 0.988 AUC 0.993 | hmean 0.881 (val 0.894) | 72 s
+2026-10-26 11:46:19  12b_arms mi_mask_replay: test drift +1.46 | 13-way forgetting +6.46 | 'zero' acc 0.993 AUC 0.991 | hmean 0.887 (val 0.899) | 75 s
+2026-10-26 11:47:36  12b_arms combo_global_a000: test drift +24.93 | 13-way forgetting +26.60 | 'zero' acc 0.990 AUC 0.993 | hmean 0.747 (val 0.772) | 78 s
+2026-10-26 11:48:46  12b_arms combo_global_a010: test drift +19.84 | 13-way forgetting +21.53 | 'zero' acc 0.990 AUC 0.993 | hmean 0.785 (val 0.807) | 70 s
+2026-10-26 11:49:56  12b_arms combo_global_a020: test drift +23.68 | 13-way forgetting +24.99 | 'zero' acc 0.990 AUC 0.993 | hmean 0.759 (val 0.776) | 70 s
+2026-10-26 11:51:08  12b_arms combo_global_a030: test drift +18.41 | 13-way forgetting +19.74 | 'zero' acc 0.978 AUC 0.992 | hmean 0.794 (val 0.813) | 71 s
+2026-10-26 11:52:22  12b_arms combo_global_a040: test drift +20.03 | 13-way forgetting +21.58 | 'zero' acc 0.986 AUC 0.994 | hmean 0.783 (val 0.802) | 74 s
+2026-10-26 11:53:39  12b_arms combo_global_a050: test drift +17.94 | 13-way forgetting +19.69 | 'zero' acc 0.990 AUC 0.993 | hmean 0.798 (val 0.817) | 77 s
+2026-10-26 11:54:50  12b_arms combo_global_a060: test drift +19.79 | 13-way forgetting +21.71 | 'zero' acc 0.988 AUC 0.993 | hmean 0.783 (val 0.806) | 71 s
+2026-10-26 11:56:01  12b_arms combo_global_a070: test drift +16.81 | 13-way forgetting +18.32 | 'zero' acc 0.988 AUC 0.994 | hmean 0.807 (val 0.826) | 71 s
+2026-10-26 11:57:12  12b_arms combo_global_a080: test drift +17.25 | 13-way forgetting +18.88 | 'zero' acc 0.990 AUC 0.993 | hmean 0.804 (val 0.822) | 72 s
+2026-10-26 11:58:29  12b_arms combo_global_a090: test drift +16.92 | 13-way forgetting +18.61 | 'zero' acc 0.986 AUC 0.994 | hmean 0.804 (val 0.818) | 76 s
+2026-10-26 11:59:45  12b_arms combo_global_a100: test drift +18.33 | 13-way forgetting +19.51 | 'zero' acc 0.983 AUC 0.993 | hmean 0.797 (val 0.815) | 76 s
+2026-10-26 12:00:56  12b_arms combo_layer_a000: test drift +17.35 | 13-way forgetting +18.92 | 'zero' acc 0.986 AUC 0.993 | hmean 0.802 (val 0.822) | 71 s
+2026-10-26 12:02:07  12b_arms combo_layer_a010: test drift +15.75 | 13-way forgetting +17.51 | 'zero' acc 0.983 AUC 0.993 | hmean 0.811 (val 0.835) | 71 s
+2026-10-26 12:03:19  12b_arms combo_layer_a020: test drift +14.55 | 13-way forgetting +16.16 | 'zero' acc 0.990 AUC 0.994 | hmean 0.823 (val 0.840) | 72 s
+2026-10-26 12:04:37  12b_arms combo_layer_a030: test drift +17.83 | 13-way forgetting +19.47 | 'zero' acc 0.981 AUC 0.993 | hmean 0.797 (val 0.815) | 78 s
+2026-10-26 12:05:52  12b_arms combo_layer_a040: test drift +17.07 | 13-way forgetting +18.71 | 'zero' acc 0.983 AUC 0.993 | hmean 0.803 (val 0.821) | 75 s
+2026-10-26 12:07:04  12b_arms combo_layer_a050: test drift +16.18 | 13-way forgetting +18.02 | 'zero' acc 0.988 AUC 0.993 | hmean 0.809 (val 0.830) | 71 s
+2026-10-26 12:08:15  12b_arms combo_layer_a060: test drift +17.22 | 13-way forgetting +18.81 | 'zero' acc 0.981 AUC 0.993 | hmean 0.801 (val 0.819) | 72 s
+2026-10-26 12:09:27  12b_arms combo_layer_a070: test drift +16.92 | 13-way forgetting +18.59 | 'zero' acc 0.986 AUC 0.994 | hmean 0.805 (val 0.817) | 72 s
+2026-10-26 12:10:46  12b_arms combo_layer_a080: test drift +19.43 | 13-way forgetting +20.92 | 'zero' acc 0.978 AUC 0.993 | hmean 0.786 (val 0.803) | 79 s
+2026-10-26 12:12:03  12b_arms combo_layer_a090: test drift +15.22 | 13-way forgetting +16.98 | 'zero' acc 0.986 AUC 0.993 | hmean 0.816 (val 0.837) | 77 s
+2026-10-26 12:13:14  12b_arms combo_layer_a100: test drift +20.05 | 13-way forgetting +21.66 | 'zero' acc 0.990 AUC 0.993 | hmean 0.784 (val 0.804) | 71 s
+2026-10-26 12:13:35  12b_arms slda_all: test drift +0.38 | 13-way forgetting +0.75 | 'zero' acc 0.871 AUC 0.995 | hmean 0.864 (val 0.886) | 21 s
+2026-10-26 12:13:35  12b_arms: best blend on validation = combo_layer_a020 (mode within_layer, alpha 0.2)
+2026-10-26 12:13:35    [PASS] 12b: frozen weights never moved, in all 33 runs: largest change 0.0e+00
+2026-10-26 12:13:35    [PASS] 12b alpha* chosen on validation among the blended masks: combo_layer_a020
+2026-10-26 12:14:49  12c_budget mi_b05: test drift +23.95 | 13-way forgetting +25.39 | 'zero' acc 0.983 AUC 0.993 | hmean 0.754 (val 0.773) | 74 s
+2026-10-26 12:16:01  12c_budget mi_b10: test drift +18.86 | 13-way forgetting +20.49 | 'zero' acc 0.978 AUC 0.993 | hmean 0.789 (val 0.813) | 72 s
+2026-10-26 12:17:22  12c_budget mi_b20: test drift +21.06 | 13-way forgetting +22.39 | 'zero' acc 0.969 AUC 0.993 | hmean 0.772 (val 0.794) | 81 s
+2026-10-26 12:18:33  12c_budget mi_b30: test drift +15.99 | 13-way forgetting +17.64 | 'zero' acc 0.976 AUC 0.992 | hmean 0.808 (val 0.828) | 71 s
+2026-10-26 12:19:44  12c_budget mi_b50: test drift +15.11 | 13-way forgetting +16.91 | 'zero' acc 0.971 AUC 0.990 | hmean 0.811 (val 0.840) | 71 s
+2026-10-26 12:20:57  12c_budget mi_b70: test drift +13.70 | 13-way forgetting +15.78 | 'zero' acc 0.974 AUC 0.989 | hmean 0.820 (val 0.834) | 73 s
+2026-10-26 12:22:11  12c_budget fisher_global_b05: test drift +21.80 | 13-way forgetting +23.25 | 'zero' acc 0.988 AUC 0.994 | hmean 0.772 (val 0.789) | 74 s
+2026-10-26 12:23:30  12c_budget fisher_global_b10: test drift +18.96 | 13-way forgetting +20.21 | 'zero' acc 0.967 AUC 0.992 | hmean 0.787 (val 0.815) | 79 s
+2026-10-26 12:24:41  12c_budget fisher_global_b20: test drift +18.86 | 13-way forgetting +20.41 | 'zero' acc 0.986 AUC 0.993 | hmean 0.792 (val 0.810) | 71 s
+2026-10-26 12:25:51  12c_budget fisher_global_b30: test drift +17.56 | 13-way forgetting +18.97 | 'zero' acc 0.976 AUC 0.993 | hmean 0.799 (val 0.818) | 71 s
+2026-10-26 12:27:05  12c_budget fisher_global_b50: test drift +15.47 | 13-way forgetting +17.33 | 'zero' acc 0.990 AUC 0.993 | hmean 0.815 (val 0.826) | 74 s
+2026-10-26 12:28:19  12c_budget fisher_global_b70: test drift +13.36 | 13-way forgetting +15.47 | 'zero' acc 0.978 AUC 0.992 | hmean 0.823 (val 0.845) | 74 s
+2026-10-26 12:29:36  12c_budget fisher_layer_b05: test drift +22.87 | 13-way forgetting +24.46 | 'zero' acc 0.986 AUC 0.993 | hmean 0.762 (val 0.792) | 77 s
+2026-10-26 12:30:48  12c_budget fisher_layer_b10: test drift +22.84 | 13-way forgetting +24.58 | 'zero' acc 0.983 AUC 0.993 | hmean 0.760 (val 0.786) | 73 s
+2026-10-26 12:32:01  12c_budget fisher_layer_b20: test drift +16.63 | 13-way forgetting +18.40 | 'zero' acc 0.988 AUC 0.993 | hmean 0.807 (val 0.823) | 73 s
+2026-10-26 12:33:13  12c_budget fisher_layer_b30: test drift +13.36 | 13-way forgetting +15.34 | 'zero' acc 0.993 AUC 0.993 | hmean 0.829 (val 0.841) | 71 s
+2026-10-26 12:34:27  12c_budget fisher_layer_b50: test drift +13.85 | 13-way forgetting +15.98 | 'zero' acc 0.983 AUC 0.992 | hmean 0.822 (val 0.840) | 74 s
+2026-10-26 12:35:44  12c_budget fisher_layer_b70: test drift +12.81 | 13-way forgetting +14.87 | 'zero' acc 0.988 AUC 0.990 | hmean 0.831 (val 0.846) | 77 s
+2026-10-26 12:36:55  12c_budget blend_best_b05: test drift +20.57 | 13-way forgetting +21.71 | 'zero' acc 0.983 AUC 0.993 | hmean 0.781 (val 0.799) | 71 s
+2026-10-26 12:38:07  12c_budget blend_best_b10: test drift +22.32 | 13-way forgetting +23.89 | 'zero' acc 0.986 AUC 0.994 | hmean 0.766 (val 0.789) | 72 s
+2026-10-26 12:39:21  12c_budget blend_best_b20: test drift +19.73 | 13-way forgetting +21.20 | 'zero' acc 0.983 AUC 0.993 | hmean 0.785 (val 0.804) | 73 s
+2026-10-26 12:40:37  12c_budget blend_best_b30: test drift +14.60 | 13-way forgetting +16.53 | 'zero' acc 0.986 AUC 0.993 | hmean 0.819 (val 0.840) | 76 s
+2026-10-26 12:41:51  12c_budget blend_best_b50: test drift +13.78 | 13-way forgetting +15.66 | 'zero' acc 0.990 AUC 0.992 | hmean 0.826 (val 0.848) | 74 s
+2026-10-26 12:43:03  12c_budget blend_best_b70: test drift +13.75 | 13-way forgetting +15.87 | 'zero' acc 0.978 AUC 0.990 | hmean 0.821 (val 0.832) | 72 s
+2026-10-26 12:44:19  12c_budget random_b05: test drift +24.32 | 13-way forgetting +25.64 | 'zero' acc 0.988 AUC 0.993 | hmean 0.754 (val 0.782) | 76 s
+2026-10-26 12:45:51  12c_budget random_b10: test drift +23.39 | 13-way forgetting +24.87 | 'zero' acc 0.983 AUC 0.993 | hmean 0.758 (val 0.781) | 92 s
+2026-10-26 12:47:21  12c_budget random_b20: test drift +19.03 | 13-way forgetting +20.59 | 'zero' acc 0.986 AUC 0.993 | hmean 0.790 (val 0.814) | 90 s
+2026-10-26 12:48:49  12c_budget random_b30: test drift +18.21 | 13-way forgetting +19.45 | 'zero' acc 0.969 AUC 0.992 | hmean 0.793 (val 0.815) | 88 s
+2026-10-26 12:50:09  12c_budget random_b50: test drift +13.46 | 13-way forgetting +15.88 | 'zero' acc 0.993 AUC 0.992 | hmean 0.826 (val 0.839) | 80 s
+2026-10-26 12:51:47  12c_budget random_b70: test drift +13.54 | 13-way forgetting +15.82 | 'zero' acc 0.978 AUC 0.991 | hmean 0.821 (val 0.828) | 98 s
+2026-10-26 12:51:47  12c_budget: best mask on validation = blend_best_b50 (768 neurons)
+2026-10-26 12:51:47    [PASS] 12c: frozen weights never moved, in all 30 runs: largest change 0.0e+00
+2026-10-26 12:51:47    [PASS] 12c budgets are nested (the smallest set sits inside the largest) for every method
+2026-10-26 12:51:47    [PASS] 12c each budget freezes exactly B neurons
+2026-10-26 12:53:28  12d_tradeoff none_lr0.25_rp0: test drift +19.16 | 13-way forgetting +21.14 | 'zero' acc 0.974 AUC 0.988 | hmean 0.783 (val 0.800) | 100 s
+2026-10-26 12:55:04  12d_tradeoff none_lr0.25_rp0.01: test drift +13.82 | 13-way forgetting +15.84 | 'zero' acc 0.986 AUC 0.988 | hmean 0.823 (val 0.836) | 96 s
+2026-10-26 12:56:37  12d_tradeoff none_lr0.25_rp0.05: test drift +7.76 | 13-way forgetting +10.46 | 'zero' acc 0.974 AUC 0.987 | hmean 0.854 (val 0.871) | 93 s
+2026-10-26 12:58:09  12d_tradeoff none_lr0.25_rp0.25: test drift +3.80 | 13-way forgetting +6.88 | 'zero' acc 0.959 AUC 0.985 | hmean 0.871 (val 0.883) | 91 s
+2026-10-26 12:59:43  12d_tradeoff none_lr0.25_rp0.5: test drift +2.01 | 13-way forgetting +7.75 | 'zero' acc 0.971 AUC 0.983 | hmean 0.870 (val 0.886) | 94 s
+2026-10-26 13:01:15  12d_tradeoff none_lr1_rp0: test drift +23.38 | 13-way forgetting +24.92 | 'zero' acc 0.978 AUC 0.993 | hmean 0.756 (val 0.790) | 92 s
+2026-10-26 13:02:37  12d_tradeoff none_lr1_rp0.01: test drift +13.91 | 13-way forgetting +15.29 | 'zero' acc 0.967 AUC 0.992 | hmean 0.820 (val 0.845) | 82 s
+2026-10-26 13:03:52  12d_tradeoff none_lr1_rp0.05: test drift +8.17 | 13-way forgetting +10.53 | 'zero' acc 0.983 AUC 0.994 | hmean 0.858 (val 0.875) | 75 s
+2026-10-26 13:05:16  12d_tradeoff none_lr1_rp0.25: test drift +3.76 | 13-way forgetting +6.32 | 'zero' acc 0.978 AUC 0.992 | hmean 0.882 (val 0.892) | 84 s
+2026-10-26 13:06:33  12d_tradeoff none_lr1_rp0.5: test drift +2.72 | 13-way forgetting +7.10 | 'zero' acc 0.988 AUC 0.993 | hmean 0.881 (val 0.894) | 78 s
+2026-10-26 13:07:57  12d_tradeoff none_lr4_rp0: test drift +74.68 | 13-way forgetting +74.68 | 'zero' acc 0.943 AUC 0.995 | hmean 0.211 (val 0.228) | 84 s
+2026-10-26 13:09:20  12d_tradeoff none_lr4_rp0.01: test drift +37.02 | 13-way forgetting +37.38 | 'zero' acc 0.971 AUC 0.996 | hmean 0.653 (val 0.691) | 82 s
+2026-10-26 13:10:53  12d_tradeoff none_lr4_rp0.05: test drift +12.14 | 13-way forgetting +13.95 | 'zero' acc 0.983 AUC 0.995 | hmean 0.835 (val 0.843) | 93 s
+2026-10-26 13:12:30  12d_tradeoff none_lr4_rp0.25: test drift +7.42 | 13-way forgetting +10.01 | 'zero' acc 0.962 AUC 0.993 | hmean 0.852 (val 0.864) | 97 s
+2026-10-26 13:14:05  12d_tradeoff none_lr4_rp0.5: test drift +4.72 | 13-way forgetting +8.30 | 'zero' acc 0.993 AUC 0.995 | hmean 0.875 (val 0.886) | 95 s
+2026-10-26 13:15:34  12d_tradeoff best_lr0.25_rp0: test drift +13.85 | 13-way forgetting +16.13 | 'zero' acc 0.983 AUC 0.986 | hmean 0.821 (val 0.828) | 89 s
+2026-10-26 13:16:54  12d_tradeoff best_lr0.25_rp0.01: test drift +11.26 | 13-way forgetting +13.59 | 'zero' acc 0.976 AUC 0.986 | hmean 0.835 (val 0.838) | 80 s
+2026-10-26 13:18:10  12d_tradeoff best_lr0.25_rp0.05: test drift +7.01 | 13-way forgetting +9.92 | 'zero' acc 0.974 AUC 0.984 | hmean 0.858 (val 0.859) | 76 s
+2026-10-26 13:19:25  12d_tradeoff best_lr0.25_rp0.25: test drift +4.68 | 13-way forgetting +7.91 | 'zero' acc 0.945 AUC 0.981 | hmean 0.858 (val 0.859) | 75 s
+2026-10-26 13:20:40  12d_tradeoff best_lr0.25_rp0.5: test drift +2.35 | 13-way forgetting +8.46 | 'zero' acc 0.974 AUC 0.979 | hmean 0.867 (val 0.875) | 75 s
+2026-10-26 13:21:58  12d_tradeoff best_lr1_rp0: test drift +13.78 | 13-way forgetting +15.66 | 'zero' acc 0.990 AUC 0.992 | hmean 0.826 (val 0.848) | 78 s
+2026-10-26 13:23:20  12d_tradeoff best_lr1_rp0.01: test drift +10.91 | 13-way forgetting +12.42 | 'zero' acc 0.978 AUC 0.991 | hmean 0.844 (val 0.859) | 82 s
+2026-10-26 13:24:37  12d_tradeoff best_lr1_rp0.05: test drift +6.51 | 13-way forgetting +9.36 | 'zero' acc 0.990 AUC 0.992 | hmean 0.868 (val 0.881) | 77 s
+2026-10-26 13:25:53  12d_tradeoff best_lr1_rp0.25: test drift +2.53 | 13-way forgetting +5.86 | 'zero' acc 0.983 AUC 0.991 | hmean 0.886 (val 0.894) | 76 s
+2026-10-26 13:27:15  12d_tradeoff best_lr1_rp0.5: test drift +1.42 | 13-way forgetting +6.44 | 'zero' acc 0.990 AUC 0.990 | hmean 0.886 (val 0.897) | 82 s
+2026-10-26 13:28:36  12d_tradeoff best_lr4_rp0: test drift +37.70 | 13-way forgetting +38.19 | 'zero' acc 0.978 AUC 0.995 | hmean 0.647 (val 0.671) | 81 s
+2026-10-26 13:30:05  12d_tradeoff best_lr4_rp0.01: test drift +23.85 | 13-way forgetting +24.67 | 'zero' acc 0.967 AUC 0.995 | hmean 0.755 (val 0.760) | 90 s
+2026-10-26 13:31:19  12d_tradeoff best_lr4_rp0.05: test drift +8.03 | 13-way forgetting +10.85 | 'zero' acc 0.993 AUC 0.995 | hmean 0.859 (val 0.870) | 74 s
+2026-10-26 13:32:57  12d_tradeoff best_lr4_rp0.25: test drift +4.17 | 13-way forgetting +7.14 | 'zero' acc 0.990 AUC 0.995 | hmean 0.882 (val 0.892) | 98 s
+2026-10-26 13:34:33  12d_tradeoff best_lr4_rp0.5: test drift +2.79 | 13-way forgetting +6.44 | 'zero' acc 0.981 AUC 0.994 | hmean 0.882 (val 0.892) | 95 s
+2026-10-26 13:34:33    [PASS] 12d: frozen weights never moved, in all 30 runs: largest change 0.0e+00
+2026-10-26 13:35:54  12e_seeds no_mask_s0: test drift +23.38 | 13-way forgetting +24.92 | 'zero' acc 0.978 AUC 0.993 | hmean 0.756 (val 0.790) | 81 s
+2026-10-26 13:37:09  12e_seeds no_mask_s1: test drift +26.43 | 13-way forgetting +28.19 | 'zero' acc 0.978 AUC 0.993 | hmean 0.731 (val 0.755) | 75 s
+2026-10-26 13:38:24  12e_seeds no_mask_s2: test drift +24.37 | 13-way forgetting +25.41 | 'zero' acc 0.967 AUC 0.993 | hmean 0.749 (val 0.777) | 75 s
+2026-10-26 13:39:38  12e_seeds mi_mask_s0: test drift +18.33 | 13-way forgetting +19.51 | 'zero' acc 0.983 AUC 0.993 | hmean 0.797 (val 0.815) | 74 s
+2026-10-26 13:41:11  12e_seeds mi_mask_s1: test drift +24.46 | 13-way forgetting +25.81 | 'zero' acc 0.978 AUC 0.993 | hmean 0.750 (val 0.774) | 93 s
+2026-10-26 13:42:43  12e_seeds mi_mask_s2: test drift +17.71 | 13-way forgetting +19.17 | 'zero' acc 0.974 AUC 0.993 | hmean 0.797 (val 0.818) | 92 s
+2026-10-26 13:44:16  12e_seeds fisher_mask_s0: test drift +20.06 | 13-way forgetting +21.28 | 'zero' acc 0.986 AUC 0.994 | hmean 0.785 (val 0.808) | 93 s
+2026-10-26 13:45:29  12e_seeds fisher_mask_s1: test drift +26.04 | 13-way forgetting +27.39 | 'zero' acc 0.978 AUC 0.993 | hmean 0.737 (val 0.765) | 73 s
+2026-10-26 13:46:50  12e_seeds fisher_mask_s2: test drift +19.66 | 13-way forgetting +21.03 | 'zero' acc 0.969 AUC 0.993 | hmean 0.782 (val 0.805) | 81 s
+2026-10-26 13:48:11  12e_seeds best_768_s0: test drift +13.78 | 13-way forgetting +15.66 | 'zero' acc 0.990 AUC 0.992 | hmean 0.826 (val 0.848) | 81 s
+2026-10-26 13:49:37  12e_seeds best_768_s1: test drift +17.74 | 13-way forgetting +19.50 | 'zero' acc 0.988 AUC 0.992 | hmean 0.799 (val 0.817) | 86 s
+2026-10-26 13:51:11  12e_seeds best_768_s2: test drift +13.55 | 13-way forgetting +14.79 | 'zero' acc 0.967 AUC 0.991 | hmean 0.824 (val 0.842) | 94 s
+2026-10-26 13:52:44  12e_seeds random_768_s0: test drift +13.46 | 13-way forgetting +15.88 | 'zero' acc 0.993 AUC 0.992 | hmean 0.826 (val 0.839) | 94 s
+2026-10-26 13:54:07  12e_seeds random_768_s1: test drift +16.50 | 13-way forgetting +18.25 | 'zero' acc 0.969 AUC 0.992 | hmean 0.801 (val 0.821) | 83 s
+2026-10-26 13:55:19  12e_seeds random_768_s2: test drift +13.01 | 13-way forgetting +14.38 | 'zero' acc 0.964 AUC 0.991 | hmean 0.826 (val 0.846) | 71 s
+2026-10-26 13:56:32  12e_seeds no_mask_replay_s0: test drift +2.72 | 13-way forgetting +7.10 | 'zero' acc 0.988 AUC 0.993 | hmean 0.881 (val 0.894) | 73 s
+2026-10-26 13:57:44  12e_seeds no_mask_replay_s1: test drift +1.58 | 13-way forgetting +5.66 | 'zero' acc 0.988 AUC 0.992 | hmean 0.890 (val 0.902) | 72 s
+2026-10-26 13:59:09  12e_seeds no_mask_replay_s2: test drift +1.53 | 13-way forgetting +4.78 | 'zero' acc 0.981 AUC 0.993 | hmean 0.892 (val 0.902) | 86 s
+2026-10-26 14:00:51  12e_seeds readout_only_s0: test drift +0.00 | 13-way forgetting +9.23 | 'zero' acc 0.974 AUC 0.964 | hmean 0.862 (val 0.872) | 102 s
+2026-10-26 14:02:22  12e_seeds readout_only_s1: test drift +0.00 | 13-way forgetting +9.17 | 'zero' acc 0.974 AUC 0.965 | hmean 0.862 (val 0.877) | 91 s
+2026-10-26 14:03:53  12e_seeds readout_only_s2: test drift +0.00 | 13-way forgetting +8.00 | 'zero' acc 0.974 AUC 0.964 | hmean 0.870 (val 0.873) | 91 s
+2026-10-26 14:03:53    [PASS] 12e: frozen weights never moved, in all 21 runs: largest change 0.0e+00
+2026-10-26 14:03:53    [PASS] 12e different seeds give different runs
+2026-10-26 14:03:53  ========================================================================
+2026-10-26 14:03:53  summary written to D:\codes\Anmol papers and code\heban_fischer_mi\runs\gscv2_tradeoff\summary.json
+2026-10-26 14:03:53  base network: 56 epochs, best (lowest validation loss) at epoch 53 | validation 0.8807 | test 0.8658
+2026-10-26 14:03:53  E* = 8 | best blend combo_layer_a020 | best mask blend_best_b50 (768 neurons)
+2026-10-26 14:03:53  checks: 62 run, 0 failed, 0 skipped
+2026-10-26 14:04:23  ========================================================================
+2026-10-26 14:04:23  run started | Google Speech Commands v2 | cfg 75a2ede6 | device cuda
+2026-10-26 14:04:23  stages to compute: 12f_stability (it has not finished yet) and every stage after it
+2026-10-26 14:04:23  01_index: loaded runs\gscv2_tradeoff\01_index\index.json | dataset root D:\codes\Anmol papers and code\speech_commands_v2
+2026-10-26 14:04:23    [PASS] 01 splits are disjoint: 0 files in two splits
+2026-10-26 14:04:23    [PASS] 01 every keyword present in every split
+2026-10-26 14:04:23    [PASS] 01 _unknown_ holds no keyword clips: 0 keyword clips in _unknown_
+2026-10-26 14:04:23    [PASS] 01 'zero' never in validation/test _unknown_
+2026-10-26 14:04:23    'zero' clips inside training _unknown_: 203 (new_word_in_base_unknown=True)
+2026-10-26 14:04:23    other words used for _unknown_: 24 (backward, bed, bird, cat, dog, eight, five, follow, ...)
+2026-10-26 14:04:23    [PASS] 01 per-word validation/test counts match GSC v2: exact match
+2026-10-26 14:04:24  02_cache: ready | {'training': {'words': 30769, 'unknown': 3077, 'new': 3250}, 'validation': {'words': 3703, 'unknown': 370, 'new': 384}, 'testing': {'words': 4074, 'unknown': 407, 'new': 418}} | noise files: ['doing_the_dishes.wav', 'dude_miaowing.wav', 'exercise_bike.wav', 'pink_noise.wav', 'running_tap.wav', 'white_noise.wav']
+2026-10-26 14:04:25    [PASS] 02 cache arrays are [n, 16000] int16
+2026-10-26 14:04:25    [PASS] 02 every clip could be decoded: all decoded
+2026-10-26 14:04:25    [PASS] 02 almost no all-zero clips: worst part 0.00%
+2026-10-26 14:04:25    [PASS] 02 background-noise recordings found (needed for _silence_): 6 files, 399 s in total
+2026-10-26 14:04:26  03 sets: train 36923 | validation 4443 | test 4888 clips (12 classes)
+2026-10-26 14:04:26    [PASS] 03 batch shape and range
+2026-10-26 14:04:26    [PASS] 03 labels within 0..11
+2026-10-26 14:04:26    [PASS] 03 classes roughly balanced (max/min < 1.6): max/min = 1.09
+2026-10-26 14:04:26    [PASS] 03 augmentation changes the audio: mean |change| 0.0191
+2026-10-26 14:04:26    [PASS] 03 _silence_ clips are not empty: 370 validation silence clips, mean |x| 0.0552
+2026-10-26 14:04:26    [PASS] 03 evaluation batches are deterministic
+2026-10-26 14:04:26    [PASS] 03 12- and 13-class test sets share the same silence clips
+2026-10-26 14:04:27  04_frontend: loaded (mel floor 0.00536)
+2026-10-26 14:04:27    [PASS] 04 mel filterbank shape and no empty filter: (201, 64), 0 empty filters
+2026-10-26 14:04:27    [PASS] 04 MFCC shape [B, 101, 40] and finite: (16, 101, 40)
+2026-10-26 14:04:27    [PASS] 04 normalised features: mean ~0, std ~1: mean -0.026, std 1.013
+2026-10-26 14:04:27    [PASS] 04 MFCC matches torchaudio (optional): max abs difference 2.43e-05
+2026-10-26 14:04:27    [PASS] 05 constant input -> no spikes
+2026-10-26 14:04:27    [PASS] 05 a step of height h gives floor(h/theta) ON spikes and no OFF: 2 ON, 0 OFF for h=1.0, theta=0.35
+2026-10-26 14:04:27    [PASS] 05 a downward step gives OFF spikes
+2026-10-26 14:04:28    [PASS] 05 silence costs ~0 input spikes per frame (< 2): 0.000 on near-silence vs 14.90 on validation clips; if this fails, raise frontend.mel_floor_min
+2026-10-26 14:04:28    [PASS] 06 LIF: constant 0.5 spikes at steps 3, 6, 9, 12 (U = 0.50, 0.95, 1.355, reset): [3, 6, 9, 12]
+2026-10-26 14:04:28    [PASS] 06 surrogate gradient = 1/(1+(pi x)^2): [0.092, 0.91, 1.0, 0.91, 0.092]
+2026-10-26 14:04:28    [PASS] 06 parameter count: 571,392 weights (571,392 for 80-512-512-512-12)
+2026-10-26 14:04:28    [PASS] 06 every hidden layer fires at initialisation: spike probability per neuron and step: [0.0723, 0.0455, 0.0298]
+2026-10-26 14:04:28    [PASS] 06 logits are finite
+2026-10-26 14:04:28    [PASS] 06 gradient reaches every weight matrix: dL/ds at the middle step, per layer: ['1.08e-03', '6.79e-04', '3.25e-04']
+2026-10-26 14:04:28    [PASS] 06 masking layer 0 silences the whole network
+2026-10-26 14:04:29    [PASS] 06 network matches snnTorch Leaky, forward and gradients (optional): logit max difference 0.0e+00, weight-gradient relative difference 7.2e-08
+2026-10-26 14:04:36    [PASS] 06 tiny overfit: loss falls on 2 fixed batches: 3.142 -> 1.156
+2026-10-26 14:04:36  07_train: loaded best.pt
+2026-10-26 14:04:37  07_train: best epoch 53 | validation 0.8807 (selected on it) | test 0.8658 (held out)
+2026-10-26 14:04:37    [PASS] 07 validation accuracy well above chance (> 3/12): validation 0.8807, test 0.8658, best epoch 53
+2026-10-26 14:04:37    [PASS] 07 training loss went down: 2.293 -> 0.359
+2026-10-26 14:04:39    [PASS] 07 max-membrane readout reproduces the stored validation accuracy: 0.8807 vs 0.8807
+2026-10-26 14:04:40    [PASS] 07 training ended by early stopping, not the epoch cap (a finding, not a bug, if it fails): 56 of 100 epochs; best validation loss at epoch 53
+2026-10-26 14:04:40  08_fisher: loaded
+2026-10-26 14:04:40    [PASS] 08 Fisher and Omega are finite and non-negative
+2026-10-26 14:04:40    [PASS] 08 enough gradient vectors per class (> 4 per dimension): worst class: 35350 vectors for 1536 neurons (23.0:1)
+2026-10-26 14:04:40    [PASS] 08 unique fraction is a proper fraction in [0, 1]
+2026-10-26 14:04:40  09_mi: loaded
+2026-10-26 14:04:40    [PASS] 09 MI estimator: a perfect feature gives H(Y) = ln 4: 1.3863 vs 1.3863
+2026-10-26 14:04:40    [PASS] 09 MI estimator: an independent feature gives ~0 (only the small upward bias): 0.0028 nats; expected bias ~ (8-1)(4-1)/(2*4000) = 0.0026
+2026-10-26 14:04:40    [PASS] 09 real class information present (best neuron beats the shuffle null)
+2026-10-26 14:04:40    [PASS] 09 every class's 40th MI neuron is well above the estimator bias (> 5x): worst class 11.1x
+2026-10-26 14:04:43    [PASS] 10 groups are valid neuron ids
+2026-10-26 14:04:43    [PASS] 10 MI union is non-empty and leaves plastic neurons: 322 of 1536
+2026-10-26 14:04:43  11_ablation: loaded
+2026-10-26 14:04:43    [PASS] 11 ablation baseline equals the stage-7 test accuracy: 0.8658 vs 0.8658
+2026-10-26 14:04:43    [PASS] 11 MI groups are more class-specific than Fisher groups (specificity): MI +0.246, Fisher +0.043, Omega -0.001 (a finding, not a bug, if it fails)
+2026-10-26 14:04:43  11b_combo: loaded
+2026-10-26 14:04:43    [PASS] 11b every combined group holds K valid neuron ids
+2026-10-26 14:04:43    [PASS] 11b global ranks: alpha = 1 gives the MI groups, alpha = 0 the Fisher groups: overlap 100% with MI, 100% with Fisher (ties in the scores can move a neuron or two)
+2026-10-26 14:04:44  12 sets: old-class training 36720 | 'zero' training 3250 | validation 4827 | test 5306 (13 classes)
+2026-10-26 14:04:48    before learning it, the base network files test 'zero' clips as: _unknown_ 89%, no 4%, yes 3%
+2026-10-26 14:04:48    [PASS] 12 old-class test scores equal the stage-11 baseline (same clips): largest per-class difference 0.0000 (tiny differences can come from different batch composition)
+2026-10-26 14:04:48  12a_epochs: E* = 8 (mean validation hmean 0.835)
+2026-10-26 14:04:48    [PASS] 12a: frozen weights never moved, in all 6 runs: largest change 0.0e+00
+2026-10-26 14:04:48    [PASS] 12a E* is one of the scored epochs, chosen on validation: E* = 8
+2026-10-26 14:04:49  12b_arms: best blend on validation = combo_layer_a020 (mode within_layer, alpha 0.2)
+2026-10-26 14:04:49    [PASS] 12b: frozen weights never moved, in all 33 runs: largest change 0.0e+00
+2026-10-26 14:04:49    [PASS] 12b alpha* chosen on validation among the blended masks: combo_layer_a020
+2026-10-26 14:04:49  12c_budget: best mask on validation = blend_best_b50 (768 neurons)
+2026-10-26 14:04:49    [PASS] 12c: frozen weights never moved, in all 30 runs: largest change 0.0e+00
+2026-10-26 14:04:49    [PASS] 12c budgets are nested (the smallest set sits inside the largest) for every method
+2026-10-26 14:04:49    [PASS] 12c each budget freezes exactly B neurons
+2026-10-26 14:04:49    [PASS] 12d: frozen weights never moved, in all 30 runs: largest change 0.0e+00
+2026-10-26 14:04:50    [PASS] 12e: frozen weights never moved, in all 21 runs: largest change 0.0e+00
+2026-10-26 14:04:50    [PASS] 12e different seeds give different runs
+2026-10-26 14:06:28  12f_stability ref_readout_only: test drift +0.00 | 13-way forgetting +9.23 | 'zero' acc 0.974 AUC 0.964 | hmean 0.862 (val 0.872) | 99 s
+2026-10-26 14:08:13  12f_stability ref_no_mask: test drift +23.38 | 13-way forgetting +24.92 | 'zero' acc 0.978 AUC 0.993 | hmean 0.756 (val 0.790) | 105 s
+2026-10-26 14:09:52  12f_stability ref_mi_mask: test drift +18.33 | 13-way forgetting +19.51 | 'zero' acc 0.983 AUC 0.993 | hmean 0.797 (val 0.815) | 98 s
+2026-10-26 14:11:32  12f_stability ref_best_blend: test drift +14.55 | 13-way forgetting +16.16 | 'zero' acc 0.990 AUC 0.994 | hmean 0.823 (val 0.840) | 101 s
+2026-10-26 14:13:09  12f_stability ref_best_mask: test drift +13.78 | 13-way forgetting +15.66 | 'zero' acc 0.990 AUC 0.992 | hmean 0.826 (val 0.848) | 97 s
+2026-10-26 14:14:48  12f_stability ref_replay_25: test drift +3.76 | 13-way forgetting +6.32 | 'zero' acc 0.978 AUC 0.992 | hmean 0.882 (val 0.892) | 98 s
+2026-10-26 14:16:59  12f_stability lwf_none_0.3: test drift +3.11 | 13-way forgetting +7.58 | 'zero' acc 0.988 AUC 0.992 | hmean 0.878 (val 0.893) | 132 s
+2026-10-26 14:19:11  12f_stability lwf_none_1: test drift +1.06 | 13-way forgetting +5.99 | 'zero' acc 0.986 AUC 0.988 | hmean 0.887 (val 0.899) | 132 s
+2026-10-26 14:21:22  12f_stability lwf_none_3: test drift +0.27 | 13-way forgetting +6.83 | 'zero' acc 0.983 AUC 0.983 | hmean 0.881 (val 0.892) | 131 s
+2026-10-26 14:23:37  12f_stability lwf_none_10: test drift +0.13 | 13-way forgetting +7.81 | 'zero' acc 0.981 AUC 0.977 | hmean 0.874 (val 0.883) | 135 s
+2026-10-26 14:25:56  12f_stability lwf_none_30: test drift +0.31 | 13-way forgetting +7.81 | 'zero' acc 0.971 AUC 0.972 | hmean 0.870 (val 0.877) | 139 s
+2026-10-26 14:28:06  12f_stability lwf_best_0.3: test drift +1.99 | 13-way forgetting +6.76 | 'zero' acc 0.988 AUC 0.990 | hmean 0.883 (val 0.893) | 130 s
+2026-10-26 14:30:18  12f_stability lwf_best_1: test drift +0.64 | 13-way forgetting +6.02 | 'zero' acc 0.993 AUC 0.988 | hmean 0.889 (val 0.900) | 132 s
+2026-10-26 14:32:30  12f_stability lwf_best_3: test drift +0.17 | 13-way forgetting +6.35 | 'zero' acc 0.976 AUC 0.982 | hmean 0.881 (val 0.886) | 132 s
+2026-10-26 14:34:40  12f_stability lwf_best_10: test drift -0.27 | 13-way forgetting +7.91 | 'zero' acc 0.976 AUC 0.974 | hmean 0.871 (val 0.879) | 130 s
+2026-10-26 14:36:50  12f_stability lwf_best_30: test drift +0.01 | 13-way forgetting +8.54 | 'zero' acc 0.969 AUC 0.969 | hmean 0.864 (val 0.871) | 130 s
+2026-10-26 14:38:29  12f_stability soft_uniform_10: test drift +26.40 | 13-way forgetting +27.73 | 'zero' acc 0.981 AUC 0.993 | hmean 0.735 (val 0.756) | 99 s
+2026-10-26 14:40:07  12f_stability soft_uniform_100: test drift +23.60 | 13-way forgetting +24.80 | 'zero' acc 0.969 AUC 0.992 | hmean 0.754 (val 0.777) | 98 s
+2026-10-26 14:41:46  12f_stability soft_uniform_1000: test drift +13.94 | 13-way forgetting +16.88 | 'zero' acc 0.993 AUC 0.990 | hmean 0.819 (val 0.832) | 99 s
+2026-10-26 14:43:24  12f_stability soft_uniform_10000: test drift +7.86 | 13-way forgetting +11.73 | 'zero' acc 0.978 AUC 0.983 | hmean 0.848 (val 0.857) | 98 s
+2026-10-26 14:45:19  12f_stability soft_uniform_100000: test drift +1.02 | 13-way forgetting +7.66 | 'zero' acc 0.974 AUC 0.975 | hmean 0.872 (val 0.882) | 114 s
+2026-10-26 14:47:05  12f_stability soft_fisher_10: test drift +21.28 | 13-way forgetting +22.95 | 'zero' acc 0.988 AUC 0.994 | hmean 0.774 (val 0.798) | 106 s
+2026-10-26 14:48:46  12f_stability soft_fisher_100: test drift +20.33 | 13-way forgetting +22.04 | 'zero' acc 0.988 AUC 0.994 | hmean 0.781 (val 0.803) | 100 s
+2026-10-26 14:50:25  12f_stability soft_fisher_1000: test drift +22.65 | 13-way forgetting +24.32 | 'zero' acc 0.978 AUC 0.991 | hmean 0.761 (val 0.781) | 100 s
+2026-10-26 14:52:03  12f_stability soft_fisher_10000: test drift +12.54 | 13-way forgetting +15.02 | 'zero' acc 0.943 AUC 0.981 | hmean 0.813 (val 0.839) | 98 s
+2026-10-26 14:53:44  12f_stability soft_fisher_100000: test drift +2.69 | 13-way forgetting +7.29 | 'zero' acc 0.974 AUC 0.981 | hmean 0.874 (val 0.885) | 100 s
+2026-10-26 14:55:21  12f_stability soft_blend_10: test drift +20.76 | 13-way forgetting +22.13 | 'zero' acc 0.981 AUC 0.993 | hmean 0.778 (val 0.801) | 97 s
+2026-10-26 14:56:57  12f_stability soft_blend_100: test drift +24.19 | 13-way forgetting +25.66 | 'zero' acc 0.971 AUC 0.990 | hmean 0.749 (val 0.770) | 96 s
+2026-10-26 14:58:36  12f_stability soft_blend_1000: test drift +12.59 | 13-way forgetting +14.94 | 'zero' acc 0.990 AUC 0.990 | hmean 0.831 (val 0.849) | 99 s
+2026-10-26 15:00:15  12f_stability soft_blend_10000: test drift +8.10 | 13-way forgetting +12.00 | 'zero' acc 0.978 AUC 0.983 | hmean 0.846 (val 0.851) | 99 s
+2026-10-26 15:01:52  12f_stability soft_blend_100000: test drift +1.10 | 13-way forgetting +7.70 | 'zero' acc 0.971 AUC 0.975 | hmean 0.870 (val 0.885) | 97 s
+2026-10-26 15:03:28  12f_stability freeze_blend_best_b80: test drift +13.78 | 13-way forgetting +16.33 | 'zero' acc 0.986 AUC 0.989 | hmean 0.820 (val 0.834) | 97 s
+2026-10-26 15:05:07  12f_stability freeze_blend_best_b90: test drift +9.41 | 13-way forgetting +12.90 | 'zero' acc 0.981 AUC 0.985 | hmean 0.841 (val 0.849) | 99 s
+2026-10-26 15:06:47  12f_stability freeze_blend_best_b95: test drift +4.51 | 13-way forgetting +9.56 | 'zero' acc 0.983 AUC 0.980 | hmean 0.864 (val 0.865) | 99 s
+2026-10-26 15:08:25  12f_stability freeze_random_b80: test drift +11.10 | 13-way forgetting +13.49 | 'zero' acc 0.978 AUC 0.989 | hmean 0.837 (val 0.848) | 98 s
+2026-10-26 15:10:01  12f_stability freeze_random_b90: test drift +11.18 | 13-way forgetting +13.47 | 'zero' acc 0.988 AUC 0.988 | hmean 0.840 (val 0.841) | 97 s
+2026-10-26 15:11:41  12f_stability freeze_random_b95: test drift +11.96 | 13-way forgetting +14.71 | 'zero' acc 0.986 AUC 0.986 | hmean 0.831 (val 0.834) | 100 s
+2026-10-26 15:11:41    [PASS] 12f: frozen weights never moved, in all 37 runs: largest change 0.0e+00
+2026-10-26 15:11:41    [PASS] 12f calibration with bias 0 reproduces the trained test scores: old 0.6164, new 0.9785
+2026-10-26 15:11:41    [PASS] 12f at least one setting meets the stability limit on validation: 12b/slda_all
+2026-10-26 15:11:41  12f_stability: best setting within the limit = 12b/slda_all
+2026-10-26 15:11:42  ========================================================================
+2026-10-26 15:11:42  summary written to D:\codes\Anmol papers and code\heban_fischer_mi\runs\gscv2_tradeoff\summary.json
+2026-10-26 15:11:42  base network: 56 epochs, best (lowest validation loss) at epoch 53 | validation 0.8807 | test 0.8658
+2026-10-26 15:11:42  E* = 8 | best blend combo_layer_a020 | best mask blend_best_b50 (768 neurons)
+2026-10-26 15:11:42  checks: 65 run, 0 failed, 0 skipped
+2026-10-26 15:12:19  ========================================================================
+2026-10-26 15:12:19  run started | Google Speech Commands v2 | cfg 7e0c7f8c | device cuda
+2026-10-26 15:12:19  stages to compute: 12g_stability_seeds (it has not finished yet) and every stage after it
+2026-10-26 15:12:19  01_index: loaded runs\gscv2_tradeoff\01_index\index.json | dataset root D:\codes\Anmol papers and code\speech_commands_v2
+2026-10-26 15:12:19    [PASS] 01 splits are disjoint: 0 files in two splits
+2026-10-26 15:12:19    [PASS] 01 every keyword present in every split
+2026-10-26 15:12:19    [PASS] 01 _unknown_ holds no keyword clips: 0 keyword clips in _unknown_
+2026-10-26 15:12:19    [PASS] 01 'zero' never in validation/test _unknown_
+2026-10-26 15:12:19    'zero' clips inside training _unknown_: 203 (new_word_in_base_unknown=True)
+2026-10-26 15:12:19    other words used for _unknown_: 24 (backward, bed, bird, cat, dog, eight, five, follow, ...)
+2026-10-26 15:12:19    [PASS] 01 per-word validation/test counts match GSC v2: exact match
+2026-10-26 15:12:20  02_cache: ready | {'training': {'words': 30769, 'unknown': 3077, 'new': 3250}, 'validation': {'words': 3703, 'unknown': 370, 'new': 384}, 'testing': {'words': 4074, 'unknown': 407, 'new': 418}} | noise files: ['doing_the_dishes.wav', 'dude_miaowing.wav', 'exercise_bike.wav', 'pink_noise.wav', 'running_tap.wav', 'white_noise.wav']
+2026-10-26 15:12:21    [PASS] 02 cache arrays are [n, 16000] int16
+2026-10-26 15:12:21    [PASS] 02 every clip could be decoded: all decoded
+2026-10-26 15:12:21    [PASS] 02 almost no all-zero clips: worst part 0.00%
+2026-10-26 15:12:21    [PASS] 02 background-noise recordings found (needed for _silence_): 6 files, 399 s in total
+2026-10-26 15:12:21  03 sets: train 36923 | validation 4443 | test 4888 clips (12 classes)
+2026-10-26 15:12:22    [PASS] 03 batch shape and range
+2026-10-26 15:12:22    [PASS] 03 labels within 0..11
+2026-10-26 15:12:22    [PASS] 03 classes roughly balanced (max/min < 1.6): max/min = 1.09
+2026-10-26 15:12:22    [PASS] 03 augmentation changes the audio: mean |change| 0.0191
+2026-10-26 15:12:22    [PASS] 03 _silence_ clips are not empty: 370 validation silence clips, mean |x| 0.0552
+2026-10-26 15:12:22    [PASS] 03 evaluation batches are deterministic
+2026-10-26 15:12:22    [PASS] 03 12- and 13-class test sets share the same silence clips
+2026-10-26 15:12:22  04_frontend: loaded (mel floor 0.00536)
+2026-10-26 15:12:22    [PASS] 04 mel filterbank shape and no empty filter: (201, 64), 0 empty filters
+2026-10-26 15:12:22    [PASS] 04 MFCC shape [B, 101, 40] and finite: (16, 101, 40)
+2026-10-26 15:12:22    [PASS] 04 normalised features: mean ~0, std ~1: mean -0.026, std 1.013
+2026-10-26 15:12:22    [PASS] 04 MFCC matches torchaudio (optional): max abs difference 2.43e-05
+2026-10-26 15:12:23    [PASS] 05 constant input -> no spikes
+2026-10-26 15:12:23    [PASS] 05 a step of height h gives floor(h/theta) ON spikes and no OFF: 2 ON, 0 OFF for h=1.0, theta=0.35
+2026-10-26 15:12:23    [PASS] 05 a downward step gives OFF spikes
+2026-10-26 15:12:23    [PASS] 05 silence costs ~0 input spikes per frame (< 2): 0.000 on near-silence vs 14.90 on validation clips; if this fails, raise frontend.mel_floor_min
+2026-10-26 15:12:23    [PASS] 06 LIF: constant 0.5 spikes at steps 3, 6, 9, 12 (U = 0.50, 0.95, 1.355, reset): [3, 6, 9, 12]
+2026-10-26 15:12:23    [PASS] 06 surrogate gradient = 1/(1+(pi x)^2): [0.092, 0.91, 1.0, 0.91, 0.092]
+2026-10-26 15:12:23    [PASS] 06 parameter count: 571,392 weights (571,392 for 80-512-512-512-12)
+2026-10-26 15:12:23    [PASS] 06 every hidden layer fires at initialisation: spike probability per neuron and step: [0.0723, 0.0455, 0.0298]
+2026-10-26 15:12:23    [PASS] 06 logits are finite
+2026-10-26 15:12:23    [PASS] 06 gradient reaches every weight matrix: dL/ds at the middle step, per layer: ['1.08e-03', '6.79e-04', '3.25e-04']
+2026-10-26 15:12:23    [PASS] 06 masking layer 0 silences the whole network
+2026-10-26 15:12:24    [PASS] 06 network matches snnTorch Leaky, forward and gradients (optional): logit max difference 0.0e+00, weight-gradient relative difference 7.2e-08
+2026-10-26 15:12:30    [PASS] 06 tiny overfit: loss falls on 2 fixed batches: 3.142 -> 1.156
+2026-10-26 15:12:30  07_train: loaded best.pt
+2026-10-26 15:12:30  07_train: best epoch 53 | validation 0.8807 (selected on it) | test 0.8658 (held out)
+2026-10-26 15:12:30    [PASS] 07 validation accuracy well above chance (> 3/12): validation 0.8807, test 0.8658, best epoch 53
+2026-10-26 15:12:30    [PASS] 07 training loss went down: 2.293 -> 0.359
+2026-10-26 15:12:32    [PASS] 07 max-membrane readout reproduces the stored validation accuracy: 0.8807 vs 0.8807
+2026-10-26 15:12:32    [PASS] 07 training ended by early stopping, not the epoch cap (a finding, not a bug, if it fails): 56 of 100 epochs; best validation loss at epoch 53
+2026-10-26 15:12:32  08_fisher: loaded
+2026-10-26 15:12:32    [PASS] 08 Fisher and Omega are finite and non-negative
+2026-10-26 15:12:32    [PASS] 08 enough gradient vectors per class (> 4 per dimension): worst class: 35350 vectors for 1536 neurons (23.0:1)
+2026-10-26 15:12:32    [PASS] 08 unique fraction is a proper fraction in [0, 1]
+2026-10-26 15:12:32  09_mi: loaded
+2026-10-26 15:12:32    [PASS] 09 MI estimator: a perfect feature gives H(Y) = ln 4: 1.3863 vs 1.3863
+2026-10-26 15:12:32    [PASS] 09 MI estimator: an independent feature gives ~0 (only the small upward bias): 0.0028 nats; expected bias ~ (8-1)(4-1)/(2*4000) = 0.0026
+2026-10-26 15:12:32    [PASS] 09 real class information present (best neuron beats the shuffle null)
+2026-10-26 15:12:32    [PASS] 09 every class's 40th MI neuron is well above the estimator bias (> 5x): worst class 11.1x
+2026-10-26 15:12:35    [PASS] 10 groups are valid neuron ids
+2026-10-26 15:12:35    [PASS] 10 MI union is non-empty and leaves plastic neurons: 322 of 1536
+2026-10-26 15:12:35  11_ablation: loaded
+2026-10-26 15:12:35    [PASS] 11 ablation baseline equals the stage-7 test accuracy: 0.8658 vs 0.8658
+2026-10-26 15:12:35    [PASS] 11 MI groups are more class-specific than Fisher groups (specificity): MI +0.246, Fisher +0.043, Omega -0.001 (a finding, not a bug, if it fails)
+2026-10-26 15:12:35  11b_combo: loaded
+2026-10-26 15:12:35    [PASS] 11b every combined group holds K valid neuron ids
+2026-10-26 15:12:35    [PASS] 11b global ranks: alpha = 1 gives the MI groups, alpha = 0 the Fisher groups: overlap 100% with MI, 100% with Fisher (ties in the scores can move a neuron or two)
+2026-10-26 15:12:36  12 sets: old-class training 36720 | 'zero' training 3250 | validation 4827 | test 5306 (13 classes)
+2026-10-26 15:12:40    before learning it, the base network files test 'zero' clips as: _unknown_ 89%, no 4%, yes 3%
+2026-10-26 15:12:40    [PASS] 12 old-class test scores equal the stage-11 baseline (same clips): largest per-class difference 0.0000 (tiny differences can come from different batch composition)
+2026-10-26 15:12:40  12a_epochs: E* = 8 (mean validation hmean 0.835)
+2026-10-26 15:12:40    [PASS] 12a: frozen weights never moved, in all 6 runs: largest change 0.0e+00
+2026-10-26 15:12:40    [PASS] 12a E* is one of the scored epochs, chosen on validation: E* = 8
+2026-10-26 15:12:41  12b_arms: best blend on validation = combo_layer_a020 (mode within_layer, alpha 0.2)
+2026-10-26 15:12:41    [PASS] 12b: frozen weights never moved, in all 33 runs: largest change 0.0e+00
+2026-10-26 15:12:41    [PASS] 12b alpha* chosen on validation among the blended masks: combo_layer_a020
+2026-10-26 15:12:41  12c_budget: best mask on validation = blend_best_b50 (768 neurons)
+2026-10-26 15:12:41    [PASS] 12c: frozen weights never moved, in all 30 runs: largest change 0.0e+00
+2026-10-26 15:12:41    [PASS] 12c budgets are nested (the smallest set sits inside the largest) for every method
+2026-10-26 15:12:41    [PASS] 12c each budget freezes exactly B neurons
+2026-10-26 15:12:42    [PASS] 12d: frozen weights never moved, in all 30 runs: largest change 0.0e+00
+2026-10-26 15:12:42    [PASS] 12e: frozen weights never moved, in all 21 runs: largest change 0.0e+00
+2026-10-26 15:12:42    [PASS] 12e different seeds give different runs
+2026-10-26 15:12:42    [PASS] 12f: frozen weights never moved, in all 37 runs: largest change 0.0e+00
+2026-10-26 15:12:42    [PASS] 12f calibration with bias 0 reproduces the trained test scores: old 0.6164, new 0.9785
+2026-10-26 15:12:42    [PASS] 12f at least one setting meets the stability limit on validation: 12b/slda_all
+2026-10-26 15:12:42  12f_stability: best setting within the limit = 12b/slda_all
+2026-10-26 15:12:43  12g: seeds [1, 2] for ['lwf_none_1', 'lwf_best_1', 'lwf_none_3', 'lwf_best_3', 'ref_readout_only', 'ref_replay_25']
+2026-10-26 15:14:53  12g_stability_seeds lwf_none_1_s1: test drift +0.55 | 13-way forgetting +5.65 | 'zero' acc 0.993 AUC 0.989 | hmean 0.892 (val 0.900) | 130 s
+2026-10-26 15:17:01  12g_stability_seeds lwf_none_1_s2: test drift +1.30 | 13-way forgetting +5.64 | 'zero' acc 0.974 AUC 0.988 | hmean 0.884 (val 0.900) | 128 s
+2026-10-26 15:19:11  12g_stability_seeds lwf_best_1_s1: test drift +0.77 | 13-way forgetting +6.19 | 'zero' acc 0.983 AUC 0.985 | hmean 0.884 (val 0.894) | 131 s
+2026-10-26 15:21:21  12g_stability_seeds lwf_best_1_s2: test drift +0.63 | 13-way forgetting +4.93 | 'zero' acc 0.976 AUC 0.986 | hmean 0.889 (val 0.900) | 130 s
+2026-10-26 15:23:24  12g_stability_seeds lwf_none_3_s1: test drift +0.23 | 13-way forgetting +6.26 | 'zero' acc 0.981 AUC 0.983 | hmean 0.883 (val 0.889) | 123 s
+2026-10-26 15:25:34  12g_stability_seeds lwf_none_3_s2: test drift +0.79 | 13-way forgetting +5.52 | 'zero' acc 0.964 AUC 0.983 | hmean 0.881 (val 0.896) | 130 s
+2026-10-26 15:27:43  12g_stability_seeds lwf_best_3_s1: test drift -0.10 | 13-way forgetting +6.87 | 'zero' acc 0.983 AUC 0.983 | hmean 0.880 (val 0.890) | 130 s
+2026-10-26 15:29:51  12g_stability_seeds lwf_best_3_s2: test drift -0.00 | 13-way forgetting +5.62 | 'zero' acc 0.962 AUC 0.980 | hmean 0.879 (val 0.887) | 128 s
+2026-10-26 15:31:30  12g_stability_seeds ref_readout_only_s1: test drift +0.00 | 13-way forgetting +9.17 | 'zero' acc 0.974 AUC 0.965 | hmean 0.862 (val 0.877) | 99 s
+2026-10-26 15:33:06  12g_stability_seeds ref_readout_only_s2: test drift +0.00 | 13-way forgetting +8.00 | 'zero' acc 0.974 AUC 0.964 | hmean 0.870 (val 0.873) | 97 s
+2026-10-26 15:34:48  12g_stability_seeds ref_replay_25_s1: test drift +3.13 | 13-way forgetting +5.84 | 'zero' acc 0.969 AUC 0.993 | hmean 0.881 (val 0.889) | 102 s
+2026-10-26 15:36:29  12g_stability_seeds ref_replay_25_s2: test drift +3.97 | 13-way forgetting +5.85 | 'zero' acc 0.962 AUC 0.992 | hmean 0.878 (val 0.892) | 100 s
+2026-10-26 15:36:29    [PASS] 12g: frozen weights never moved, in all 12 runs: largest change 0.0e+00
+2026-10-26 15:36:29    [PASS] 12g different seeds give different runs: lwf_none_1
+2026-10-26 15:36:29  ========================================================================
+2026-10-26 15:36:29  summary written to D:\codes\Anmol papers and code\heban_fischer_mi\runs\gscv2_tradeoff\summary.json
+2026-10-26 15:36:29  base network: 56 epochs, best (lowest validation loss) at epoch 53 | validation 0.8807 | test 0.8658
+2026-10-26 15:36:29  E* = 8 | best blend combo_layer_a020 | best mask blend_best_b50 (768 neurons)
+2026-10-26 15:36:29  checks: 67 run, 0 failed, 0 skipped

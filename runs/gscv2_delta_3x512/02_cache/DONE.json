@@ -1,0 +1,31 @@
+{
+ "finished": "2026-10-26 08:34:40",
+ "t": 1792983880.4267132,
+ "stage_hash": "afef8005",
+ "cfg_hash": "63fd824a",
+ "clips": {
+  "training": {
+   "words": 30769,
+   "unknown": 3077,
+   "new": 3250
+  },
+  "validation": {
+   "words": 3703,
+   "unknown": 370,
+   "new": 384
+  },
+  "testing": {
+   "words": 4074,
+   "unknown": 407,
+   "new": 418
+  }
+ },
+ "noise_files": [
+  "doing_the_dishes.wav",
+  "dude_miaowing.wav",
+  "exercise_bike.wav",
+  "pink_noise.wav",
+  "running_tap.wav",
+  "white_noise.wav"
+ ]
+}

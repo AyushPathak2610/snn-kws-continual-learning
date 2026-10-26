@@ -1,0 +1,108 @@
+{
+ "acc_13": 0.41,
+ "no_decision": 0,
+ "old_mean_acc": 0.37010327635327633,
+ "forgetting_mean_pts": 18.486721611721613,
+ "forgetting_pts": {
+  "yes": 28.57,
+  "no": 11.11,
+  "up": 30.77,
+  "down": -11.11,
+  "left": 75.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 87.5
+ },
+ "worst_class": "_silence_",
+ "worst_forgetting_pts": 87.5,
+ "new_word_acc": 1.0,
+ "new_word_to_unknown": 0.0,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.5473684210526316,
+ "per_class": {
+  "yes": 0.0,
+  "no": 0.8889,
+  "up": 0.5385,
+  "down": 0.8889,
+  "left": 0.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.125,
+  "_silence_": 0.0,
+  "zero": 1.0
+ },
+ "drift_forgetting_mean_pts": 3.3895502645502646,
+ "drift_forgetting_pts": {
+  "yes": 14.29,
+  "no": 0.0,
+  "up": 0.0,
+  "down": -11.11,
+  "left": 25.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 12.5
+ },
+ "new_word_auc": 0.9810526315789474,
+ "new_word_auc_vs_class": {
+  "yes": 1.0,
+  "no": 1.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 1.0,
+  "on": 0.8857142857142857,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.925,
+  "_silence_": 0.95
+ },
+ "arm": "no_mask_replay",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 1.258688509464264,
+   "val_drift_pts": 10.66468253968254,
+   "val_new_word_auc": 0.7192982456140351,
+   "val_forgetting_pts": 29.01785714285715,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 2,
+   "loss": 1.5835686028003693,
+   "val_drift_pts": 3.055555555555555,
+   "val_new_word_auc": 0.993421052631579,
+   "val_forgetting_pts": 18.26388888888889,
+   "val_new_word_acc": 1.0
+  }
+ ],
+ "info": {
+  "frozen_hidden": 0,
+  "frozen_per_layer": [
+   0,
+   0,
+   0
+  ],
+  "replay": true,
+  "old_readout_frozen": true
+ },
+ "seconds": 2,
+ "basis": "8b9f3872@1792923087.756",
+ "checks": {
+  "12 no_mask_replay: frozen weights did not move": {
+   "passed": true,
+   "detail": "largest change of a frozen weight 0.0e+00"
+  }
+ }
+}

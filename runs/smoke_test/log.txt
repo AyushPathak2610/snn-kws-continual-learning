@@ -1,0 +1,156 @@
+2026-10-25 15:40:33  ========================================================================
+2026-10-25 15:40:33  run started | SMOKE TEST (synthetic data) | cfg 8b9f3872 | device cuda
+2026-10-25 15:40:33  stages to compute: 01_index (it has not finished yet) and every stage after it
+2026-10-25 15:40:42  synthetic GSC-like dataset written to runs\smoke_test\synthetic_gsc: 16 words x 60 clips
+2026-10-25 15:40:42  01_index: dataset root runs\smoke_test\synthetic_gsc
+2026-10-25 15:40:43    [PASS] 01 splits are disjoint: 0 files in two splits
+2026-10-25 15:40:43    [PASS] 01 every keyword present in every split
+2026-10-25 15:40:43    [PASS] 01 _unknown_ holds no keyword clips: 0 keyword clips in _unknown_
+2026-10-25 15:40:43    [PASS] 01 'zero' never in validation/test _unknown_
+2026-10-25 15:40:43    'zero' clips inside training _unknown_: 5 (new_word_in_base_unknown=True)
+2026-10-25 15:40:43    other words used for _unknown_: 5 (bed, bird, cat, dog, house, ...)
+2026-10-25 15:40:43    cached training_words: 457 clips, 69 shorter than 1 s, 0 unreadable, 14 MB, 0 s
+2026-10-25 15:40:43    cached training_unknown: 46 clips, 10 shorter than 1 s, 0 unreadable, 1 MB, 0 s
+2026-10-25 15:40:43    cached training_new: 49 clips, 7 shorter than 1 s, 0 unreadable, 1 MB, 0 s
+2026-10-25 15:40:43    cached validation_words: 64 clips, 5 shorter than 1 s, 0 unreadable, 2 MB, 0 s
+2026-10-25 15:40:43    cached validation_unknown: 6 clips, 2 shorter than 1 s, 0 unreadable, 0 MB, 0 s
+2026-10-25 15:40:43    cached validation_new: 6 clips, 1 shorter than 1 s, 0 unreadable, 0 MB, 0 s
+2026-10-25 15:40:43    cached testing_words: 79 clips, 16 shorter than 1 s, 0 unreadable, 2 MB, 0 s
+2026-10-25 15:40:43    cached testing_unknown: 8 clips, 1 shorter than 1 s, 0 unreadable, 0 MB, 0 s
+2026-10-25 15:40:43    cached testing_new: 5 clips, 1 shorter than 1 s, 0 unreadable, 0 MB, 0 s
+2026-10-25 15:40:43  02_cache: ready | {'training': {'words': 457, 'unknown': 46, 'new': 49}, 'validation': {'words': 64, 'unknown': 6, 'new': 6}, 'testing': {'words': 79, 'unknown': 8, 'new': 5}} | noise files: ['hum.wav', 'pink_noise.wav', 'white_noise.wav']
+2026-10-25 15:40:43    [PASS] 02 cache arrays are [n, 16000] int16
+2026-10-25 15:40:43    [PASS] 02 every clip could be decoded: all decoded
+2026-10-25 15:40:43    [PASS] 02 almost no all-zero clips: worst part 0.00%
+2026-10-25 15:40:43    [PASS] 02 background-noise recordings found (needed for _silence_): 3 files, 60 s in total
+2026-10-25 15:40:43  03 sets: train 549 | validation 76 | test 95 clips (12 classes)
+2026-10-25 15:40:43    [PASS] 03 batch shape and range
+2026-10-25 15:40:43    [PASS] 03 labels within 0..11
+2026-10-25 15:40:43    [PASS] 03 classes roughly balanced (max/min < 1.6): max/min = 1.27
+2026-10-25 15:40:43    [PASS] 03 augmentation changes the audio: mean |change| 0.0317
+2026-10-25 15:40:43    [PASS] 03 _silence_ clips are not empty: 6 validation silence clips, mean |x| 0.0607
+2026-10-25 15:40:43    [PASS] 03 evaluation batches are deterministic
+2026-10-25 15:40:44    [PASS] 03 12- and 13-class test sets share the same silence clips
+2026-10-25 15:40:44  04_frontend: mel floor 0.0041 (median mel power 0.0041)
+2026-10-25 15:40:44    [PASS] 04 mel filterbank shape and no empty filter: (201, 64), 0 empty filters
+2026-10-25 15:40:44    [PASS] 04 MFCC shape [B, 101, 40] and finite: (16, 101, 40)
+2026-10-25 15:40:44    [PASS] 04 normalised features: mean ~0, std ~1: mean 0.018, std 0.960
+2026-10-25 15:40:45    [PASS] 04 MFCC matches torchaudio (optional): max abs difference 2.40e-05
+2026-10-25 15:40:45    [PASS] 05 constant input -> no spikes
+2026-10-25 15:40:45    [PASS] 05 a step of height h gives floor(h/theta) ON spikes and no OFF: 2 ON, 0 OFF for h=1.0, theta=0.35
+2026-10-25 15:40:45    [PASS] 05 a downward step gives OFF spikes
+2026-10-25 15:40:45    [PASS] 05 silence costs ~0 input spikes per frame (< 2): 0.000 on near-silence vs 7.46 on validation clips; if this fails, raise frontend.mel_floor_min
+2026-10-25 15:40:46    [PASS] 06 LIF: constant 0.5 spikes at steps 3, 6, 9, 12 (U = 0.50, 0.95, 1.355, reset): [3, 6, 9, 12]
+2026-10-25 15:40:46    [PASS] 06 surrogate gradient = 1/(1+(pi x)^2): [0.092, 0.91, 1.0, 0.91, 0.092]
+2026-10-25 15:40:46    [PASS] 06 parameter count: 14,080 weights (571,392 for 80-512-512-512-12)
+2026-10-25 15:40:46    [PASS] 06 every hidden layer fires at initialisation: spike probability per neuron and step: [0.0537, 0.0257, 0.0172]
+2026-10-25 15:40:46    [PASS] 06 logits are finite
+2026-10-25 15:40:46    [PASS] 06 gradient reaches every weight matrix: dL/ds at the middle step, per layer: ['1.95e-03', '1.60e-03', '9.32e-04']
+2026-10-25 15:40:46    [PASS] 06 masking layer 0 silences the whole network
+2026-10-25 15:40:47    [PASS] 06 network matches snnTorch Leaky, forward and gradients (optional): logit max difference 0.0e+00, weight-gradient relative difference 8.4e-08
+2026-10-25 15:40:52    [PASS] 06 tiny overfit: loss falls on 2 fixed batches: 2.530 -> 0.514
+2026-10-25 15:40:55    ep   1/6 | loss 2.571 | train 0.118 | val 0.145 (best 0.145) | rates [0.0835, 0.0464, 0.0317] | 3 s, 204 clips/s
+2026-10-25 15:40:58    ep   2/6 | loss 2.235 | train 0.300 | val 0.329 (best 0.329) | rates [0.0835, 0.0464, 0.0319] | 2 s, 218 clips/s
+2026-10-25 15:41:00    ep   3/6 | loss 1.986 | train 0.397 | val 0.342 (best 0.342) | rates [0.0808, 0.0438, 0.0275] | 2 s, 222 clips/s
+2026-10-25 15:41:03    ep   4/6 | loss 1.799 | train 0.474 | val 0.447 (best 0.447) | rates [0.0799, 0.0467, 0.0299] | 3 s, 209 clips/s
+2026-10-25 15:41:06    ep   5/6 | loss 1.678 | train 0.583 | val 0.434 (best 0.447) | rates [0.0844, 0.0517, 0.035] | 3 s, 210 clips/s
+2026-10-25 15:41:09    ep   6/6 | loss 1.631 | train 0.592 | val 0.566 (best 0.566) | rates [0.0829, 0.0513, 0.0353] | 3 s, 210 clips/s
+2026-10-25 15:41:09    [PASS] 07 training did not stall at ln(12): 6 epochs, final loss 1.631
+2026-10-25 15:41:09  07_train: best epoch 6 | validation 0.5658 (selected on it) | test 0.5474 (held out)
+2026-10-25 15:41:09    [PASS] 07 validation accuracy well above chance (> 3/12): validation 0.5658, test 0.5474, best epoch 6
+2026-10-25 15:41:09    [PASS] 07 training loss went down: 2.571 -> 1.631
+2026-10-25 15:41:09    [PASS] 07 max-membrane readout reproduces the stored validation accuracy: 0.5658 vs 0.5658
+2026-10-25 15:41:11  08_fisher: done in 1 s
+2026-10-25 15:41:11    [PASS] 08 Fisher and Omega are finite and non-negative
+2026-10-25 15:41:11    [SKIP] 08 enough gradient vectors per class (> 4 per dimension) (only meaningful on the real dataset): worst class: 303 vectors for 192 neurons (1.6:1)
+2026-10-25 15:41:11    [PASS] 08 unique fraction is a proper fraction in [0, 1]
+2026-10-25 15:41:11  09_mi: done in 0 s
+2026-10-25 15:41:11    [PASS] 09 MI estimator: a perfect feature gives H(Y) = ln 4: 1.3863 vs 1.3863
+2026-10-25 15:41:11    [PASS] 09 MI estimator: an independent feature gives ~0 (only the small upward bias): 0.0028 nats; expected bias ~ (8-1)(4-1)/(2*4000) = 0.0026
+2026-10-25 15:41:11    [PASS] 09 real class information present (best neuron beats the shuffle null)
+2026-10-25 15:41:11    [SKIP] 09 every class's 8th MI neuron is well above the estimator bias (> 5x) (only meaningful on the real dataset): worst class 1.9x
+2026-10-25 15:41:11    [PASS] 10 groups are valid neuron ids
+2026-10-25 15:41:11    [PASS] 10 MI union is non-empty and leaves plastic neurons: 78 of 192
+2026-10-25 15:41:14    11: mi groups ablated (3 s)
+2026-10-25 15:41:16    11: fisher groups ablated (5 s)
+2026-10-25 15:41:18    11: omega groups ablated (7 s)
+2026-10-25 15:41:21    11: layer ablation done (10 s)
+2026-10-25 15:41:25    11: k-sweep done (13 s)
+2026-10-25 15:41:27  11_ablation: done in 16 s
+2026-10-25 15:41:27    [PASS] 11 ablation baseline equals the stage-7 test accuracy: 0.5474 vs 0.5474
+2026-10-25 15:41:27    [SKIP] 11 MI groups are more class-specific than Fisher groups (specificity) (only meaningful on the real dataset): MI +0.286, Fisher +0.182, Omega -0.015 (a finding, not a bug, if it fails)
+2026-10-25 15:41:28  12 sets: old-class training 544 | 'zero' training 49 | validation 82 | test 100 (13 classes)
+2026-10-25 15:41:28    before learning it, the base network files test 'zero' clips as: stop 60%, go 20%, _unknown_ 20%
+2026-10-25 15:41:28    [PASS] 12 old-class test scores equal the stage-11 baseline (same clips): largest per-class difference 0.0000 (tiny differences can come from different batch composition)
+2026-10-25 15:41:29    new readout row initialised: {'alpha': 0.4006236182147527, 'scale': 0.3339813514925243, 'median_new_logit_unscaled': 6.430376052856445, 'median_best_old_logit': 2.147625684738159}
+2026-10-25 15:41:29  12 slda_last: running
+2026-10-25 15:41:30  12 slda_last: drift -41.89 pts, 'zero' AUC 1.000 | 13-way: forgetting -41.89 pts, 'zero' acc 1.000, old clips called 'zero' 0.000 | 1 s
+2026-10-25 15:41:30  12 slda_all: running
+2026-10-25 15:41:30  12 slda_all: drift -44.50 pts, 'zero' AUC 1.000 | 13-way: forgetting -44.50 pts, 'zero' acc 1.000, old clips called 'zero' 0.000 | 0 s
+2026-10-25 15:41:30  12 local_rule: running
+2026-10-25 15:41:31      local_rule ep 1: loss None | val drift +0.00 pts, 'zero' AUC 0.533 | 13-way: forgetting +13.40, 'zero' acc 0.333
+2026-10-25 15:41:31      local_rule ep 2: loss None | val drift +0.00 pts, 'zero' AUC 0.542 | 13-way: forgetting +13.40, 'zero' acc 0.333
+2026-10-25 15:41:31    [PASS] 12 local_rule: the local update equals the true gradient of the new row: cosine 1.000000, max abs difference 5.96e-08
+2026-10-25 15:41:31  12 local_rule: drift +0.00 pts, 'zero' AUC 0.556 | 13-way: forgetting +13.17 pts, 'zero' acc 0.600, old clips called 'zero' 0.463 | 1 s
+2026-10-25 15:41:31  12 readout_only: running
+2026-10-25 15:41:32      readout_only ep 1: loss 1.843 | val drift +0.00 pts, 'zero' AUC 0.550 | 13-way: forgetting +14.44, 'zero' acc 0.667
+2026-10-25 15:41:33      readout_only ep 2: loss 2.149 | val drift +0.00 pts, 'zero' AUC 0.575 | 13-way: forgetting +18.70, 'zero' acc 0.833
+2026-10-25 15:41:33    [PASS] 12 readout_only: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:33  12 readout_only: drift +0.00 pts, 'zero' AUC 0.638 | 13-way: forgetting +17.98 pts, 'zero' acc 0.600, old clips called 'zero' 0.526 | 2 s
+2026-10-25 15:41:33  12 no_mask: running
+2026-10-25 15:41:34      no_mask ep 1: loss 1.719 | val drift +23.30 pts, 'zero' AUC 0.991 | 13-way: forgetting +27.47, 'zero' acc 1.000
+2026-10-25 15:41:35      no_mask ep 2: loss 1.18 | val drift +36.60 pts, 'zero' AUC 1.000 | 13-way: forgetting +37.99, 'zero' acc 1.000
+2026-10-25 15:41:35    [PASS] 12 no_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:35  12 no_mask: drift +27.53 pts, 'zero' AUC 0.994 | 13-way: forgetting +29.21 pts, 'zero' acc 1.000, old clips called 'zero' 0.147 | 2 s
+2026-10-25 15:41:35  12 mi_mask: running
+2026-10-25 15:41:36      mi_mask ep 1: loss 1.702 | val drift +13.21 pts, 'zero' AUC 0.827 | 13-way: forgetting +22.94, 'zero' acc 0.833
+2026-10-25 15:41:36      mi_mask ep 2: loss 1.463 | val drift +28.86 pts, 'zero' AUC 1.000 | 13-way: forgetting +30.25, 'zero' acc 1.000
+2026-10-25 15:41:36    [PASS] 12 mi_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:37  12 mi_mask: drift +20.98 pts, 'zero' AUC 0.985 | 13-way: forgetting +23.30 pts, 'zero' acc 1.000, old clips called 'zero' 0.189 | 2 s
+2026-10-25 15:41:37  12 random_mask: running
+2026-10-25 15:41:38      random_mask ep 1: loss 1.733 | val drift +23.85 pts, 'zero' AUC 0.952 | 13-way: forgetting +26.28, 'zero' acc 1.000
+2026-10-25 15:41:39      random_mask ep 2: loss 1.273 | val drift +35.21 pts, 'zero' AUC 1.000 | 13-way: forgetting +35.21, 'zero' acc 1.000
+2026-10-25 15:41:39    [PASS] 12 random_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:39  12 random_mask: drift +26.72 pts, 'zero' AUC 0.998 | 13-way: forgetting +27.36 pts, 'zero' acc 1.000, old clips called 'zero' 0.189 | 2 s
+2026-10-25 15:41:39  12 random_layer_matched: running
+2026-10-25 15:41:40      random_layer_matched ep 1: loss 1.714 | val drift +16.48 pts, 'zero' AUC 0.971 | 13-way: forgetting +23.42, 'zero' acc 1.000
+2026-10-25 15:41:41      random_layer_matched ep 2: loss 1.214 | val drift +32.63 pts, 'zero' AUC 1.000 | 13-way: forgetting +32.63, 'zero' acc 1.000
+2026-10-25 15:41:41    [PASS] 12 random_layer_matched: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:41  12 random_layer_matched: drift +23.40 pts, 'zero' AUC 0.985 | 13-way: forgetting +24.04 pts, 'zero' acc 1.000, old clips called 'zero' 0.095 | 2 s
+2026-10-25 15:41:41  12 fisher_mask: running
+2026-10-25 15:41:42      fisher_mask ep 1: loss 1.775 | val drift +10.92 pts, 'zero' AUC 0.910 | 13-way: forgetting +24.81, 'zero' acc 1.000
+2026-10-25 15:41:42      fisher_mask ep 2: loss 1.71 | val drift +22.61 pts, 'zero' AUC 0.969 | 13-way: forgetting +30.25, 'zero' acc 1.000
+2026-10-25 15:41:42    [PASS] 12 fisher_mask: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:43  12 fisher_mask: drift +12.00 pts, 'zero' AUC 0.975 | 13-way: forgetting +19.17 pts, 'zero' acc 1.000, old clips called 'zero' 0.347 | 2 s
+2026-10-25 15:41:43  12 mi_plus_layer0: running
+2026-10-25 15:41:43      mi_plus_layer0 ep 1: loss 1.877 | val drift +2.44 pts, 'zero' AUC 0.763 | 13-way: forgetting +15.91, 'zero' acc 1.000
+2026-10-25 15:41:44      mi_plus_layer0 ep 2: loss 1.956 | val drift -0.69 pts, 'zero' AUC 0.873 | 13-way: forgetting +14.72, 'zero' acc 1.000
+2026-10-25 15:41:44    [PASS] 12 mi_plus_layer0: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:44  12 mi_plus_layer0: drift -0.66 pts, 'zero' AUC 0.865 | 13-way: forgetting +15.12 pts, 'zero' acc 0.800, old clips called 'zero' 0.400 | 2 s
+2026-10-25 15:41:44  12 mi_plus_fisher: running
+2026-10-25 15:41:45      mi_plus_fisher ep 1: loss 1.818 | val drift -2.34 pts, 'zero' AUC 0.741 | 13-way: forgetting +17.10, 'zero' acc 1.000
+2026-10-25 15:41:46      mi_plus_fisher ep 2: loss 1.879 | val drift -2.01 pts, 'zero' AUC 0.921 | 13-way: forgetting +16.60, 'zero' acc 1.000
+2026-10-25 15:41:46    [PASS] 12 mi_plus_fisher: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:46  12 mi_plus_fisher: drift -4.69 pts, 'zero' AUC 0.848 | 13-way: forgetting +17.85 pts, 'zero' acc 1.000, old clips called 'zero' 0.484 | 2 s
+2026-10-25 15:41:46  12 mi_mask_replay: running
+2026-10-25 15:41:47      mi_mask_replay ep 1: loss 1.291 | val drift +5.57 pts, 'zero' AUC 0.559 | 13-way: forgetting +27.19, 'zero' acc 1.000
+2026-10-25 15:41:48      mi_mask_replay ep 2: loss 1.54 | val drift -0.28 pts, 'zero' AUC 0.658 | 13-way: forgetting +22.43, 'zero' acc 1.000
+2026-10-25 15:41:48    [PASS] 12 mi_mask_replay: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:48  12 mi_mask_replay: drift -4.75 pts, 'zero' AUC 0.857 | 13-way: forgetting +21.76 pts, 'zero' acc 1.000, old clips called 'zero' 0.642 | 2 s
+2026-10-25 15:41:48  12 no_mask_replay: running
+2026-10-25 15:41:49      no_mask_replay ep 1: loss 1.259 | val drift +10.66 pts, 'zero' AUC 0.719 | 13-way: forgetting +29.02, 'zero' acc 1.000
+2026-10-25 15:41:49      no_mask_replay ep 2: loss 1.584 | val drift +3.06 pts, 'zero' AUC 0.993 | 13-way: forgetting +18.26, 'zero' acc 1.000
+2026-10-25 15:41:49    [PASS] 12 no_mask_replay: frozen weights did not move: largest change of a frozen weight 0.0e+00
+2026-10-25 15:41:49  12 no_mask_replay: drift +3.39 pts, 'zero' AUC 0.981 | 13-way: forgetting +18.49 pts, 'zero' acc 1.000, old clips called 'zero' 0.547 | 2 s
+2026-10-25 15:41:49  12 one_way_new_neurons: running
+2026-10-25 15:41:50      one_way_new_neurons ep 1: loss 1.964 | val drift +0.00 pts, 'zero' AUC 0.550 | 13-way: forgetting +14.44, 'zero' acc 0.667
+2026-10-25 15:41:51      one_way_new_neurons ep 2: loss 1.958 | val drift +0.00 pts, 'zero' AUC 0.568 | 13-way: forgetting +18.70, 'zero' acc 0.833
+2026-10-25 15:41:51    [PASS] 12 one_way_new_neurons: base network bit-for-bit unchanged
+2026-10-25 15:41:51    [PASS] 12 one_way_new_neurons: old logits identical to the base network's
+2026-10-25 15:41:52  12 one_way_new_neurons: drift +0.00 pts, 'zero' AUC 0.634 | 13-way: forgetting +17.98 pts, 'zero' acc 0.600, old clips called 'zero' 0.526 | 2 s
+2026-10-25 15:41:52    [PASS] 12 the two random masks are different neuron sets of the same size: 78 neurons each, 35 shared
+2026-10-25 15:41:52  ========================================================================
+2026-10-25 15:41:52  summary written to D:\codes\Anmol papers and code\heban_fischer_mi\runs\smoke_test\summary.json
+2026-10-25 15:41:52  base network: validation 0.5658 | test 0.5474
+2026-10-25 15:41:52  ablation specificity: mi +0.286, fisher +0.182, omega -0.015
+2026-10-25 15:41:52  checks: 62 run, 0 failed

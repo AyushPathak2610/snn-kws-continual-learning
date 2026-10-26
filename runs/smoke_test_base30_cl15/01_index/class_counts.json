@@ -1,0 +1,47 @@
+{
+ "training": {
+  "yes": 43,
+  "no": 46,
+  "up": 41,
+  "down": 44,
+  "left": 48,
+  "right": 44,
+  "on": 43,
+  "off": 46,
+  "stop": 52,
+  "go": 50,
+  "_unknown_": 46,
+  "_silence_": 46,
+  "zero": 49
+ },
+ "validation": {
+  "yes": 10,
+  "no": 5,
+  "up": 6,
+  "down": 7,
+  "left": 8,
+  "right": 7,
+  "on": 10,
+  "off": 5,
+  "stop": 3,
+  "go": 3,
+  "_unknown_": 6,
+  "_silence_": 6,
+  "zero": 6
+ },
+ "testing": {
+  "yes": 7,
+  "no": 9,
+  "up": 13,
+  "down": 9,
+  "left": 4,
+  "right": 9,
+  "on": 7,
+  "off": 9,
+  "stop": 5,
+  "go": 7,
+  "_unknown_": 8,
+  "_silence_": 8,
+  "zero": 5
+ }
+}

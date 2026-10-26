@@ -1,0 +1,270 @@
+{
+ "01 splits are disjoint": {
+  "passed": true,
+  "detail": "0 files in two splits"
+ },
+ "01 every keyword present in every split": {
+  "passed": true,
+  "detail": ""
+ },
+ "01 _unknown_ holds no keyword clips": {
+  "passed": true,
+  "detail": "0 keyword clips in _unknown_"
+ },
+ "01 'zero' never in validation/test _unknown_": {
+  "passed": true,
+  "detail": ""
+ },
+ "01 per-word validation/test counts match GSC v2": {
+  "passed": true,
+  "detail": "exact match"
+ },
+ "02 cache arrays are [n, 16000] int16": {
+  "passed": true,
+  "detail": ""
+ },
+ "02 every clip could be decoded": {
+  "passed": true,
+  "detail": "all decoded"
+ },
+ "02 almost no all-zero clips": {
+  "passed": true,
+  "detail": "worst part 0.00%"
+ },
+ "02 background-noise recordings found (needed for _silence_)": {
+  "passed": true,
+  "detail": "6 files, 399 s in total"
+ },
+ "03 batch shape and range": {
+  "passed": true,
+  "detail": ""
+ },
+ "03 labels within 0..11": {
+  "passed": true,
+  "detail": ""
+ },
+ "03 classes roughly balanced (max/min < 1.6)": {
+  "passed": true,
+  "detail": "max/min = 1.09"
+ },
+ "03 augmentation changes the audio": {
+  "passed": true,
+  "detail": "mean |change| 0.0191"
+ },
+ "03 _silence_ clips are not empty": {
+  "passed": true,
+  "detail": "370 validation silence clips, mean |x| 0.0552"
+ },
+ "03 evaluation batches are deterministic": {
+  "passed": true,
+  "detail": ""
+ },
+ "03 12- and 13-class test sets share the same silence clips": {
+  "passed": true,
+  "detail": ""
+ },
+ "04 mel filterbank shape and no empty filter": {
+  "passed": true,
+  "detail": "(201, 64), 0 empty filters"
+ },
+ "04 MFCC shape [B, 101, 40] and finite": {
+  "passed": true,
+  "detail": "(16, 101, 40)"
+ },
+ "04 normalised features: mean ~0, std ~1": {
+  "passed": true,
+  "detail": "mean -0.026, std 1.013"
+ },
+ "04 MFCC matches torchaudio (optional)": {
+  "passed": true,
+  "detail": "max abs difference 2.43e-05"
+ },
+ "05 constant input -> no spikes": {
+  "passed": true,
+  "detail": ""
+ },
+ "05 a step of height h gives floor(h/theta) ON spikes and no OFF": {
+  "passed": true,
+  "detail": "2 ON, 0 OFF for h=1.0, theta=0.35"
+ },
+ "05 a downward step gives OFF spikes": {
+  "passed": true,
+  "detail": ""
+ },
+ "05 silence costs ~0 input spikes per frame (< 2)": {
+  "passed": true,
+  "detail": "0.000 on near-silence vs 14.90 on validation clips; if this fails, raise frontend.mel_floor_min"
+ },
+ "06 LIF: constant 0.5 spikes at steps 3, 6, 9, 12 (U = 0.50, 0.95, 1.355, reset)": {
+  "passed": true,
+  "detail": "[3, 6, 9, 12]"
+ },
+ "06 surrogate gradient = 1/(1+(pi x)^2)": {
+  "passed": true,
+  "detail": "[0.092, 0.91, 1.0, 0.91, 0.092]"
+ },
+ "06 parameter count": {
+  "passed": true,
+  "detail": "571,392 weights (571,392 for 80-512-512-512-12)"
+ },
+ "06 every hidden layer fires at initialisation": {
+  "passed": true,
+  "detail": "spike probability per neuron and step: [0.0723, 0.0455, 0.0298]"
+ },
+ "06 logits are finite": {
+  "passed": true,
+  "detail": ""
+ },
+ "06 gradient reaches every weight matrix": {
+  "passed": true,
+  "detail": "dL/ds at the middle step, per layer: ['1.08e-03', '6.79e-04', '3.25e-04']"
+ },
+ "06 masking layer 0 silences the whole network": {
+  "passed": true,
+  "detail": ""
+ },
+ "06 network matches snnTorch Leaky, forward and gradients (optional)": {
+  "passed": true,
+  "detail": "logit max difference 0.0e+00, weight-gradient relative difference 7.2e-08"
+ },
+ "06 tiny overfit: loss falls on 2 fixed batches": {
+  "passed": true,
+  "detail": "3.142 -> 1.156"
+ },
+ "07 training did not stall at ln(12)": {
+  "passed": true,
+  "detail": "56 epochs, final loss 0.359"
+ },
+ "07 validation accuracy well above chance (> 3/12)": {
+  "passed": true,
+  "detail": "validation 0.8807, test 0.8658, best epoch 53"
+ },
+ "07 training loss went down": {
+  "passed": true,
+  "detail": "2.293 -> 0.359"
+ },
+ "07 max-membrane readout reproduces the stored validation accuracy": {
+  "passed": true,
+  "detail": "0.8807 vs 0.8807"
+ },
+ "07 training ended by early stopping, not the epoch cap (a finding, not a bug, if it fails)": {
+  "passed": true,
+  "detail": "56 of 100 epochs; best validation loss at epoch 53"
+ },
+ "08 Fisher and Omega are finite and non-negative": {
+  "passed": true,
+  "detail": ""
+ },
+ "08 enough gradient vectors per class (> 4 per dimension)": {
+  "passed": true,
+  "detail": "worst class: 35350 vectors for 1536 neurons (23.0:1)"
+ },
+ "08 unique fraction is a proper fraction in [0, 1]": {
+  "passed": true,
+  "detail": ""
+ },
+ "09 MI estimator: a perfect feature gives H(Y) = ln 4": {
+  "passed": true,
+  "detail": "1.3863 vs 1.3863"
+ },
+ "09 MI estimator: an independent feature gives ~0 (only the small upward bias)": {
+  "passed": true,
+  "detail": "0.0028 nats; expected bias ~ (8-1)(4-1)/(2*4000) = 0.0026"
+ },
+ "09 real class information present (best neuron beats the shuffle null)": {
+  "passed": true,
+  "detail": ""
+ },
+ "09 every class's 40th MI neuron is well above the estimator bias (> 5x)": {
+  "passed": true,
+  "detail": "worst class 11.1x"
+ },
+ "10 groups are valid neuron ids": {
+  "passed": true,
+  "detail": ""
+ },
+ "10 MI union is non-empty and leaves plastic neurons": {
+  "passed": true,
+  "detail": "322 of 1536"
+ },
+ "11 ablation baseline equals the stage-7 test accuracy": {
+  "passed": true,
+  "detail": "0.8658 vs 0.8658"
+ },
+ "11 MI groups are more class-specific than Fisher groups (specificity)": {
+  "passed": true,
+  "detail": "MI +0.246, Fisher +0.043, Omega -0.001 (a finding, not a bug, if it fails)"
+ },
+ "11b every combined group holds K valid neuron ids": {
+  "passed": true,
+  "detail": ""
+ },
+ "11b global ranks: alpha = 1 gives the MI groups, alpha = 0 the Fisher groups": {
+  "passed": true,
+  "detail": "overlap 100% with MI, 100% with Fisher (ties in the scores can move a neuron or two)"
+ },
+ "12 old-class test scores equal the stage-11 baseline (same clips)": {
+  "passed": true,
+  "detail": "largest per-class difference 0.0000 (tiny differences can come from different batch composition)"
+ },
+ "12a: frozen weights never moved, in all 6 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12a E* is one of the scored epochs, chosen on validation": {
+  "passed": true,
+  "detail": "E* = 8"
+ },
+ "12b: frozen weights never moved, in all 33 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12b alpha* chosen on validation among the blended masks": {
+  "passed": true,
+  "detail": "combo_layer_a020"
+ },
+ "12c: frozen weights never moved, in all 30 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12c budgets are nested (the smallest set sits inside the largest) for every method": {
+  "passed": true,
+  "detail": ""
+ },
+ "12c each budget freezes exactly B neurons": {
+  "passed": true,
+  "detail": ""
+ },
+ "12d: frozen weights never moved, in all 30 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12e: frozen weights never moved, in all 21 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12e different seeds give different runs": {
+  "passed": true,
+  "detail": ""
+ },
+ "12f: frozen weights never moved, in all 37 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12f calibration with bias 0 reproduces the trained test scores": {
+  "passed": true,
+  "detail": "old 0.6164, new 0.9785"
+ },
+ "12f at least one setting meets the stability limit on validation": {
+  "passed": true,
+  "detail": "12b/slda_all"
+ },
+ "12g: frozen weights never moved, in all 12 runs": {
+  "passed": true,
+  "detail": "largest change 0.0e+00"
+ },
+ "12g different seeds give different runs": {
+  "passed": true,
+  "detail": "lwf_none_1"
+ }
+}

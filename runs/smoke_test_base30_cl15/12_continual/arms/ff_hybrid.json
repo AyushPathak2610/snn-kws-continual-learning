@@ -1,0 +1,225 @@
+{
+ "acc_13": 0.6,
+ "no_decision": 0,
+ "old_mean_acc": 0.5812499999999999,
+ "forgetting_mean_pts": 40.023148148148145,
+ "forgetting_pts": {
+  "yes": 0.0,
+  "no": 77.78,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 100.0,
+  "on": 100.0,
+  "off": 0.0,
+  "stop": 40.0,
+  "go": 0.0,
+  "_unknown_": 62.5,
+  "_silence_": 100.0
+ },
+ "worst_class": "right",
+ "worst_forgetting_pts": 100.0,
+ "new_word_acc": 1.0,
+ "new_word_to_unknown": 0.0,
+ "new_word_top_confusion": "yes",
+ "old_clips_called_new": 0.2631578947368421,
+ "per_class": {
+  "yes": 1.0,
+  "no": 0.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 0.0,
+  "on": 0.0,
+  "off": 1.0,
+  "stop": 0.6,
+  "go": 1.0,
+  "_unknown_": 0.375,
+  "_silence_": 0.0,
+  "zero": 1.0
+ },
+ "drift_forgetting_mean_pts": 23.412698412698415,
+ "drift_forgetting_pts": {
+  "yes": 0.0,
+  "no": 77.78,
+  "up": 0.0,
+  "down": 0.0,
+  "left": 0.0,
+  "right": 88.89,
+  "on": 14.29,
+  "off": 0.0,
+  "stop": 0.0,
+  "go": 0.0,
+  "_unknown_": 0.0,
+  "_silence_": 100.0
+ },
+ "new_word_auc": 0.92,
+ "new_word_auc_vs_class": {
+  "yes": 1.0,
+  "no": 1.0,
+  "up": 1.0,
+  "down": 1.0,
+  "left": 1.0,
+  "right": 1.0,
+  "on": 0.6,
+  "off": 1.0,
+  "stop": 1.0,
+  "go": 1.0,
+  "_unknown_": 0.75,
+  "_silence_": 0.65
+ },
+ "arm": "ff_hybrid",
+ "curve": [
+  {
+   "epoch": 1,
+   "loss": 6.859052896499634,
+   "val_drift_pts": 5.0,
+   "val_new_word_auc": 0.8530701754385965,
+   "val_forgetting_pts": 13.373015873015873,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 2,
+   "loss": 5.624426364898682,
+   "val_drift_pts": 16.15079365079365,
+   "val_new_word_auc": 0.7697368421052632,
+   "val_forgetting_pts": 32.85714285714286,
+   "val_new_word_acc": 0.8333333333333334
+  },
+  {
+   "epoch": 3,
+   "loss": 7.467057943344116,
+   "val_drift_pts": 11.19047619047619,
+   "val_new_word_auc": 0.7741228070175439,
+   "val_forgetting_pts": 15.714285714285714,
+   "val_new_word_acc": 0.3333333333333333
+  },
+  {
+   "epoch": 4,
+   "loss": 5.372240424156189,
+   "val_drift_pts": 10.714285714285714,
+   "val_new_word_auc": 0.7521929824561403,
+   "val_forgetting_pts": 11.904761904761905,
+   "val_new_word_acc": 0.16666666666666666
+  },
+  {
+   "epoch": 5,
+   "loss": 5.398650646209717,
+   "val_drift_pts": 10.714285714285714,
+   "val_new_word_auc": 0.7368421052631579,
+   "val_forgetting_pts": 16.706349206349206,
+   "val_new_word_acc": 0.16666666666666666
+  },
+  {
+   "epoch": 6,
+   "loss": 5.510002970695496,
+   "val_drift_pts": 9.523809523809524,
+   "val_new_word_auc": 0.8004385964912281,
+   "val_forgetting_pts": 17.53968253968254,
+   "val_new_word_acc": 0.16666666666666666
+  },
+  {
+   "epoch": 7,
+   "loss": 5.7022048234939575,
+   "val_drift_pts": 9.523809523809524,
+   "val_new_word_auc": 0.7828947368421053,
+   "val_forgetting_pts": 19.206349206349206,
+   "val_new_word_acc": 0.3333333333333333
+  },
+  {
+   "epoch": 8,
+   "loss": 5.998961687088013,
+   "val_drift_pts": 9.523809523809524,
+   "val_new_word_auc": 0.7368421052631579,
+   "val_forgetting_pts": 29.642857142857142,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 9,
+   "loss": 5.232972621917725,
+   "val_drift_pts": 15.436507936507937,
+   "val_new_word_auc": 0.7368421052631579,
+   "val_forgetting_pts": 31.587301587301592,
+   "val_new_word_acc": 0.5
+  },
+  {
+   "epoch": 10,
+   "loss": 5.508220672607422,
+   "val_drift_pts": 17.38095238095238,
+   "val_new_word_auc": 0.8574561403508771,
+   "val_forgetting_pts": 30.952380952380953,
+   "val_new_word_acc": 0.8333333333333334
+  },
+  {
+   "epoch": 11,
+   "loss": 5.449860572814941,
+   "val_drift_pts": 11.388888888888888,
+   "val_new_word_auc": 0.9122807017543859,
+   "val_forgetting_pts": 27.26190476190476,
+   "val_new_word_acc": 0.8333333333333334
+  },
+  {
+   "epoch": 12,
+   "loss": 5.212191462516785,
+   "val_drift_pts": 12.38095238095238,
+   "val_new_word_auc": 0.9320175438596491,
+   "val_forgetting_pts": 25.23809523809524,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 13,
+   "loss": 4.91153347492218,
+   "val_drift_pts": 21.42857142857143,
+   "val_new_word_auc": 0.918859649122807,
+   "val_forgetting_pts": 33.53174603174603,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 14,
+   "loss": 5.9921042919158936,
+   "val_drift_pts": 25.1984126984127,
+   "val_new_word_auc": 0.9473684210526315,
+   "val_forgetting_pts": 39.08730158730159,
+   "val_new_word_acc": 1.0
+  },
+  {
+   "epoch": 15,
+   "loss": 5.451340198516846,
+   "val_drift_pts": 22.34126984126984,
+   "val_new_word_auc": 0.918859649122807,
+   "val_forgetting_pts": 34.56349206349206,
+   "val_new_word_acc": 1.0
+  }
+ ],
+ "info": {
+  "frozen_hidden": 0,
+  "frozen_per_layer": [
+   0,
+   0,
+   0
+  ],
+  "replay": false,
+  "negatives": "hybrid",
+  "theta": [
+   0.012383193708956242,
+   0.007169962394982576,
+   0.006413903087377548
+  ],
+  "lr": 0.002,
+  "local_lr": 0.1,
+  "old_readout_frozen": true,
+  "locality_cosine": 0.9999999403953552
+ },
+ "seconds": 22,
+ "basis": "09d125b1@1792949023.115",
+ "checks": {
+  "12 ff_hybrid: frozen weights did not move": {
+   "passed": true,
+   "detail": "largest change of a frozen weight 0.0e+00"
+  },
+  "12 ff_hybrid: no gradient crosses layers or time steps": {
+   "passed": true,
+   "detail": "layer 1 -> layer 0 gradient none; layer-0 gradient vs the one-step closed form: cosine 1.000000"
+  }
+ }
+}
