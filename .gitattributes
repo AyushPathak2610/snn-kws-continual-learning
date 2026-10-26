@@ -1,0 +1,1 @@
+runs/**/08_fisher/fisher.pt filter=lfs diff=lfs merge=lfs -text
